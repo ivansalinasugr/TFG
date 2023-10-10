@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.25)  9 OCT 2023 08:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.25)  10 OCT 2023 08:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -729,7 +729,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 (./portada/portada.tex
 \centeroffset=\skip91
-<imagenes/logo_ugr.jpg, id=100, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=96, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
@@ -745,7 +745,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 9--23
 | $[]$ 
  []
 
-<imagenes/etsiit_logo.png, id=101, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=97, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 32.
@@ -848,7 +848,7 @@ l.12 U
 [1
 
 ]
-<imagenes/cap1/facial_distortion.png, id=250, 1300.86pt x 487.8225pt>
+<imagenes/cap1/facial_distortion.png, id=245, 1300.86pt x 487.8225pt>
 File: imagenes/cap1/facial_distortion.png Graphic file (type png)
 <use imagenes/cap1/facial_distortion.png>
 Package pdftex.def Info: imagenes/cap1/facial_distortion.png  used on input lin
@@ -862,7 +862,7 @@ been already used, duplicate ignored
                    \relax 
 l.25 
       [2 <./imagenes/cap1/facial_distortion.png>]
-<imagenes/cap1/skull_superimposition.png, id=270, 638.385pt x 633.36626pt>
+<imagenes/cap1/skull_superimposition.png, id=265, 638.385pt x 633.36626pt>
 File: imagenes/cap1/skull_superimposition.png Graphic file (type png)
 <use imagenes/cap1/skull_superimposition.png>
 Package pdftex.def Info: imagenes/cap1/skull_superimposition.png  used on input
@@ -894,8 +894,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.25 \subsection
-                {Redes neuronales} [5
+l.34 \section
+             {Aprendizaje profundo} [5
 
 ]) (./capitulos/03_EstadoDelArte.tex
 LaTeX Info: Redefining \. on input line 1.
@@ -1013,20 +1013,28 @@ LaTeX Info: Redefining \sptext on input line 26.
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
 )
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `proyecto.out' has not changed.
-(rerunfilecheck)             Checksum: 9E38E2BC994AAA11B1D5EC6AAF4AC644;3091.
+(rerunfilecheck)             Checksum: 4460A8A1706A19E7646580227AE06647;2915.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                proyecto
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'proyecto.run.xml'.
 \openout1 = `proyecto.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20664 strings out of 478287
- 359645 string characters out of 5849289
- 1078986 words of memory out of 5000000
- 38500 multiletter control sequences out of 15000+600000
+ 20663 strings out of 478287
+ 359622 string characters out of 5849289
+ 1078980 words of memory out of 5000000
+ 38499 multiletter control sequences out of 15000+600000
  476690 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,12n,68p,1334b,3200s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,68p,1332b,3200s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1040,10 +1048,10 @@ y8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on proyecto.pdf (37 pages, 1631626 bytes).
+Output written on proyecto.pdf (37 pages, 1630680 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
- 400 compressed objects within 4 object streams
+ 472 PDF objects out of 1000 (max. 8388607)
+ 395 compressed objects within 4 object streams
  88 named destinations out of 1000 (max. 500000)
- 213 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 205 words of extra memory for PDF output out of 10000 (max. 10000000)
 
