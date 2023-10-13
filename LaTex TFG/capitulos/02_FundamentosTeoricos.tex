@@ -10,7 +10,7 @@
 ? Transferencia de aprendizaje
 
 \section{Aprendizaje automático}
-El aprendizaje automático (machine learning, ML) \cite{16,17} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprendemos, detectando patrones o regularidades para realizar predicciones.
+El aprendizaje automático (Machine Learning, ML) \cite{16,17} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprendemos, detectando patrones o regularidades para realizar predicciones.
 
 Existen 3 tipos de aprendizaje dentro del ML \cite{18,19}:
 
@@ -34,13 +34,55 @@ Se utilizan dos tecnologías esenciales para lograr esto: un tipo de aprendizaje
 \section{Aprendizaje profundo}
 
 \subsection{Redes neuronales}
-Las redes neuronales son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de los animales o humanos. Ventajas de las redes neuronales: son computacionalmente y algoritmicamente muy simples.
+Las redes neuronales (ANNs) \cite{24, 25} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de los animales o humanos. Las ANNs poseen unidades de procesamiento de información llamadas neuronas, que están conectadas entre sí mediante capas. La red se compone de (ver Figura \ref{fig3}):
+\begin{itemize}
+	\item Una capa de entrada, que tendrá tantos inputs como características o variables tenga el problema
+	\item Una o varias capas ocultas, compuestas por neuronas
+	\item Una capa de salida, que representa el valor o valores predichos
+\end{itemize} 
 
-Las neuronas son la unidad fundamental de cómputo,y están conectadas juntas en la red para procesar datos.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{imagenes/cap2/neural-network.png}
+	\caption{Esquema de una red neuronal \cite{26}.}
+	\label{fig3}
+\end{figure}
 
+Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (ver Figura \ref{fig4}:
 
-Foto de neuronas conectadas
-Foto de red neuronal
+\begin{itemize}
+	\item Un conjunto de conexiones con las señales de entrada. Cada conexión tiene su propio peso/fuerza.
+	\item Una función de suma de las señales de entrada, ponderadas cada una con su peso. Estas operaciones constituyen una combinación lineal.
+	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1].
+\end{itemize} 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.25]{imagenes/cap2/neuron-model.png}
+	\caption{Modelo neuronal para una neurona k \cite{25}.}
+	\label{fig4}
+\end{figure}
+
+En términos matemáticos, podemos describir la salida de una neurona como:
+
+\begin{equation}
+	y = \phi(\sum_{j=1}^{m} w_j x_j + b)
+\end{equation}
+
+siendo $\phi$ la función de activación, $m$ el número de señales de entrada, $w_j$ el peso de cada entrada $x_j$, y $b$ el sesgo.
+
+Normalmente, se utilizan dos tipos básicos de función de activación:
+
+\begin{itemize}
+	\item Función signo:
+	$\phi(x)= \left\{ \begin{array}{lcc} 1 & si & x \geq 0 \\ \\ 0 & si & x < 0 \end{array} \right.$
+	\item Función sigmoidal:
+	$\phi(x)= \tanh(x)$
+\end{itemize} 
+
+Ventajas de las redes neuronales: son computacionalmente y algoritmicamente muy simples.
+
+,y están conectadas juntas en la red para procesar datos.
 
 
 \subsection{Redes neuronales convolucionales}

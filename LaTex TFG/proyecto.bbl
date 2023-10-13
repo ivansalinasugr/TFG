@@ -332,36 +332,63 @@
       \verb https://doi.org/10.1016/S0364-0213(02)00084-8
       \endverb
     \endentry
+    \entry{24}{book}{}
+      \name{author}{1}{}{%
+        {{hash=cdb2eec49c4bda443a00c818f5d98628}{%
+           family={Graupe},
+           familyi={G\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {World Scientific}%
+      }
+      \strng{namehash}{cdb2eec49c4bda443a00c818f5d98628}
+      \strng{fullhash}{cdb2eec49c4bda443a00c818f5d98628}
+      \strng{bibnamehash}{cdb2eec49c4bda443a00c818f5d98628}
+      \strng{authorbibnamehash}{cdb2eec49c4bda443a00c818f5d98628}
+      \strng{authornamehash}{cdb2eec49c4bda443a00c818f5d98628}
+      \strng{authorfullhash}{cdb2eec49c4bda443a00c818f5d98628}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3rd ed.}
+      \field{isbn}{9789814522731}
+      \field{title}{Principles of artificial neural networks}
+      \field{year}{2007}
+    \endentry
     \entry{22}{article}{}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labeltitlesource}{title}
       \field{title}{Handbook on Craniofacial Superimposition}
     \endentry
-    \entry{15}{article}{}
+    \entry{25}{book}{}
       \name{author}{1}{}{%
-        {{hash=cbf44511d041dc6d1dd73cc0c033122c}{%
-           family={IBM},
-           familyi={I\bibinitperiod}}}%
+        {{hash=91e57481898b943d6a72a1deba06a6a9}{%
+           family={Haykin},
+           familyi={H\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
       }
-      \strng{namehash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \strng{fullhash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \strng{bibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \strng{authorbibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \field{extraname}{1}
-      \field{sortinit}{I}
-      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{91e57481898b943d6a72a1deba06a6a9}
+      \strng{fullhash}{91e57481898b943d6a72a1deba06a6a9}
+      \strng{bibnamehash}{91e57481898b943d6a72a1deba06a6a9}
+      \strng{authorbibnamehash}{91e57481898b943d6a72a1deba06a6a9}
+      \strng{authornamehash}{91e57481898b943d6a72a1deba06a6a9}
+      \strng{authorfullhash}{91e57481898b943d6a72a1deba06a6a9}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{What is computer vision?}
-      \verb{urlraw}
-      \verb https://www.ibm.com/topics/computer-vision
-      \endverb
-      \verb{url}
-      \verb https://www.ibm.com/topics/computer-vision
-      \endverb
+      \field{edition}{3rd ed.}
+      \field{isbn}{9780131293762}
+      \field{title}{Neural Networks and Learning Machines}
+      \field{year}{2009}
     \endentry
     \entry{16}{article}{}
       \name{author}{1}{}{%
@@ -375,7 +402,6 @@
       \strng{authorbibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
       \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
       \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
-      \field{extraname}{2}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labelnamesource}{author}
@@ -426,6 +452,31 @@
       \verb{doi}
       \verb 10.1109/MMUL.2012.4
       \endverb
+    \endentry
+    \entry{26}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ed74b6bb0a6d016e9a5dd8f3331b3428}{%
+           family={Kelleher},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelima D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The MIT Press}%
+      }
+      \strng{namehash}{ed74b6bb0a6d016e9a5dd8f3331b3428}
+      \strng{fullhash}{ed74b6bb0a6d016e9a5dd8f3331b3428}
+      \strng{bibnamehash}{ed74b6bb0a6d016e9a5dd8f3331b3428}
+      \strng{authorbibnamehash}{ed74b6bb0a6d016e9a5dd8f3331b3428}
+      \strng{authornamehash}{ed74b6bb0a6d016e9a5dd8f3331b3428}
+      \strng{authorfullhash}{ed74b6bb0a6d016e9a5dd8f3331b3428}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780262537551}
+      \field{title}{Deep learning}
+      \field{year}{2019}
     \endentry
     \entry{6}{article}{}
       \name{author}{3}{}{%
