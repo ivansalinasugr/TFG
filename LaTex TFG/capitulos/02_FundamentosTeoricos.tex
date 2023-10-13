@@ -10,13 +10,13 @@
 ? Transferencia de aprendizaje
 
 \section{Aprendizaje automático}
-El aprendizaje automático (Machine Learning, ML) \cite{16,17} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprendemos, detectando patrones o regularidades para realizar predicciones.
+El aprendizaje automático (Machine Learning, ML) \cite{16,17} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
 
 Existen 3 tipos de aprendizaje dentro del ML \cite{18,19}:
 
-El \textbf{aprendizaje supervisado} consiste en entrenar con datos de los que sabemos sus etiquetas (una etiqueta nos indica qué es cada dato). Por ejemplo, los datos de entrada podrían ser imágenes de animales y sus etiquetas podrían ser "perro" o "gato". A partir de los datos y sus etiquetas, el agente aprende una función que dado un nuevo dato, predice su etiqueta. Es el tipo de aprendizaje más utilizado, los datos vienen ya 'preparados' para su uso.
+El \textbf{aprendizaje supervisado} consiste en entrenar con datos de los que se saben sus etiquetas (una etiqueta nos indica qué es cada dato). Por ejemplo, los datos de entrada podrían ser imágenes de animales y sus etiquetas podrían ser "perro" o "gato". A partir de los datos y sus etiquetas, el agente aprende una función que dado un nuevo dato, predice su etiqueta. Es el tipo de aprendizaje más utilizado, los datos vienen ya 'preparados' para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
 
-En el \textbf{aprendizaje no supervisado} el agente aprende los patrones de los datos de entrada sin ninguna realimentación, es decir, los datos no están etiquetados. La herramienta más usada en el aprendizaje no supervisado es el agrupamiento, que consiste en detectar potenciales grupos en los datos de entrada. Este enfoque requiere un mayor número de datos
+En el \textbf{aprendizaje no supervisado} el agente aprende los patrones de los datos de entrada sin ninguna realimentación, es decir, los datos no están etiquetados. La herramienta más usada en el aprendizaje no supervisado es el agrupamiento, que consiste en detectar potenciales grupos en los datos de entrada. Este enfoque requiere un mayor número de datos.
 
 En el \textbf{aprendizaje por refuerzo} el agente aprende mediante una serie de recompensas o castigos. El agente intentará realizar acciones que le proporcionen mejores recompensas en el futuro. Este tipo de aprendizaje es muy utilizado para enseñar a jugar a juegos.
 
@@ -37,7 +37,7 @@ Se utilizan dos tecnologías esenciales para lograr esto: un tipo de aprendizaje
 Las redes neuronales (ANNs) \cite{24, 25} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de los animales o humanos. Las ANNs poseen unidades de procesamiento de información llamadas neuronas, que están conectadas entre sí mediante capas. La red se compone de (ver Figura \ref{fig3}):
 \begin{itemize}
 	\item Una capa de entrada, que tendrá tantos inputs como características o variables tenga el problema
-	\item Una o varias capas ocultas, compuestas por neuronas
+	\item Una o varias capas ocultas, compuestas por neuronas. El número de capas ocultas define la profundidad de la red neuronal.
 	\item Una capa de salida, que representa el valor o valores predichos
 \end{itemize} 
 
@@ -53,7 +53,7 @@ Las neuronas son la unidad fundamental de cómputo, tienen varios valores de ent
 \begin{itemize}
 	\item Un conjunto de conexiones con las señales de entrada. Cada conexión tiene su propio peso/fuerza.
 	\item Una función de suma de las señales de entrada, ponderadas cada una con su peso. Estas operaciones constituyen una combinación lineal.
-	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1].
+	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1]. Existen muchos tipos de funciones de activación pero, se suelen utilizar tres: la función signo, la función logística y la función arco-tangente.
 \end{itemize} 
 
 \begin{figure}[h]
@@ -71,18 +71,11 @@ En términos matemáticos, podemos describir la salida de una neurona como:
 
 siendo $\phi$ la función de activación, $m$ el número de señales de entrada, $w_j$ el peso de cada entrada $x_j$, y $b$ el sesgo.
 
-Normalmente, se utilizan dos tipos básicos de función de activación:
+El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pesos y el sesgo, iterativamente, hasta alcanzar el resultado deseado. Este proceso iterativo se conoce como entrenamiento, y permite, a través de las modificaciones de los pesos, reconocer y extraer las características más relevantes de los datos.
 
-\begin{itemize}
-	\item Función signo:
-	$\phi(x)= \left\{ \begin{array}{lcc} 1 & si & x \geq 0 \\ \\ 0 & si & x < 0 \end{array} \right.$
-	\item Función sigmoidal:
-	$\phi(x)= \tanh(x)$
-\end{itemize} 
+El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de adecuadamente los pesos para generar una mejor estimación de la predicción.
 
-Ventajas de las redes neuronales: son computacionalmente y algoritmicamente muy simples.
-
-,y están conectadas juntas en la red para procesar datos.
+Es importante encontrar un equilibrio entre generalización y sobreentrenamiento. Generalizar demasiado implica que el modelo es muy simple y no es capaz de captar patrones en los datos. Mientras que, el sobreentrenamiento, provoca que al recibir nuevos datos no utilizados para entrenar, se estime un mal resultado debido a la poca capacidad de generalización ante nuevos datos.
 
 
 \subsection{Redes neuronales convolucionales}
