@@ -34,7 +34,7 @@ Se utilizan dos tecnologías esenciales para lograr esto: un tipo de aprendizaje
 \section{Aprendizaje profundo}
 
 \subsection{Redes neuronales}
-Las redes neuronales (ANNs) \cite{24, 25} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de los animales o humanos. Las ANNs poseen unidades de procesamiento de información llamadas neuronas, que están conectadas entre sí mediante capas. La red se compone de (ver Figura \ref{fig3}):
+Las redes neuronales (ANNs) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de los animales o humanos. Las ANNs poseen unidades de procesamiento de información llamadas neuronas, que están conectadas entre sí mediante capas. La red se compone de (ver Figura \ref{fig3}):
 \begin{itemize}
 	\item Una capa de entrada, que tendrá tantos inputs como características o variables tenga el problema
 	\item Una o varias capas ocultas, compuestas por neuronas. El número de capas ocultas define la profundidad de la red neuronal.
@@ -53,13 +53,13 @@ Las neuronas son la unidad fundamental de cómputo, tienen varios valores de ent
 \begin{itemize}
 	\item Un conjunto de conexiones con las señales de entrada. Cada conexión tiene su propio peso/fuerza.
 	\item Una función de suma de las señales de entrada, ponderadas cada una con su peso. Estas operaciones constituyen una combinación lineal.
-	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1]. Existen muchos tipos de funciones de activación pero, se suelen utilizar tres: la función signo, la función logística y la función arco-tangente.
+	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1]. Existen muchos tipos de funciones de activación pero, se suelen utilizar cuatro: la función signo, la función logística, la función arco-tangente y la función ReLU.
 \end{itemize} 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.25]{imagenes/cap2/neuron-model.png}
-	\caption{Modelo neuronal para una neurona k \cite{25}.}
+	\caption{Modelo neuronal para una neurona $k$ \cite{25}.}
 	\label{fig4}
 \end{figure}
 
@@ -75,7 +75,8 @@ El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pe
 
 El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de adecuadamente los pesos para generar una mejor estimación de la predicción.
 
-Es importante encontrar un equilibrio entre generalización y sobreentrenamiento. Generalizar demasiado implica que el modelo es muy simple y no es capaz de captar patrones en los datos. Mientras que, el sobreentrenamiento, provoca que al recibir nuevos datos no utilizados para entrenar, se estime un mal resultado debido a la poca capacidad de generalización ante nuevos datos.
+El sobreentrenamiento es un factor importante a evitar. Sobreentrenar el modelo de aprendizaje, significa, ajustarlo demasiado al conjunto de datos de entrenamiento, de manera que, al recibir nuevos datos no utilizados para entrenar, se estime un mal resultado debido a la poca capacidad de generalización ante nuevos datos.
+
 
 
 \subsection{Redes neuronales convolucionales}

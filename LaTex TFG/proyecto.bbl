@@ -19,16 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
-    \entry{8}{article}{}
-      \field{sortinit}{}
-      \field{sortinithash}{495dc9894017a8b12cafa9c619d10c0c}
-      \verb{urlraw}
-      \verb https://www.wikiwand.com/en/Perspective_distortion_(photography)
-      \endverb
-      \verb{url}
-      \verb https://www.wikiwand.com/en/Perspective_distortion_(photography)
-      \endverb
-    \endentry
     \entry{18}{book}{}
       \name{author}{3}{}{%
         {{hash=5c73d036ad6a619ea30ae52a2a57b351}{%
@@ -123,6 +113,30 @@
       \verb{doi}
       \verb https://doi.org/10.1016/j.eswa.2022.118457
       \endverb
+    \endentry
+    \entry{27}{book}{}
+      \name{author}{1}{}{%
+        {{hash=1926457ebcacd352693574a2d8d484ce}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={C.M.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press, USA}%
+      }
+      \strng{namehash}{1926457ebcacd352693574a2d8d484ce}
+      \strng{fullhash}{1926457ebcacd352693574a2d8d484ce}
+      \strng{bibnamehash}{1926457ebcacd352693574a2d8d484ce}
+      \strng{authorbibnamehash}{1926457ebcacd352693574a2d8d484ce}
+      \strng{authornamehash}{1926457ebcacd352693574a2d8d484ce}
+      \strng{authorfullhash}{1926457ebcacd352693574a2d8d484ce}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Neural networks for pattern recognition}
+      \field{year}{1995}
     \endentry
     \entry{17}{article}{}
       \name{author}{1}{}{%
@@ -390,7 +404,7 @@
       \field{title}{Neural Networks and Learning Machines}
       \field{year}{2009}
     \endentry
-    \entry{16}{article}{}
+    \entry{16}{online}{}
       \name{author}{1}{}{%
         {{hash=cbf44511d041dc6d1dd73cc0c033122c}{%
            family={IBM},
@@ -517,6 +531,18 @@
       \verb 10.1109/TIFS.2011.2156787
       \endverb
     \endentry
+    \entry{8}{online}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{title}{Perspective distortion}
+      \verb{urlraw}
+      \verb https://www.wikiwand.com/en/Perspective_distortion_(photography)
+      \endverb
+      \verb{url}
+      \verb https://www.wikiwand.com/en/Perspective_distortion_(photography)
+      \endverb
+    \endentry
     \entry{1}{article}{}
       \name{author}{7}{}{%
         {{hash=566dea995c37b42cec58bf35c3752b06}{%
@@ -608,7 +634,7 @@
       \field{booktitle}{Proceedings of the International Conference on Computer Vision Theory and Applications (VISIGRAPP 2012) - Volume 2: VISAPP}
       \field{isbn}{978-989-8565-03-7}
       \field{issn}{2184-4321}
-      \field{title}{ON THE EFFECT OF PERSPECTIVE DISTORTIONS IN FACE RECOGNITION}
+      \field{title}{On the effect of perspective distortions in face recognition}
       \field{year}{2012}
       \field{pages}{718\bibrangedash 722}
       \range{pages}{5}
