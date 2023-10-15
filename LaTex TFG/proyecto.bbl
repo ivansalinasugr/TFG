@@ -224,6 +224,47 @@
       \verb https://proceedings.mlr.press/v81/buolamwini18a.html
       \endverb
     \endentry
+    \entry{30}{book}{}
+      \name{author}{3}{}{%
+        {{hash=602f20ccbca947416485e150df8b967c}{%
+           family={Burgos-Artizzu},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={Xavier\bibnamedelima P.},
+           giveni={X\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=e095711dbcb4067b490103483f79c40c}{%
+           family={Ronchi},
+           familyi={R\bibinitperiod},
+           given={Matteo\bibnamedelima Ruggero},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=e52876f830a8a20786ff3e4d7dd6f083}{%
+           family={Perona},
+           familyi={P\bibinitperiod},
+           given={Pietro},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{58e2648b765252783298ca43b81e8800}
+      \strng{fullhash}{58e2648b765252783298ca43b81e8800}
+      \strng{bibnamehash}{58e2648b765252783298ca43b81e8800}
+      \strng{authorbibnamehash}{58e2648b765252783298ca43b81e8800}
+      \strng{authornamehash}{58e2648b765252783298ca43b81e8800}
+      \strng{authorfullhash}{58e2648b765252783298ca43b81e8800}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision -- ECCV 2014}
+      \field{isbn}{978-3-319-10590-1}
+      \field{title}{Distance Estimation of an Unknown Person from a Portrait}
+      \field{year}{2014}
+      \field{pages}{313\bibrangedash 327}
+      \range{pages}{15}
+      \verb{doi}
+      \verb http://dx.doi.org/10.1007/978-3-319-10590-1_21
+      \endverb
+    \endentry
     \entry{9}{inproceedings}{}
       \name{author}{7}{}{%
         {{hash=edd1b85ab9f1921e875e362f7012e749}{%
@@ -304,6 +345,52 @@
       \endverb
       \verb{url}
       \verb https://fiswg.org/fiswg_facial_comparison_overview_and_methodology_guidelines_V2.0_2022.11.04.pdf
+      \endverb
+    \endentry
+    \entry{28}{book}{}
+      \name{author}{4}{}{%
+        {{hash=8e3aad532eaac3b7f87c6ff1acfd47e5}{%
+           family={Flores},
+           familyi={F\bibinitperiod},
+           given={Arturo},
+           giveni={A\bibinitperiod}}}%
+        {{hash=83ae25379975aacb157610593f76830a}{%
+           family={Christiansen},
+           familyi={C\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=cf13595c1b836ef3588f2186d2f288b2}{%
+           family={Kriegman},
+           familyi={K\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=044d1db5259b74e4975282f599d8e767}{%
+           family={Belongie},
+           familyi={B\bibinitperiod},
+           given={Serge},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{642193e3f0800795564ffddc65ba82cc}
+      \strng{fullhash}{bc8b289aa08e5a9331908f0427956c88}
+      \strng{bibnamehash}{642193e3f0800795564ffddc65ba82cc}
+      \strng{authorbibnamehash}{642193e3f0800795564ffddc65ba82cc}
+      \strng{authornamehash}{642193e3f0800795564ffddc65ba82cc}
+      \strng{authorfullhash}{bc8b289aa08e5a9331908f0427956c88}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Visual Computing}
+      \field{isbn}{978-3-642-41939-3}
+      \field{title}{Camera Distance from Face Images}
+      \field{year}{2013}
+      \field{pages}{513\bibrangedash 522}
+      \range{pages}{10}
+      \verb{doi}
+      \verb http://dx.doi.org/10.1007/978-3-642-41939-3_50
       \endverb
     \endentry
     \entry{7}{article}{}
@@ -491,6 +578,42 @@
       \field{isbn}{9780262537551}
       \field{title}{Deep learning}
       \field{year}{2019}
+    \endentry
+    \entry{29}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7187819964d2d08695068a3f668e2ed1}{%
+           family={Lepetit},
+           familyi={L\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+        {{hash=7ed44f3258cf3a4902d1da8f7b547651}{%
+           family={Moreno-Noguer},
+           familyi={M\bibinithyphendelim N\bibinitperiod},
+           given={Francesc},
+           giveni={F\bibinitperiod}}}%
+        {{hash=c5304d4d3b616054451f1a8db2a3974f}{%
+           family={Fua},
+           familyi={F\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{bb9455529fc7550eb3834423674e055e}
+      \strng{fullhash}{bb9455529fc7550eb3834423674e055e}
+      \strng{bibnamehash}{bb9455529fc7550eb3834423674e055e}
+      \strng{authorbibnamehash}{bb9455529fc7550eb3834423674e055e}
+      \strng{authornamehash}{bb9455529fc7550eb3834423674e055e}
+      \strng{authorfullhash}{bb9455529fc7550eb3834423674e055e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Computer Vision}
+      \field{title}{EPnP: An accurate O(n) solution to the PnP problem}
+      \field{volume}{81}
+      \field{year}{2009}
+      \verb{doi}
+      \verb 10.1007/s11263-008-0152-6
+      \endverb
     \endentry
     \entry{6}{article}{}
       \name{author}{3}{}{%

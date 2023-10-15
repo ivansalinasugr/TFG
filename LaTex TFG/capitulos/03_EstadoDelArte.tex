@@ -12,9 +12,24 @@ PONER CONSULTAS DE SCOPUS (APÉNDICE O NOTA A PIE DE PÁGINA)
 	\label{fig5}
 \end{figure}
 
-\section{Estado del arte de la estimación del SCD en fotografías faciales}
+\section{Primeros métodos}
 
-\subsection{title}
+El primer método utilizado para abordar la estimación métrica del SCD fue propuesto por \cite{28}, se basa en el uso de un conjunto de puntos de referencia de la cara para estimar la pose y la distancia a la cámara en distancias desde 10 cm hasta 3 m. El proceso consiste en, entrenar un modelo de regresión para predecir la distancia entre la cámara y la cara, utilizando un conjunto de imágenes 3D de caras humanas con sus respectivos puntos de referencia faciales (se observa que estas referencias no varían drásticamente entre individuos, sino que se agrupan en 'clusters'). Dicho conjunto de datos 3D solo contiene vistas de frontales y de perfil 3/4. 
+
+Dada una imagen 2D de una cara desconocida, se identifican los puntos de referencia faciales y mediante el algoritmo EPnP \cite{29}, junto con la suposición de que las referencias no varían mucho entre individuos, se infiere la pose 3D de la cara y se utiliza el modelo de regresión previamente entrenado para predecir el valor de la distancia a la cámara.
+
+Algunas de las limitaciones asociados a este primer método son: el uso de un conjunto de datos 3D (no siempre tendremos disponibles imágenes 3D para el entrenamiento), la combinación de diferentes longitudes focales en el mismo dataset o el reconocimiento manual de los puntos de referencia faciales
+
+Posteriormente, \cite{30} propuso un método que no necesitaba la reconstrucción 3D ni la anotación manual de los puntos de referencia de la imagen. Este método utiliza un conjunto de datos llamado Caltech Multi-Distance Portraits (CMDP), compuesto de 53 retratos individuales desde 7 distancias distintas entre 60 cm y 480 cm, para entrenar el modelo. Todas las imágenes del conjunto de datos fueron anotadas manualmente con 55 marcas faciales. 
+
+El método se basa en dos fases: primero, la identificación automática de los puntos de referencia faciales, y después, la estimación de la distancia mediante regresión.
+
+Este nuevo enfoque, a pesar de mejorar lo que previamente se había hecho, sigue teniendo algunas limitaciones como el recorte de las imágenes (pérdida de resolución) o la única vista frontal.
+
+Existen otros métodos que estiman el SCD a partir de características anatómicas como el tamaño de la cara, la distancia de los ojos o una combinación de ambos. NO TENGO ACCESO A LOS PDFS
+
+\subsection{Mediapipe}
+
 
 \subsection{PerspectiveX}
 
