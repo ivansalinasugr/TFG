@@ -26,14 +26,39 @@ El método se basa en dos fases: primero, la identificación automática de los 
 
 Este nuevo enfoque, a pesar de mejorar lo que previamente se había hecho, sigue teniendo algunas limitaciones como el recorte de las imágenes (pérdida de resolución) o la única vista frontal.
 
-Existen otros métodos que estiman el SCD a partir de características anatómicas como el tamaño de la cara, la distancia de los ojos o una combinación de ambos. NO TENGO ACCESO A LOS PDFS
+Existen otros métodos que estiman el SCD a partir de características anatómicas como el tamaño de la cara, la distancia de los ojos o una combinación de ambos.
 
-\section{Mediapipe}
+PDFS!!!!!!
+
+\section{MediaPipe Iris}
+
+MediaPipe Iris \footnote{https://blog.research.google/2020/08/mediapipe-iris-real-time-iris-tracking.html} es un modelo de aprendizaje automático, creado por investigadores de Google, capaz de seguir puntos de referencia (iris, pupila y contornos del ojo) usando una cámara RGB, en tiempo real, y sin necesidad de ningún hardware especializado. A través de los puntos de referencia del iris, el model es capaz de determinar la distancia métrica entre el sujeto y la cámara.
+
+El modelo se basa en el diámetro horizontal del iris del ojo humano, que se mantiene relativamente constante en un rango de 11.7±0.5 mm en una amplia población, esto junto con algunos simples argumentos geométricos, permiten la posibilidad de estimar el SCD.
+
+Este modelo requiere de unas condiciones, que además, son sus principales limitaciones. El modelo solo puede ser usado cuando: existen datos EXIF disponibles; son imágenes frontales donde el iris es visible; y los individuos están a menos de 2m de la posición de la cámara.
+
 
 
 \section{PerspectiveX}
 
 PerspectiveX fue el método propuesto por Stephan en \cite{31} para la estimación del SCD en fotografías faciales con el fin de mejorar el proceso de superposición craneofacial.
+
+Este método se basa en la localización de una característica anatómica, la longitud de la fisura palpebral entre dos marcas precisas y fácilmente determinables. Se utiliza este rasgo anatómico debido a que: es fácilmente visible en vista frontal e incluso en el lado más cercano a la cámara si la cabeza está girada; está definida por dos puntos de referencia muy precisos; tiene una variación muy ajustada, debido a restricciones evolutivas; es una característica facial relativamente grande, por lo que, minimiza el impacto de los errores en comparación con otras características faciales invariantes como el diámetro del iris; tiene una distribución normal que reduce el error de predicción a la mitad.
+
+Además de la fisura palpebral, PerspectiveX necesita conocer el tipo de cámara y la longitud focal de las lentes, que se pueden extraer siempre de imágenes electrónicas usando lectores EXIF disponibles en internet. El tipo de cámara es necesario para obtener las especificaciones de píxeles.
+
+Finalmente, la estimación del SCD se realiza mediante la siguiente fórmula:
+
+\begin{equation}
+	SCD = f (1+\frac{A}{x \cdot y})
+\end{equation}
+
+donde: $f$, es la longitud focal de las lentes (mm); $A$, es la longitud real de la fisura palpebral (mm); $x$, es la longitud de la fisura palpebral en la foto (píxeles); $y$, son las especificaciones del tamaño del píxel del receptor de imagen (mm)
+
+Al no disponer de la longitud real de la fisura palpebral, se utiliza el valor medio de un conjunto de individuos agrupados por sexo y edad, ya que, sabemos que la longitud varía muy poco debido a restricciones evolutivas.
+
+Este método permite una precisa estimación del SCD para una longitud focal conocida. Sin embargo, este método posee unas limitaciones como: el requerimiento de interacción manual para anotar los puntos de referencia faciales; y que no tiene en cuenta las rotaciones de cabeza de más de 30º.
 
 \section{FacialSCDnet}
 
