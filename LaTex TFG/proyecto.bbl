@@ -885,6 +885,36 @@
       \verb https://doi.org/10.1111/1556-4029.13353
       \endverb
     \endentry
+    \entry{31}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c07c4ece50fa0f57ad48806874f59198}{%
+           family={Stephan},
+           familyi={S\bibinitperiod},
+           given={Carl\bibnamedelima N.},
+           giveni={C\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{c07c4ece50fa0f57ad48806874f59198}
+      \strng{fullhash}{c07c4ece50fa0f57ad48806874f59198}
+      \strng{bibnamehash}{c07c4ece50fa0f57ad48806874f59198}
+      \strng{authorbibnamehash}{c07c4ece50fa0f57ad48806874f59198}
+      \strng{authornamehash}{c07c4ece50fa0f57ad48806874f59198}
+      \strng{authorfullhash}{c07c4ece50fa0f57ad48806874f59198}
+      \field{extraname}{4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Forensic Sciences}
+      \field{number}{4}
+      \field{title}{Estimating the Skull-to-Camera Distance from Facial Photographs for Craniofacial Superimposition}
+      \field{volume}{62}
+      \field{year}{2017}
+      \field{pages}{850\bibrangedash 860}
+      \range{pages}{11}
+      \verb{doi}
+      \verb https://doi.org/10.1111/1556-4029.13353
+      \endverb
+    \endentry
     \entry{11}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=41423a86d058093a3d4f3b9ff41862ac}{%
