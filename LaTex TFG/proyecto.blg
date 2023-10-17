@@ -1,17 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'proyecto.blg'
-[134] biber:340> INFO - === mar oct 17, 2023, 09:35:52
-[159] Biber.pm:418> INFO - Reading 'proyecto.bcf'
-[263] Biber.pm:972> INFO - Found 29 citekeys in bib section 0
-[291] Biber.pm:4383> INFO - Processing section 0
-[308] Biber.pm:4574> INFO - Looking for bibtex file 'referencias.bib' for section 0
-[310] bibtex.pm:1713> INFO - LaTeX decoding ...
-[348] bibtex.pm:1518> INFO - Found BibTeX data source 'referencias.bib'
-[663] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[663] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[664] Biber.pm:4203> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'es-ES'
-[712] bbl.pm:654> INFO - Writing 'proyecto.bbl' with encoding 'UTF-8'
-[731] bbl.pm:757> INFO - Output to proyecto.bbl
-[732] Biber.pm:130> WARN - legacy month field '23--24 Feb' in entry '5' is not an integer - this will probably not sort properly.
-[732] Biber.pm:130> WARN - BibTeX subsystem: /tmp/biber_tmp_8Cqd/f1acd60b6c57e7ae00f56d747b2cd459_160052.utf8, line 197, warning: 16 characters of junk seen at toplevel
-[732] Biber.pm:132> INFO - WARNINGS: 2
+[79] biber:340> INFO - === mar oct 17, 2023, 18:36:28
+[96] Biber.pm:418> INFO - Reading 'proyecto.bcf'
+[176] Biber.pm:972> INFO - Found 32 citekeys in bib section 0
+[197] Biber.pm:4383> INFO - Processing section 0
+[211] Biber.pm:4574> INFO - Looking for bibtex file 'referencias.bib' for section 0
+[213] bibtex.pm:1713> INFO - LaTeX decoding ...
+[241] bibtex.pm:1518> INFO - Found BibTeX data source 'referencias.bib'
+[519] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[519] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[519] Biber.pm:4203> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'es-ES'
+[558] bbl.pm:654> INFO - Writing 'proyecto.bbl' with encoding 'UTF-8'
+[574] bbl.pm:757> INFO - Output to proyecto.bbl
+[574] Biber.pm:130> WARN - legacy month field '23--24 Feb' in entry '5' is not an integer - this will probably not sort properly.
+[574] Biber.pm:130> WARN - BibTeX subsystem: /tmp/biber_tmp_1z8Q/f1acd60b6c57e7ae00f56d747b2cd459_12765.utf8, line 197, warning: 16 characters of junk seen at toplevel
+[574] Biber.pm:132> INFO - WARNINGS: 2

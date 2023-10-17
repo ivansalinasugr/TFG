@@ -579,6 +579,43 @@
       \field{title}{Deep learning}
       \field{year}{2019}
     \endentry
+    \entry{34}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=d9a91a7b03fbe5703054a2f39054e8fe}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={M.S.\bibnamedelimi Shashi},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=0e18081ee77842a6077d04a99e7af9df}{%
+           family={Vimala},
+           familyi={V\bibinitperiod},
+           given={K.S.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=cefc45f7e0dfb6cb28183aaf6a0b984e}{%
+           family={Avinash},
+           familyi={A\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{2f7990cf902a7d555d70eea1ee9fdeb0}
+      \strng{fullhash}{2f7990cf902a7d555d70eea1ee9fdeb0}
+      \strng{bibnamehash}{2f7990cf902a7d555d70eea1ee9fdeb0}
+      \strng{authorbibnamehash}{2f7990cf902a7d555d70eea1ee9fdeb0}
+      \strng{authornamehash}{2f7990cf902a7d555d70eea1ee9fdeb0}
+      \strng{authorfullhash}{2f7990cf902a7d555d70eea1ee9fdeb0}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2013 IEEE International Conference on Image Processing}
+      \field{title}{Face distance estimation from a monocular camera}
+      \field{year}{2013}
+      \field{pages}{3532\bibrangedash 3536}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/ICIP.2013.6738729
+      \endverb
+    \endentry
     \entry{29}{article}{}
       \name{author}{3}{}{%
         {{hash=7187819964d2d08695068a3f668e2ed1}{%
@@ -725,6 +762,58 @@
       \verb 10.1109/TITB.2008.2003335
       \endverb
     \endentry
+    \entry{33}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=cdeae347ef4d590e847b768db3cbc09a}{%
+           family={Rahman},
+           familyi={R\bibinitperiod},
+           given={Khandaker\bibnamedelima Abir},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=433c99c9e4e5426865c640b4e9842b32}{%
+           family={Hossain},
+           familyi={H\bibinitperiod},
+           given={Md.\bibnamedelimi Shafaeat},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=44d26b6dd780661c690b5556e35667d4}{%
+           family={Bhuiyan},
+           familyi={B\bibinitperiod},
+           given={Md.\bibnamedelimi Al-Amin},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinithyphendelim A\bibinitperiod}}}%
+        {{hash=228dd687961f3612985beeddec81f72a}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Tao},
+           giveni={T\bibinitperiod}}}%
+        {{hash=be4cd02094f30ef164638ede4ab385c0}{%
+           family={Hasanuzzaman},
+           familyi={H\bibinitperiod},
+           given={Md.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=4ff9d91c9bfb67b74545cad6d23206f8}{%
+           family={Ueno},
+           familyi={U\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{42a08c5f752f42ca5c2224207741b63d}
+      \strng{fullhash}{d2e8fc2a23011d52d93bdf02a0f310d9}
+      \strng{bibnamehash}{42a08c5f752f42ca5c2224207741b63d}
+      \strng{authorbibnamehash}{42a08c5f752f42ca5c2224207741b63d}
+      \strng{authornamehash}{42a08c5f752f42ca5c2224207741b63d}
+      \strng{authorfullhash}{d2e8fc2a23011d52d93bdf02a0f310d9}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2009 Third International Conference on Multimedia and Ubiquitous Engineering}
+      \field{title}{Person to Camera Distance Measurement Based on Eye-Distance}
+      \field{year}{2009}
+      \field{pages}{137\bibrangedash 141}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/MUE.2009.34
+      \endverb
+    \endentry
     \entry{10}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=7e3b68f8cb3d6574d033b2a281fbae21}{%
@@ -794,6 +883,43 @@
       \field{isbn}{978-1-292-40113-3}
       \field{title}{Artificial Intelligence: A Modern Approach 4ºedition}
       \field{year}{2021}
+    \endentry
+    \entry{32}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=564ea505b38fadefaff589757ff7c048}{%
+           family={Shoani},
+           familyi={S\bibinitperiod},
+           given={Mohamed\bibnamedelimb Tahir\bibnamedelima Ahmed},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=fba2f295297dc44fe593c3b2aeee884b}{%
+           family={Amin},
+           familyi={A\bibinitperiod},
+           given={Shamsudin\bibnamedelimb H.\bibnamedelimi M.},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=025a1223f9a16d21aa0271ef2340200d}{%
+           family={Sanhoury},
+           familyi={S\bibinitperiod},
+           given={Ibrahim\bibnamedelimb M.\bibnamedelimi H.},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{7bd31d85fae21368cb78e912ff10d500}
+      \strng{fullhash}{7bd31d85fae21368cb78e912ff10d500}
+      \strng{bibnamehash}{7bd31d85fae21368cb78e912ff10d500}
+      \strng{authorbibnamehash}{7bd31d85fae21368cb78e912ff10d500}
+      \strng{authornamehash}{7bd31d85fae21368cb78e912ff10d500}
+      \strng{authorfullhash}{7bd31d85fae21368cb78e912ff10d500}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 10th Asian Control Conference (ASCC)}
+      \field{title}{Determining subject distance based on face size}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ASCC.2015.7244491
+      \endverb
     \endentry
     \entry{13}{article}{}
       \name{author}{1}{}{%
