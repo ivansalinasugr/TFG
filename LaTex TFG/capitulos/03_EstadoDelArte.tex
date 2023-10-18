@@ -56,10 +56,24 @@ donde: $f$, es la longitud focal de las lentes (mm); $A$, es la longitud real de
 
 Al no disponer de la longitud real de la fisura palpebral, se utiliza el valor medio de un conjunto de individuos agrupados por sexo y edad, ya que, sabemos que la longitud varía muy poco debido a restricciones evolutivas.
 
-Este método permite una precisa estimación del SCD para una longitud focal conocida. Sin embargo, este método posee unas limitaciones como: el requerimiento de interacción manual para anotar los puntos de referencia faciales; y que no tiene en cuenta las rotaciones de cabeza de más de 30º.
+Este método permite una precisa estimación del SCD para una longitud focal conocida. Sin embargo, posee algunas limitaciones como: el requerimiento de interacción manual para anotar los puntos de referencia faciales; y que no tiene en cuenta las rotaciones de cabeza de más de 30º.
 
 \section{FacialSCDnet}
 
 FacialSCDnet fue un método propuesto por \cite{14}, en el que se estima el SCD, directamente desde las fotografías, mediante la aplicación de técnicas deep learning. El uso de una arquitectura profunda evita una restricción crítica: el requerimiento de detectar una característica anatómica en particular para guiar el proceso de estimación. Es por ello que este método es capaz de estimar el SCD en cualquier pose de la cabeza, desde frontal hasta perfil lateral.
+
+Se utilizó un conjunto de datos de entrenamiento compuesto por dos colecciones: 
+
+\begin{itemize}
+	\item Conjunto sintética: se generaron imágenes sintéticas 2D a partir de los modelos 3D de la base de datos Stirling ESRC 3D Face \footnote{Stirling ESRC 3D Face: https://pics.stir.ac.uk/ESRC/index.htm}. En particular, se usaron 315 modelos faciales de 54 indviduos diferentes para generar aproximadamente 150.000 fotografías sintéticas.
+	\item Conjunto de fotografías digitales: se adquirieron fotografías de 28 individuos mediante el siguiente protocolo de adquisición: se consideraron 4 longitudes focales diferentes (27 mm, 35 mm, 50 mm, 85 mm) en formato completo; se utilizaron 12 distancias, de la cámara al sujeto, desde 50 cm hasta 6 m; se fotografiaron 7 posiciones diferentes de la cabeza, desde el perfil izquierdo hasta el perfil derecho, a intervalos de 30º de rotación.
+\end{itemize}
+
+La métricas de error utilizadas fueron
+
+
+FacialSCDnet está compuesto por 4 modelos de deep learning, cada uno asociado a una longitud focal de las utilizadas en el conjunto de datos. La estructura de cada CNN se basa en una arquitectura VGG-16, inicializada con los pesos pre-entrenados con ImageNet \footnote{ImageNet: https://www.image-net.org/} y sin la capa superior.
+
+
 
 
