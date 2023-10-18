@@ -8,7 +8,6 @@
 \contentsline {section}{\numberline {2.2}Aprendizaje profundo}{6}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Redes neuronales}{6}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Redes neuronales convolucionales}{8}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Parámetros de la cámara y perspectiva}{8}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Estado del Arte}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Primeros enfoques}{9}{section.3.1}%
 \contentsline {section}{\numberline {3.2}MediaPipe Iris}{11}{section.3.2}%

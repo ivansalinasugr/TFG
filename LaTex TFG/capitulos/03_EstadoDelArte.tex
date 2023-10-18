@@ -14,13 +14,13 @@ El número de publicaciones relacionadas con este tema, va aumentando a lo largo
 
 \section{Primeros enfoques}
 
-El primer método utilizado para abordar la estimación métrica del SCD fue propuesto por \cite{28}, se basa en el uso de un conjunto de puntos de referencia de la cara para estimar la pose y la distancia a la cámara en distancias desde 10 cm hasta 3 m. El proceso consiste en, entrenar un modelo de regresión para predecir la distancia entre la cámara y la cara, utilizando un conjunto de imágenes 3D de caras humanas con sus respectivos puntos de referencia faciales (se observa que estas referencias no varían drásticamente entre individuos, sino que se agrupan en 'clusters'). Dicho conjunto de datos 3D solo contiene vistas de frontales y de perfil 3/4. 
+El primer método utilizado para abordar la estimación métrica del SCD fue propuesto por Flores et al. \cite{28}, se basa en el uso de un conjunto de puntos de referencia de la cara para estimar la posición y la distancia a la cámara en distancias desde 10 cm hasta 3 m. El proceso consiste en, entrenar un modelo de regresión para predecir la distancia entre la cámara y la cara, utilizando un conjunto de imágenes 3D de caras humanas con sus respectivos puntos de referencia faciales (se observa que estas referencias no varían drásticamente entre individuos, sino que se agrupan en 'clusters'). Dicho conjunto de datos 3D solo contiene vistas de frontales y de perfil 3/4. 
 
-Dada una imagen 2D de una cara desconocida, se identifican los puntos de referencia faciales y mediante el algoritmo EPnP \cite{29}, junto con la suposición de que las referencias no varían mucho entre individuos, se infiere la pose 3D de la cara y se utiliza el modelo de regresión previamente entrenado para predecir el valor de la distancia a la cámara.
+Dada una imagen 2D de una cara desconocida, se identifican los puntos de referencia faciales y mediante el algoritmo EPnP \cite{29}, junto con la suposición de que las referencias no varían mucho entre individuos, se infiere la posición 3D de la cara y se utiliza el modelo de regresión previamente entrenado para predecir el valor de la distancia a la cámara.
 
 Algunas de las limitaciones asociados a este primer método son: el uso de un conjunto de datos 3D (no siempre tendremos disponibles imágenes 3D para el entrenamiento), la combinación de diferentes longitudes focales en el mismo dataset o el reconocimiento manual de los puntos de referencia faciales
 
-Posteriormente, \cite{30} propuso un método que no necesitaba la reconstrucción 3D ni la anotación manual de los puntos de referencia de la imagen. Este método utiliza un conjunto de datos llamado Caltech Multi-Distance Portraits (CMDP), compuesto de 53 retratos individuales desde 7 distancias distintas entre 60 cm y 480 cm, para entrenar el modelo. Todas las imágenes del conjunto de datos fueron anotadas manualmente con 55 marcas faciales. 
+Posteriormente, en Burgos-Artizzu et al. \cite{30} se propuso un método que no necesitaba la reconstrucción 3D ni la anotación manual de los puntos de referencia de la imagen. Este método utiliza un conjunto de datos llamado Caltech Multi-Distance Portraits (CMDP), compuesto de 53 retratos individuales desde 7 distancias distintas entre 60 cm y 480 cm, para entrenar el modelo. Todas las imágenes del conjunto de datos fueron anotadas manualmente con 55 marcas faciales. 
 
 El método se basa en dos fases: primero, la identificación automática de los puntos de referencia faciales, y después, la estimación de la distancia mediante regresión.
 
@@ -40,7 +40,7 @@ Este modelo requiere de unas condiciones, que además, son sus principales limit
 
 \section{PerspectiveX}
 
-PerspectiveX fue el método propuesto por Stephan en \cite{31} para la estimación del SCD en fotografías faciales con el fin de mejorar el proceso de superposición craneofacial.
+PerspectiveX fue el método propuesto por Stephan et al. \cite{21} para la estimación del SCD en fotografías faciales con el fin de mejorar el proceso de superposición craneofacial.
 
 Este método se basa en la localización de una característica anatómica, la longitud de la fisura palpebral entre dos marcas precisas y fácilmente determinables. Se utiliza este rasgo anatómico debido a que: es fácilmente visible en vista frontal e incluso en el lado más cercano a la cámara si la cabeza está girada; está definida por dos puntos de referencia muy precisos; tiene una variación muy ajustada, debido a restricciones evolutivas; es una característica facial relativamente grande, por lo que, minimiza el impacto de los errores en comparación con otras características faciales invariantes como el diámetro del iris; tiene una distribución normal que reduce el error de predicción a la mitad.
 
@@ -60,7 +60,7 @@ Este método permite una precisa estimación del SCD para una longitud focal con
 
 \section{FacialSCDnet}
 
-FacialSCDnet fue un método propuesto por \cite{14}, en el que se estima el SCD, directamente desde las fotografías, mediante la aplicación de técnicas deep learning. El uso de una arquitectura profunda evita una restricción crítica: el requerimiento de detectar una característica anatómica en particular para guiar el proceso de estimación. Es por ello que este método es capaz de estimar el SCD en cualquier pose de la cabeza, desde frontal hasta perfil lateral.
+FacialSCDnet fue un método propuesto por Bermejo et al. \cite{14}, en el que se estima el SCD, directamente desde las fotografías, mediante la aplicación de técnicas deep learning. El uso de una arquitectura profunda evita una restricción crítica: el requerimiento de detectar una característica anatómica en particular para guiar el proceso de estimación. Es por ello que este método es capaz de estimar el SCD en cualquier posición de la cabeza, desde frontal hasta perfil lateral.
 
 Se utilizó un conjunto de datos de entrenamiento compuesto por dos colecciones: 
 
@@ -69,10 +69,24 @@ Se utilizó un conjunto de datos de entrenamiento compuesto por dos colecciones:
 	\item Conjunto de fotografías digitales: se adquirieron fotografías de 28 individuos mediante el siguiente protocolo de adquisición: se consideraron 4 longitudes focales diferentes (27 mm, 35 mm, 50 mm, 85 mm) en formato completo; se utilizaron 12 distancias, de la cámara al sujeto, desde 50 cm hasta 6 m; se fotografiaron 7 posiciones diferentes de la cabeza, desde el perfil izquierdo hasta el perfil derecho, a intervalos de 30º de rotación.
 \end{itemize}
 
-La métricas de error utilizadas fueron
+La función de pérdida utilizada en el modelo, se basa en el error absoluto medio de la distorsión facial relativa:
 
+\begin{equation}
+	Distorsion = \frac{\sum_{i=1}^{n} |y_i - x_i|}{n}
+\end{equation}
 
-FacialSCDnet está compuesto por 4 modelos de deep learning, cada uno asociado a una longitud focal de las utilizadas en el conjunto de datos. La estructura de cada CNN se basa en una arquitectura VGG-16, inicializada con los pesos pre-entrenados con ImageNet \footnote{ImageNet: https://www.image-net.org/} y sin la capa superior.
+donde $y_i$ son los valores reales (etiquetas) de la distorsión facial, y $x_i$ son los valores predichos de la distorsión facial, calculados a partir del factor de distorsión ($D_f$):
+
+\begin{equation}
+	D_f = \frac{1}{1 + \frac{SCD}{d}}
+	\label{eq:df}
+\end{equation}
+
+En la ecuación \ref{eq:df}, $d = 12.6572 cm$ corresponde a un valor derivado de cálculos geométricos \cite{23} para obtener experimentalmente el factor de distorsión de una cabeza humana de tamaño promedio, según el SCD de la fotografía.
+
+FacialSCDnet está compuesto por 4 modelos de deep learning, cada uno asociado a una longitud focal de las utilizadas en el conjunto de datos. La estructura de cada CNN se basa en una arquitectura VGG-16, cuyos pesos están inicializados a los pre-entrenados con ImageNet \footnote{ImageNet: https://www.image-net.org/}. Para adaptar la arquitectura al problema de estimación del SCD, los 5 bloques convolucionales se mantienen, se elimina la capa superior, y se añaden 2 capas totalmente conectadas que se entrenarán desde cero. Finalmente, la última capa del modelo consistirá en una activación lineal que realiza la tarea de regresión.
+
+El proceso de entrenamiento de los modelos tuvo dos fases. Primero, los modelos fueron entrenados con el conjunto de datos sintético para aprender relaciones entre SCD y características faciales. Después, se utiliza un ajuste fino usando el conjunto de datos real.
 
 
 
