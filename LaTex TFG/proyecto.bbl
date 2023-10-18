@@ -53,12 +53,6 @@
       \field{isbn}{978-1-60049-006-4}
       \field{title}{Learning from Data: A Short Course}
       \field{year}{2012}
-      \verb{urlraw}
-      \verb https://books.google.co.uk/books?id=iZUzMwEACAAJ
-      \endverb
-      \verb{url}
-      \verb https://books.google.co.uk/books?id=iZUzMwEACAAJ
-      \endverb
     \endentry
     \entry{14}{article}{}
       \name{author}{6}{}{%
@@ -178,18 +172,6 @@
            given={Timnit},
            giveni={T\bibinitperiod}}}%
       }
-      \name{editor}{2}{}{%
-        {{hash=b2b40e7a0fdfbdbcf9af2da7c8e59417}{%
-           family={Friedler},
-           familyi={F\bibinitperiod},
-           given={Sorelle\bibnamedelima A.},
-           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=74e7d878b09bbacd81917f355904ac86}{%
-           family={Wilson},
-           familyi={W\bibinitperiod},
-           given={Christo},
-           giveni={C\bibinitperiod}}}%
-      }
       \list{publisher}{1}{%
         {PMLR}%
       }
@@ -199,24 +181,16 @@
       \strng{authorbibnamehash}{1d3df5a4e120235c82cc5c5428e6a913}
       \strng{authornamehash}{1d3df5a4e120235c82cc5c5428e6a913}
       \strng{authorfullhash}{1d3df5a4e120235c82cc5c5428e6a913}
-      \strng{editorbibnamehash}{fc436d4f91615ad727cf64a1b3179072}
-      \strng{editornamehash}{fc436d4f91615ad727cf64a1b3179072}
-      \strng{editorfullhash}{fc436d4f91615ad727cf64a1b3179072}
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 1st Conference on Fairness, Accountability and Transparency}
-      \field{month}{23--24 Feb}
-      \field{series}{Proceedings of Machine Learning Research}
       \field{title}{Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification}
       \field{volume}{81}
       \field{year}{2018}
       \field{pages}{77\bibrangedash 91}
       \range{pages}{15}
-      \verb{file}
-      \verb http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf
-      \endverb
       \verb{urlraw}
       \verb https://proceedings.mlr.press/v81/buolamwini18a.html
       \endverb
@@ -319,7 +293,7 @@
       \field{pages}{3445\bibrangedash 3450}
       \range{pages}{6}
       \verb{doi}
-      \verb 10.1109/ICPR.2018.8545037
+      \verb http://dx.doi.org/10.1109/ICPR.2018.8545037
       \endverb
     \endentry
     \entry{3}{article}{}
@@ -551,7 +525,7 @@
       \field{pages}{20\bibrangedash 20}
       \range{pages}{1}
       \verb{doi}
-      \verb 10.1109/MMUL.2012.4
+      \verb http://dx.doi.org/10.1109/MMUL.2012.4
       \endverb
     \endentry
     \entry{26}{book}{}
@@ -613,7 +587,7 @@
       \field{pages}{3532\bibrangedash 3536}
       \range{pages}{5}
       \verb{doi}
-      \verb 10.1109/ICIP.2013.6738729
+      \verb http://dx.doi.org/10.1109/ICIP.2013.6738729
       \endverb
     \endentry
     \entry{29}{article}{}
@@ -649,7 +623,7 @@
       \field{volume}{81}
       \field{year}{2009}
       \verb{doi}
-      \verb 10.1007/s11263-008-0152-6
+      \verb http://dx.doi.org/10.1007/s11263-008-0152-6
       \endverb
     \endentry
     \entry{6}{article}{}
@@ -688,7 +662,7 @@
       \field{pages}{1028\bibrangedash 1037}
       \range{pages}{10}
       \verb{doi}
-      \verb 10.1109/TIFS.2011.2156787
+      \verb http://dx.doi.org/10.1109/TIFS.2011.2156787
       \endverb
     \endentry
     \entry{8}{online}{}
@@ -759,7 +733,7 @@
       \field{pages}{5\bibrangedash 9}
       \range{pages}{5}
       \verb{doi}
-      \verb 10.1109/TITB.2008.2003335
+      \verb http://dx.doi.org/10.1109/TITB.2008.2003335
       \endverb
     \endentry
     \entry{33}{inproceedings}{}
@@ -811,7 +785,7 @@
       \field{pages}{137\bibrangedash 141}
       \range{pages}{5}
       \verb{doi}
-      \verb 10.1109/MUE.2009.34
+      \verb http://dx.doi.org/10.1109/MUE.2009.34
       \endverb
     \endentry
     \entry{10}{inproceedings}{}
@@ -827,9 +801,6 @@
            given={Michael},
            giveni={M\bibinitperiod}}}%
       }
-      \list{organization}{1}{%
-        {INSTICC}%
-      }
       \list{publisher}{1}{%
         {SciTePress}%
       }
@@ -844,14 +815,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the International Conference on Computer Vision Theory and Applications (VISIGRAPP 2012) - Volume 2: VISAPP}
-      \field{isbn}{978-989-8565-03-7}
-      \field{issn}{2184-4321}
       \field{title}{On the effect of perspective distortions in face recognition}
       \field{year}{2012}
       \field{pages}{718\bibrangedash 722}
       \range{pages}{5}
       \verb{doi}
-      \verb 10.5220/0003859107180722
+      \verb http://dx.doi.org/10.5220/0003859107180722
       \endverb
     \endentry
     \entry{19}{book}{}
@@ -918,7 +887,7 @@
       \field{pages}{1\bibrangedash 6}
       \range{pages}{6}
       \verb{doi}
-      \verb 10.1109/ASCC.2015.7244491
+      \verb http://dx.doi.org/10.1109/ASCC.2015.7244491
       \endverb
     \endentry
     \entry{23}{article}{}
@@ -1010,7 +979,7 @@
       \field{pages}{9\bibrangedash 16}
       \range{pages}{8}
       \verb{doi}
-      \verb 10.1109/CVPRW.2015.7301314
+      \verb http://dx.doi.org/10.1109/CVPRW.2015.7301314
       \endverb
     \endentry
     \entry{12}{article}{}
@@ -1047,7 +1016,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{JAMA Facial Plastic Surgery}
-      \field{note}{PMID: 29494735}
       \field{number}{4}
       \field{title}{Nasal Distortion in Short-Distance Photographs: The Selfie Effect}
       \field{volume}{20}
@@ -1055,7 +1023,7 @@
       \field{pages}{333\bibrangedash 335}
       \range{pages}{3}
       \verb{doi}
-      \verb 10.1001/jamafacial.2018.0009
+      \verb http://dx.doi.org/10.1001/jamafacial.2018.0009
       \endverb
     \endentry
     \entry{2}{article}{}
@@ -1104,7 +1072,7 @@
       \field{pages}{9\bibrangedash 15}
       \range{pages}{7}
       \verb{doi}
-      \verb 10.3408/jasti.5.9
+      \verb http://dx.doi.org/10.3408/jasti.5.9
       \endverb
     \endentry
   \enddatalist
