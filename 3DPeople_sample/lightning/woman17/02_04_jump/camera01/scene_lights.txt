@@ -1,0 +1,8 @@
+Sun Color
+1.000000 0.769843 0.750000
+
+Sun Rotation
+-18.010520 -81.077508 235.870606
+
+Ambient Occlusion Intensity
+0.610357
