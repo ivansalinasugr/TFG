@@ -7,4 +7,4 @@ frameworks/*
 Generacion Dataset/*
 ConceptosTFG.odt
 Model_processing/*
-!Model_processing/procesamiento_modelos.ipynb
+!Model_processing/head_processing.ipynb
