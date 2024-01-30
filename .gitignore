@@ -7,9 +7,10 @@ LaTex TFG reducido/*
 Feedbacks/*
 Procesamiento de modelos/datasets/*
 Procesamiento de modelos/referencia H3DS-net/*
-Procesamiento de modelos/results/*
+Procesamiento de modelos/models/*
+Procesamiento de modelos/HeadSpace/*
 Procesamiento de modelos/matrices_transformacion.csv
-Procesamiento de modelos/matrices_transformacion HeadSspae.csv
+Procesamiento de modelos/matrices_transformacion HeadSpace.csv
 Procesamiento de modelos/modelos_HeadSpace.csv
 
 LaTex TFG/*.log
