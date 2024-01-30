@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bcf:controlfile version="3.8" bltxversion="3.17" xmlns:bcf="https://sourceforge.net/projects/biblatex">
+<bcf:controlfile version="3.10" bltxversion="3.19" xmlns:bcf="https://sourceforge.net/projects/biblatex">
   <!-- BIBER OPTIONS -->
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
@@ -37,6 +37,11 @@
     <bcf:option type="singlevalued">
       <bcf:key>alphaothers</bcf:key>
       <bcf:value>+</bcf:value>
+    </bcf:option>
+    <bcf:option type="multivalued">
+      <bcf:key>extradatecontext</bcf:key>
+      <bcf:value order="1">labelname</bcf:value>
+      <bcf:value order="2">labeltitle</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
@@ -135,6 +140,10 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>nosortothers</bcf:key>
+      <bcf:value>0</bcf:value>
+    </bcf:option>
+    <bcf:option type="singlevalued">
+      <bcf:key>pluralothers</bcf:key>
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
@@ -272,6 +281,11 @@
   </bcf:options>
   <!-- online -->
   <bcf:options component="biblatex" type="online">
+    <bcf:option type="multivalued">
+      <bcf:key>extradatecontext</bcf:key>
+      <bcf:value order="1">labelname</bcf:value>
+      <bcf:value order="2">labeltitle</bcf:value>
+    </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
       <bcf:value>0</bcf:value>
@@ -372,11 +386,11 @@
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
-      <bcf:key>skiplab</bcf:key>
+      <bcf:key>skipbiblist</bcf:key>
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
-      <bcf:key>skipbiblist</bcf:key>
+      <bcf:key>skiplab</bcf:key>
       <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
@@ -491,6 +505,7 @@
     <bcf:option datatype="xml">sortingnamekeytemplate</bcf:option>
     <bcf:option datatype="xml">sortingtemplate</bcf:option>
     <bcf:option datatype="xml">extradatespec</bcf:option>
+    <bcf:option datatype="xml">extradatecontext</bcf:option>
     <bcf:option datatype="xml">labelnamespec</bcf:option>
     <bcf:option datatype="xml">labeltitlespec</bcf:option>
     <bcf:option datatype="xml">labeldatespec</bcf:option>
@@ -599,6 +614,7 @@
     <bcf:option datatype="boolean">labeltitle</bcf:option>
     <bcf:option datatype="boolean">labeltitleyear</bcf:option>
     <bcf:option datatype="boolean">labeldateparts</bcf:option>
+    <bcf:option datatype="boolean">pluralothers</bcf:option>
     <bcf:option datatype="boolean">nohashothers</bcf:option>
     <bcf:option datatype="boolean">nosortothers</bcf:option>
     <bcf:option datatype="boolean">noroman</bcf:option>
@@ -713,6 +729,7 @@
     <bcf:option datatype="xml">translit</bcf:option>
     <bcf:option datatype="xml">sortexclusion</bcf:option>
     <bcf:option datatype="xml">sortinclusion</bcf:option>
+    <bcf:option datatype="xml">extradatecontext</bcf:option>
     <bcf:option datatype="xml">labelnamespec</bcf:option>
     <bcf:option datatype="xml">labeltitlespec</bcf:option>
     <bcf:option datatype="xml">labeldatespec</bcf:option>
@@ -1043,7 +1060,7 @@
     <bcf:namepart order="3">given</bcf:namepart>
   </bcf:uniquenametemplate>
   <!-- SORTING NAME KEY TEMPLATES -->
-  <bcf:sortingnamekeytemplate name="global">
+  <bcf:sortingnamekeytemplate name="global" visibility="sort">
     <bcf:keypart order="1">
       <bcf:part type="namepart" order="1" use="1">prefix</bcf:part>
       <bcf:part type="namepart" order="2">family</bcf:part>
@@ -2344,75 +2361,48 @@
     <bcf:datasource type="file" datatype="bibtex">referencias.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="5">1</bcf:citekey>
-    <bcf:citekey order="5">2</bcf:citekey>
-    <bcf:citekey order="6">3</bcf:citekey>
-    <bcf:citekey order="7">4</bcf:citekey>
-    <bcf:citekey order="7">6</bcf:citekey>
-    <bcf:citekey order="8">5</bcf:citekey>
-    <bcf:citekey order="8">7</bcf:citekey>
-    <bcf:citekey order="9">8</bcf:citekey>
-    <bcf:citekey order="10">12</bcf:citekey>
-    <bcf:citekey order="11">9</bcf:citekey>
-    <bcf:citekey order="11">10</bcf:citekey>
-    <bcf:citekey order="11">11</bcf:citekey>
-    <bcf:citekey order="12">23</bcf:citekey>
-    <bcf:citekey order="13">14</bcf:citekey>
-    <bcf:citekey order="14">14</bcf:citekey>
-    <bcf:citekey order="15">14</bcf:citekey>
-    <bcf:citekey order="16">22</bcf:citekey>
-    <bcf:citekey order="17">21</bcf:citekey>
-    <bcf:citekey order="18">23</bcf:citekey>
-    <bcf:citekey order="19">23</bcf:citekey>
-    <bcf:citekey order="20">23</bcf:citekey>
-    <bcf:citekey order="21">16</bcf:citekey>
-    <bcf:citekey order="21">17</bcf:citekey>
-    <bcf:citekey order="22">18</bcf:citekey>
-    <bcf:citekey order="22">19</bcf:citekey>
-    <bcf:citekey order="23">24</bcf:citekey>
-    <bcf:citekey order="23">25</bcf:citekey>
-    <bcf:citekey order="23">27</bcf:citekey>
-    <bcf:citekey order="24">26</bcf:citekey>
-    <bcf:citekey order="25">25</bcf:citekey>
-    <bcf:citekey order="26">28</bcf:citekey>
-    <bcf:citekey order="27">29</bcf:citekey>
-    <bcf:citekey order="28">30</bcf:citekey>
-    <bcf:citekey order="29">32</bcf:citekey>
-    <bcf:citekey order="30">33</bcf:citekey>
-    <bcf:citekey order="31">34</bcf:citekey>
-    <bcf:citekey order="32">21</bcf:citekey>
-    <bcf:citekey order="33">14</bcf:citekey>
-    <bcf:citekey order="34">23</bcf:citekey>
-    <bcf:citekey order="35">1</bcf:citekey>
-    <bcf:citekey order="36">2</bcf:citekey>
-    <bcf:citekey order="37">3</bcf:citekey>
-    <bcf:citekey order="38">4</bcf:citekey>
-    <bcf:citekey order="39">6</bcf:citekey>
-    <bcf:citekey order="40">5</bcf:citekey>
-    <bcf:citekey order="41">7</bcf:citekey>
-    <bcf:citekey order="42">8</bcf:citekey>
-    <bcf:citekey order="43">12</bcf:citekey>
-    <bcf:citekey order="44">9</bcf:citekey>
-    <bcf:citekey order="45">10</bcf:citekey>
-    <bcf:citekey order="46">11</bcf:citekey>
-    <bcf:citekey order="47">23</bcf:citekey>
-    <bcf:citekey order="48">14</bcf:citekey>
-    <bcf:citekey order="49">22</bcf:citekey>
-    <bcf:citekey order="50">21</bcf:citekey>
-    <bcf:citekey order="51">16</bcf:citekey>
-    <bcf:citekey order="52">17</bcf:citekey>
-    <bcf:citekey order="53">18</bcf:citekey>
-    <bcf:citekey order="54">19</bcf:citekey>
-    <bcf:citekey order="55">24</bcf:citekey>
-    <bcf:citekey order="56">25</bcf:citekey>
-    <bcf:citekey order="57">27</bcf:citekey>
-    <bcf:citekey order="58">26</bcf:citekey>
-    <bcf:citekey order="59">28</bcf:citekey>
-    <bcf:citekey order="60">29</bcf:citekey>
-    <bcf:citekey order="61">30</bcf:citekey>
-    <bcf:citekey order="62">32</bcf:citekey>
-    <bcf:citekey order="63">33</bcf:citekey>
-    <bcf:citekey order="64">34</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">1</bcf:citekey>
+    <bcf:citekey order="5" intorder="2">2</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">3</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">4</bcf:citekey>
+    <bcf:citekey order="7" intorder="2">6</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">5</bcf:citekey>
+    <bcf:citekey order="8" intorder="2">7</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">8</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">12</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">9</bcf:citekey>
+    <bcf:citekey order="11" intorder="2">10</bcf:citekey>
+    <bcf:citekey order="11" intorder="3">11</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">23</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">14</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">14</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">14</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">22</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">21</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">23</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">23</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">23</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">16</bcf:citekey>
+    <bcf:citekey order="21" intorder="2">17</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">18</bcf:citekey>
+    <bcf:citekey order="22" intorder="2">19</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">24</bcf:citekey>
+    <bcf:citekey order="23" intorder="2">25</bcf:citekey>
+    <bcf:citekey order="23" intorder="3">27</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">26</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">25</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">35</bcf:citekey>
+    <bcf:citekey order="26" intorder="2">36</bcf:citekey>
+    <bcf:citekey order="26" intorder="3">37</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">28</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">29</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">30</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">32</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">33</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">34</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">21</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">14</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">23</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

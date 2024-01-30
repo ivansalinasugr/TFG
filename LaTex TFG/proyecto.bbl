@@ -590,6 +590,105 @@
       \verb http://dx.doi.org/10.1109/ICIP.2013.6738729
       \endverb
     \endentry
+    \entry{35}{article}{}
+      \name{author}{7}{}{%
+        {{hash=9ae8dc3a930d73e11e1b22a9ef065055}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=7eacb03f7d28612977f50d8cb1be0bad}{%
+           family={Boser},
+           familyi={B\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2ff32262125f2230f4fdc214030486c4}{%
+           family={Denker},
+           familyi={D\bibinitperiod},
+           given={J.\bibnamedelimi S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=1d66cfa216fa640e918783d1c120463c}{%
+           family={Henderson},
+           familyi={H\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1c36863cdb1999c03faa3c243dcda1a3}{%
+           family={Howard},
+           familyi={H\bibinitperiod},
+           given={R.\bibnamedelimi E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=ebda9ed808cef915758a63247dd83737}{%
+           family={Hubbard},
+           familyi={H\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=d1aa31ea5533302c18283f093ceec347}{%
+           family={Jackel},
+           familyi={J\bibinitperiod},
+           given={L.\bibnamedelimi D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{a8a87a12538dbdb246c3bc01b5a3dcc2}
+      \strng{fullhash}{ffc15443f8a7fdf7e6f50273527fa0b5}
+      \strng{bibnamehash}{a8a87a12538dbdb246c3bc01b5a3dcc2}
+      \strng{authorbibnamehash}{a8a87a12538dbdb246c3bc01b5a3dcc2}
+      \strng{authornamehash}{a8a87a12538dbdb246c3bc01b5a3dcc2}
+      \strng{authorfullhash}{ffc15443f8a7fdf7e6f50273527fa0b5}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neural Computation}
+      \field{title}{Backpropagation Applied to Handwritten Zip Code Recognition}
+      \field{volume}{1}
+      \field{year}{1989}
+      \field{pages}{541\bibrangedash 551}
+      \range{pages}{11}
+    \endentry
+    \entry{36}{article}{}
+      \name{author}{4}{}{%
+        {{hash=c7a5b066431b979612b716532b228554}{%
+           family={Lecun},
+           familyi={L\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=bbfb0f3936c83b7b099561e6f0e32ef3}{%
+           family={Bottou},
+           familyi={B\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=00f962380d25c4d7f23fa6c7e926c3ed}{%
+           family={Haffner},
+           familyi={H\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{dd2ddc978fe083bcff1aa1379cd19643}
+      \strng{fullhash}{4dd3ca3cdc8023700c28169734d6ad61}
+      \strng{bibnamehash}{dd2ddc978fe083bcff1aa1379cd19643}
+      \strng{authorbibnamehash}{dd2ddc978fe083bcff1aa1379cd19643}
+      \strng{authornamehash}{dd2ddc978fe083bcff1aa1379cd19643}
+      \strng{authorfullhash}{4dd3ca3cdc8023700c28169734d6ad61}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE}
+      \field{number}{11}
+      \field{title}{Gradient-based learning applied to document recognition}
+      \field{volume}{86}
+      \field{year}{1998}
+      \field{pages}{2278\bibrangedash 2324}
+      \range{pages}{47}
+      \verb{doi}
+      \verb 10.1109/5.726791
+      \endverb
+    \endentry
     \entry{29}{article}{}
       \name{author}{3}{}{%
         {{hash=7187819964d2d08695068a3f668e2ed1}{%
@@ -1024,6 +1123,45 @@
       \range{pages}{3}
       \verb{doi}
       \verb http://dx.doi.org/10.1001/jamafacial.2018.0009
+      \endverb
+    \endentry
+    \entry{37}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3e17226b4eac851660f6c8f756b257f8}{%
+           family={Yao},
+           familyi={Y\bibinitperiod},
+           given={Guangle},
+           giveni={G\bibinitperiod}}}%
+        {{hash=137d087a15655178d65e5fcc93702c5b}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Tao},
+           giveni={T\bibinitperiod}}}%
+        {{hash=376fa3a53594432674623e715a40ef27}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={Jiandan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{beceb9b9bb6f77e5a0310afe1418e6b6}
+      \strng{fullhash}{beceb9b9bb6f77e5a0310afe1418e6b6}
+      \strng{bibnamehash}{beceb9b9bb6f77e5a0310afe1418e6b6}
+      \strng{authorbibnamehash}{beceb9b9bb6f77e5a0310afe1418e6b6}
+      \strng{authornamehash}{beceb9b9bb6f77e5a0310afe1418e6b6}
+      \strng{authorfullhash}{beceb9b9bb6f77e5a0310afe1418e6b6}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0167-8655}
+      \field{journaltitle}{Pattern Recognition Letters}
+      \field{title}{A review of Convolutional-Neural-Network-based action recognition}
+      \field{volume}{118}
+      \field{year}{2019}
+      \field{pages}{14\bibrangedash 22}
+      \range{pages}{9}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.patrec.2018.05.018
       \endverb
     \endentry
     \entry{2}{article}{}
