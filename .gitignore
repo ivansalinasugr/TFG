@@ -8,7 +8,22 @@ Feedbacks/*
 Procesamiento de modelos/datasets/*
 Procesamiento de modelos/referencia H3DS-net/*
 Procesamiento de modelos/results/*
-*.DS_Store
 Procesamiento de modelos/matrices_transformacion.csv
 Procesamiento de modelos/matrices_transformacion HeadSspae.csv
 Procesamiento de modelos/modelos_HeadSpace.csv
+
+LaTex TFG/*.log
+LaTex TFG/*.aux
+LaTex TFG/*.bbl
+LaTex TFG/*.bcf
+LaTex TFG/*.blg
+LaTex TFG/*.dvi
+LaTex TFG/*.lof
+LaTex TFG/*.lot
+LaTex TFG/*.out
+LaTex TFG/*.run.xml
+LaTex TFG/*.synctex.gz
+LaTex TFG/*.toc
+LaTex TFG/*.fdb_latexmk
+LaTex TFG/*.fls
+*.DS_Store
