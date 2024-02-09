@@ -16,6 +16,7 @@ Procesamiento de modelos/matrices_transformacion HeadSpace.csv
 Procesamiento de modelos/modelos_HeadSpace.csv
 
 LaTex TFG/*.log
+LaTex TFG/*.texpadtmp
 LaTex TFG/*.aux
 LaTex TFG/*.bbl
 LaTex TFG/*.bcf
@@ -31,3 +32,5 @@ LaTex TFG/*.fdb_latexmk
 LaTex TFG/*.fls
 *.DS_Store
 Procesamiento de modelos/verificacion_distancias.xcf
+Procesamiento de modelos/aug_images/*
+Procesamiento de modelos/results/*
