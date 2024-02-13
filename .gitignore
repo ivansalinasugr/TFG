@@ -34,3 +34,8 @@ LaTex TFG/*.fls
 Procesamiento de modelos/verificacion_distancias.xcf
 Procesamiento de modelos/aug_images/*
 Procesamiento de modelos/results/*
+FSCDnet/data/*
+FSCDnet/SCDnet/*
+!FSCDnet/SCDnet/codigos
+!FSCDnet/SCDnet/input
+
