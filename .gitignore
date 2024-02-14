@@ -39,3 +39,5 @@ FSCDnet/SCDnet/*
 !FSCDnet/SCDnet/codigos
 !FSCDnet/SCDnet/input
 
+FSCDnet_Keras/input*
+
