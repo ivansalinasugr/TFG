@@ -20,7 +20,8 @@ Muchos estudios han identificado limitaciones en los actuales métodos de recono
 Uno de los factores más importantes en las fotografías faciales es la distorsión de perspectiva, la cual puede provocar deformaciones en los rasgos faciales, como en las orejas, la nariz o la forma general del rostro, especialmente cuando la cámara está muy cerca del sujeto al momento de tomar la fotografía~\cite{12} (ver Figura~\ref{fig1}). Esta alteración en la perspectiva repercute negativamente en los sistemas de reconocimiento automático~\cite{9,10,11}, lo cual puede obstaculizar la identificación precisa de individuos. 
 
 % Enganchar bien con la SCD
-La distorsión de perspectiva está estrechamente relacionada con la distancia cámara-sujeto (subject-to-camera distance, SCD en adelante), de hecho, la relación es de decremento logarítmico, esto significa que, valores pequeños de SCD corresponden con una mayor distorsión, mientras que la distorsión disminuye conforme la SCD aumenta~\cite{23}. Por esta razón, este TFG trata sobre la estimación de la SCD en fotografías faciales.
+% Parámetros de adquisición de la cámara
+La distorsión de perspectiva está estrechamente relacionada con la distancia cámara-sujeto (subject-to-camera distance, SCD en adelante), de hecho, la relación es de decremento logarítmico, esto significa que, valores pequeños de la SCD corresponden con una mayor distorsión, mientras que la distorsión disminuye conforme la SCD aumenta~\cite{23}.
 
 \begin{figure}[h]
 	\centering
@@ -29,6 +30,7 @@ La distorsión de perspectiva está estrechamente relacionada con la distancia c
 	\label{fig1}
 \end{figure}
 
+La estimación de la distancia entre la cámara y el sujeto en imágenes faciales permite cuantificar la cantidad de distorsión presente en una imagen, así como las diferencias en la distorsión entre dos conjuntos de imágenes.
 
 %La estimación de la SCD en imágenes faciales abre la posibilidad a cuantificar las diferencias en la distorsión entre dos conjuntos de imágenes, y además, la posibilidad de reproducir las condiciones originales de la escena cuando hay disponibles modelos faciales 3D o restos esqueléticos. Esta última característica se considera esencial tanto para técnicas de identificación manual como automáticas, ya que mejoran la credibilidad de las comparaciones faciales mediante la medición y control de una mayor fuente de incertidumbre.
 
@@ -61,7 +63,8 @@ donde A' y B' son las proyecciones, en el sensor de la cámara, de los objetos A
 
 \section{Objetivos}
 % Cambiar esto
-El objetivo general de este TFG consiste en mejorar el método actual del estado del arte en la estimación automática de la distancia cámara-sujeto en fotografías faciales. Para el desarrollo del proyecto, dividiremos el objetivo general en una serie de objetivos parciales:
+%El objetivo general de este TFG consiste en mejorar el método actual del estado del arte en la estimación automática de la distancia cámara-sujeto en fotografías faciales.
+ El objetivo general de este TFG consiste en desarrollar un modelo de aprendizaje profundo adecuado para mejorar la estimación de la distancia cámara-sujeto en fotografías faciales.Para el desarrollo del proyecto, dividiremos el objetivo general en una serie de objetivos parciales:
 \begin{enumerate}
     \item Realizar un análisis exhaustivo del estado del arte para la estimación de la SCD en fotografías faciales.
     \item Generar un conjunto de datos sintético de mayor calidad (modelos 3D más completos de cuerpo entero y poses distintas, con fondos e iluminación más realistas)
