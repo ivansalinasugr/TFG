@@ -32,10 +32,16 @@ LaTex TFG/*.fdb_latexmk
 LaTex TFG/*.fls
 *.DS_Store
 Procesamiento de modelos/verificacion_distancias.xcf
-Procesamiento de modelos/aug_images/*
+Procesamiento de modelos/images_short
+Procesamiento de modelos/aug_images
 Procesamiento de modelos/results/*
 FSCDnet/data/*
 FSCDnet/SCDnet/*
 !FSCDnet/SCDnet/codigos
 !FSCDnet/SCDnet/input
+FSCDnet/SCDnet/codigos/img_aug
+FSCDnet/SCDnet/codigos/__pycache__
+FSCDnet/SCDnet/codigos/mlruns
+
+FSCDnet_Keras/input*
 
