@@ -6,7 +6,7 @@
 #SBATCH --output=F27res.out
 #SBATCH  -w atenea
 export PATH="/opt/anaconda/anaconda3/bin:$PATH"
-export PATH="/opt/acaconda/bin:$PATH"
+export PATH="/opt/anaconda/bin:$PATH"
 eval "$(conda shell.bash hook)"
 conda activate tf1.15py36
 export TFHUB_CACHE_DIR=.

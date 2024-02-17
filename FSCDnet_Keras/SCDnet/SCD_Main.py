@@ -1,6 +1,5 @@
-import cv2 
 import numpy as np
-import os,sys,gc,argparse,random,time,uuid
+import os,gc,random,uuid
 import pandas as pd
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -11,7 +10,7 @@ from SCD_Augmentor import DataGenerator
 from sklearn.model_selection import train_test_split
 
 from sacred import Experiment
-from sacred.observers import MongoObserver, FileStorageObserver,TelegramObserver
+from sacred.observers import FileStorageObserver,TelegramObserver
 
 from numpy.random import seed	
 from tensorflow import set_random_seed
@@ -51,8 +50,6 @@ def base_conf():
 		'n_epochs' : 10,  # cutoff the training after this many epochs
 		'batch_size' :  32,	# size of the train batch 
 		'val_split' : 0.2 , # portion of the data that will be used for training
-		'steps_per_epoch': 224,
-		'validation_steps':111,
 		'validation_batch_size' : 32, # size of the validation batch		
 		#''' Network Parameters '''
 		'imgaug_seed': 1702, # Seed for image augmentation
@@ -120,7 +117,7 @@ def purgeData(data,focal,fraction=1):
 	elif(focal==55):
 		purged_data=data[data['Focal'].isin([52.1,53,53.5,54.4,55])]
 	elif(focal==85):
-		purged_data=data[data.Focal.isin([83.6,84.1])]
+		purged_data=data[data['Focal'].isin([83.6,84.1])]
 	else:
 		purged_data=data[data['Focal']==focal] 
 	#purged_data=purged_data[purged_data.Distance!=100]
@@ -143,7 +140,7 @@ def loadData(db,hparams,  val_split=0.2, sub_sample_size=-1):
 			X_train, X_test, Y_train, Y_test = train_test_split(image_data, labels, test_size=val_split) 
 			print("train images: "+str(len(X_train))+" val images: "+str(len(X_test)))
 			train_data = DataGenerator(X_train, Y_train,  hparams,  batch_size=hparams['batch_size'], augment=True, shuffle=True)
-			val_data = DataGenerator(X_test, Y_test, hparams,  batch_size=hparams['validation_batch_size'], augment=False, shuffle=False) 
+			val_data = DataGenerator(X_test, Y_test, hparams,  batch_size=hparams['validation_batch_size'], augment=False, shuffle=True) 
 			return train_data, val_data
 		else:
 			return DataGenerator(image_data, labels, hparams,  batch_size=hparams['batch_size'], augment=True, shuffle=True), None
@@ -199,11 +196,12 @@ def main(_run,hparams):
 	predictions = [y for x in predictions for y in x]
 	
 	val_y=([])
-	for k in range(0,len(val_data)):
+	for k in range(0, len(val_data)):
 		batch = val_data.__getitem__(k)
 		val_y=np.append(val_y,batch[1])
 	
 	predictions_df = pd.DataFrame({"predictions": predictions, "targets": val_y})
+	predictions_df.to_csv("predictions.csv")
 	filename =hparams['root_path']+"/artifacts/predictions_df_"+hparams['uuid']+".pickle"
 	predictions_df.to_pickle(filename)
 	_run.add_artifact(filename, name="predictions_df", content_type="application/octet-stream")
@@ -218,31 +216,31 @@ def main(_run,hparams):
 	_run.log_scalar('p99',p99)
 	_run.log_scalar('distortion',distortion)
  
-	if(val_metric<7):
-		print("Good Validation Result, we will test the model")
-		test_data,none = loadData("test", hparams,sub_sample_size=-1   )
-		test_predictions=model.predict(test_data)
-		test_predictions = [y for x in test_predictions for y in x]
+	# if(val_metric<7):
+	# 	print("Good Validation Result, we will test the model")
+	# 	test_data,none = loadData("test", hparams,sub_sample_size=-1   )
+	# 	test_predictions=model.predict(test_data)
+	# 	test_predictions = [y for x in test_predictions for y in x]
 	
-		test_y=([])
-		for k in range(0,len(test_data)):
-			batch = test_data.__getitem__(k)
-			test_y=np.append(test_y,batch[1])
+	# 	test_y=([])
+	# 	for k in range(0,len(test_data)):
+	# 		batch = test_data.__getitem__(k)
+	# 		test_y=np.append(test_y,batch[1])
 	
-		test_predictions_df = pd.DataFrame({"predictions": test_predictions, "targets": test_y})
-		test_filename =hparams['root_path']+"/artifacts/test_predictions_df_"+hparams['uuid']+".pickle"
-		test_predictions_df.to_pickle(test_filename)
-		_run.add_artifact(test_filename, name="test_predictions_df_"+hparams['uuid'], content_type="application/octet-stream")
+	# 	test_predictions_df = pd.DataFrame({"predictions": test_predictions, "targets": test_y})
+	# 	test_filename =hparams['root_path']+"/artifacts/test_predictions_df_"+hparams['uuid']+".pickle"
+	# 	test_predictions_df.to_pickle(test_filename)
+	# 	_run.add_artifact(test_filename, name="test_predictions_df_"+hparams['uuid'], content_type="application/octet-stream")
 		
-		test_std=repr(np.std(test_y-test_predictions, axis= 0))
-		test_p99=repr(np.percentile(test_y-test_predictions, 99, axis=0))
-		test_dist_y=np.array([(1/(1 + x/12.6572)) for x in test_y])
-		test_dist_pred=np.array([(1/(1 + x/12.6572)) for x in test_predictions])
-		test_error=np.absolute(test_dist_y-test_dist_pred)
-		test_distortion=repr(np.sum(test_error))
-		_run.log_scalar('test_std',test_std)
-		_run.log_scalar('test_p99',test_p99)
-		_run.log_scalar('test_distortion',test_distortion)
+	# 	test_std=repr(np.std(test_y-test_predictions, axis= 0))
+	# 	test_p99=repr(np.percentile(test_y-test_predictions, 99, axis=0))
+	# 	test_dist_y=np.array([(1/(1 + x/12.6572)) for x in test_y])
+	# 	test_dist_pred=np.array([(1/(1 + x/12.6572)) for x in test_predictions])
+	# 	test_error=np.absolute(test_dist_y-test_dist_pred)
+	# 	test_distortion=repr(np.sum(test_error))
+	# 	_run.log_scalar('test_std',test_std)
+	# 	_run.log_scalar('test_p99',test_p99)
+	# 	_run.log_scalar('test_distortion',test_distortion)
 
 
 	model.release()

@@ -7,13 +7,14 @@ import torch
 import mlflow
 import metrics as met
 from SCD_Dataset import CustomImageDataset
-from SCD_ModelTuner import SCDModel
+from SCD_Model import SCDModel
 from sklearn.model_selection import train_test_split
 from telegram import Bot
 import asyncio
 import optuna
 from optuna.samplers import TPESampler
 import json
+import argparse
 
 # For telegram configuration
 async def enviar_mensaje(token, chat_id, mensaje):
@@ -31,12 +32,10 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # src_root="/mnt/homeGPU/isalinas/FSCDnet"
 
 # Set our tracking server uri for logging
-mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+mlflow.set_tracking_uri(uri="http://127.0.0.1:5000")
 
 # Create a new MLflow Experiment
 mlflow.set_experiment("Pruebas MLflow")
-
-src_root="/Users/ivansalinas/GitHub/TFG/FSCDnet/SCDnet"
 
 def init_filestructure(hparams):
 	if not os.path.exists(hparams['root_path']):
@@ -46,43 +45,20 @@ def init_filestructure(hparams):
 	if not os.path.exists(hparams['root_path'] + '/predictions'):
 		os.mkdir(hparams['root_path']+'/predictions')
 
-def base_conf(): 
-	hparams = { 
-		'focal':27, # 27 35 53 83.6
-		#''' Train Parameters '''
-		'n_epochs' : 10, # number of epochs for training
-		'batch_size' :  32,	# size of the batch 
-		'val_split' : 0.2 , # portion of the data that will be used for training
-		#''' Network Parameters '''
-		'patience' : 3, # learning rate will be reduced after this many epochs if the validation loss is not improving
-		'early_stop' : 6, # training will be stopped after this many epochs without the validation loss improving
-		'initial_learning_rate' : 0.0005, # initial learning rate
-		'minimum_learning_rate' : 1e-12, # minimum value for the learning rate after reduction
-		'learning_rate_drop' :  0.5,  # factor by which the learning rate will be reduced
-		'with_dropout' : False, # include a dropout layer if overfitting
-		'dropout':0.5, # amount of dropout
-		'with_batchnormalization' : False, # include a BatchNormalization layer if overfitting
-		'metrics': ['mae','mre'], # metrics
-		'loss':'distortloss', # loss function
-		'optimizer':'adam', # optimizers
-		'size_fc2':4096, # input size of fc2 layer
-		#''' General Data Parameters '''
-		'name': "FacialNet", # name of the dataset
-		'overwrite' : True,  # if True, will overwrite previous files. If False, will use previously written files.
-		'backbone': 'vgg', # vgg, resnet, inception
-		'image_shape' : (224, 224, 3), # this determines what shape the images will be cropped/resampled to
-		'load_model' : False, # if True, use a model from files
-		'load_weight_model': False, # if True, use weights from a model in files
-		'debug': False # if True, shows arquitecture
-	}
-	hparams['root_path'] = src_root
-	hparams['predictions_file'] = os.path.abspath(src_root + "/predictions/predictions_" + hparams['backbone'] + "_f" + str(hparams['focal']) + ".csv")
-	hparams['model_file']=os.path.abspath(src_root + "/best_models/best_model_f"+str(hparams['focal'])+ ".pth")
+def load_config(file_path, args):
+	with open(file_path, 'r') as f:
+		config = json.load(f)
 
-	hparams['training_file'] = os.path.abspath(src_root + "/input/train_labels.csv")
-	hparams['testing_file'] = os.path.abspath(src_root + "/input/test_labels.csv")
+	config['focal'] = args.focal
+	config['n_epochs'] = args.n_epochs
+	config['root_path'] = args.src_root
+	config['predictions_file'] = os.path.abspath(args.src_root + "/predictions/predictions_" + config['backbone'] + "_f" + str(config['focal']) + ".csv")
+	config['model_file']=os.path.abspath(args.src_root + "/best_models/best_model_f"+str(config['focal'])+ ".pth")
 
-	return hparams
+	config['training_file'] = os.path.abspath(args.src_root + "/input/train_labels.csv")
+	config['testing_file'] = os.path.abspath(args.src_root + "/input/test_labels.csv")
+
+	return config
 
 def purgeData(data,focal):
 	if(focal==35):
@@ -151,16 +127,12 @@ def main(hparams):
 	train_data, val_data = loadData('train', hparams)
 
 	# Create model
-	model = SCDModel(hparams)
+	model = SCDModel(hparams, compute_metrics=False, verbose=False)
 	if(hparams['debug']):
 		model.summary()
 	
 	# Train model
-	val_losses = model.train(train_data, val_data, plot_results=False)
-
-	predicted_labels, true_labels = model.predict(val_data)
-	predictions_df = pd.DataFrame({"predictions": predicted_labels, "targets": true_labels})
-	predictions_df.to_csv(hparams['predictions_file'])
+	_ , val_losses = model.train(train_data, val_data)
 
 	distortion = np.min(val_losses)
 
@@ -172,9 +144,9 @@ def main(hparams):
 	
 	return distortion
 
-def objective(trial):
+def objective(trial, args):
 	# Parameters to optimize
-	hparams = base_conf() 
+	hparams = load_config('config.json', args)
 	hparams['batch_size'] = trial.suggest_categorical('batch_size', [16, 32, 64]) 
 	hparams['initial_learning_rate'] = trial.suggest_float('initial_learning_rate', 1e-5, 1e-2, log=True)
 	hparams['optimizer'] = trial.suggest_categorical('optimizer', ['adam', 'sgd'])
@@ -190,8 +162,18 @@ def objective(trial):
 	return distortion  # Metric we want to optimize
 
 if __name__ == "__main__":
+	parser = argparse.ArgumentParser(description="FacialSCDnet programa")
+	
+	# Definimos los argumentos que nuestro programa aceptará
+	parser.add_argument("--src_root", type=str, required=True, help="Directorio raíz de origen")
+	parser.add_argument("--focal", type=float, required=True, help="Valor de focal")
+	parser.add_argument("--n_epochs", type=int, required=True, help="Número de épocas")
+	
+	# Parseamos los argumentos de la línea de comandos
+	args = parser.parse_args()
+
 	study = optuna.create_study(study_name='Tuneo2', direction='minimize', sampler=TPESampler(seed=1)) 
-	study.optimize(objective, n_trials=2) 
+	study.optimize(lambda trial: objective(trial, args), n_trials=2) 
 
 	best_trial = study.best_trial
 	print("Best trial: {}\n".format(best_trial.number))

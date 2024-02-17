@@ -8,7 +8,7 @@ class CustomImageDataset(Dataset):
         self.labels = labels
         self.dim = hparams['image_shape'][0]
         self.augment = augment
-        self.config		  = hparams
+        self.config = hparams
 
     def __len__(self):
         return len(self.images)
@@ -40,7 +40,7 @@ class CustomImageDataset(Dataset):
             transforms.ToTensor(),
             transforms.RandomApply([
                 transforms.RandomAffine(degrees=(-10, 10), translate=(0.2, 0.2))], 
-                p=0.1),
+                p=0.25),
             transforms.RandomApply([
                 transforms.GaussianBlur(1.0)],
                 p=0.25),
@@ -49,10 +49,10 @@ class CustomImageDataset(Dataset):
                 p=0.25),
             transforms.RandomApply([
                 transforms.RandomErasing(scale=(0.02, 0.05), ratio=(0.1, 0.5), value=0)],
-                p=0.15),
+                p=0.25),
             transforms.RandomApply([
                 transforms.Grayscale(3)],
-                p=0.15)
+                p=0.25)
         ])
 
         return transform(image)

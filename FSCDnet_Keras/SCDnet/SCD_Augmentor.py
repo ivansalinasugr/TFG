@@ -1,6 +1,5 @@
-import cv2,os 
+import cv2
 import numpy as np
-from glob import glob
 from tensorflow.keras.utils import Sequence 
 #from sklearn.preprocessing import MinMaxScaler
 #ImgAug
@@ -41,15 +40,14 @@ class DataGenerator(Sequence):
 		# select data and load images
 		label = np.array([self.labels[k] for k in indexes])	
 		
-		images = [cv2.imread(self.images_paths[k]) for k in indexes] #-1 is essential as images have alpha channel
+		images = [cv2.imread(self.images_paths[k], 1) for k in indexes]
 
 		if self.augment == True:        # preprocess and augment data
 			images_aug = self.augmentor(images)
 		else:
 			images_aug	= self.light_augmentor(images)
-		
-		aug_input=images_aug
-		return np.array(aug_input), np.array(label)
+
+		return np.array(images_aug), np.array(label)
 
 
 	def light_augmentor(self, images):
@@ -63,8 +61,6 @@ class DataGenerator(Sequence):
 
 	def augmentor(self, images):
 		always = lambda aug: iaa.Sometimes(1, aug)
-		sometimes = lambda aug: iaa.Sometimes(0.3, aug)
-		eventually = lambda aug: iaa.Sometimes(0.2, aug)
 		seq = iaa.Sequential([
 			always(iaa.PadToFixedSize(width=self.config['padToFixedW'], height=self.config['padToFixedH'], position="center")),
 			always(iaa.Affine(

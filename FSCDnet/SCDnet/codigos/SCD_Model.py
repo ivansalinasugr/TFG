@@ -46,10 +46,12 @@ class EarlyStopping:
 		self.val_loss_min = val_loss
 
 class SCDModel():
-	def __init__(self, hparams):
+	def __init__(self, hparams, compute_metrics = True, verbose = True):
 		self.config = hparams
-		#self.device = "cuda" if torch.cuda.is_available() else "cpu"
-		self.device = "mps" if torch.backends.mps.is_available() else "cpu"
+		self.device = "cuda" if torch.cuda.is_available() else "cpu"
+		#self.device = "mps" if torch.backends.mps.is_available() else "cpu"
+		self.compute_metrics = compute_metrics
+		self.verbose = verbose
 
 		if self.config['load_model']:
 			self.model = torch.load(self.config['model_file'])
@@ -110,8 +112,6 @@ class SCDModel():
 		
 		if(func_loss == 'distortloss'):
 			self.loss = lo.distortloss 
-		elif(func_loss == 'distortmae'):
-			self.loss = lo.distortmae
 		
 		if(self.config['optimizer'] == 'adam'):
 			self.optimizer = optim.Adam(backbone.parameters(), lr=self.config['initial_learning_rate'])
@@ -134,7 +134,7 @@ class SCDModel():
 									  min_lr=self.config['minimum_learning_rate'])
 
 		# Early stopping
-		early_stopping = EarlyStopping(patience=self.config['early_stop'], path=self.config['model_file'], verbose=True)
+		early_stopping = EarlyStopping(patience=self.config['early_stop'], path='checkpoint.pth', verbose=self.verbose)
 
 		train_losses = []
 		val_losses = []
@@ -183,24 +183,27 @@ class SCDModel():
 			val_losses.append(val_loss)
 
 			# Calcular métricas y registrar en MLflow
-			train_metrics = met.calculate_metrics(self.config['metrics'], torch.tensor(train_targets), torch.tensor(train_predictions))
-			val_metrics = met.calculate_metrics(self.config['metrics'], torch.tensor(val_targets), torch.tensor(val_predictions))
+			if self.compute_metrics:
+				train_metrics = met.calculate_metrics(self.config['metrics'], torch.tensor(train_targets), torch.tensor(train_predictions))
+				val_metrics = met.calculate_metrics(self.config['metrics'], torch.tensor(val_targets), torch.tensor(val_predictions))
 
-			# Log the metrics
-			for metric_name in self.config['metrics']:
-				mlflow.log_metric(f'train_{metric_name}', train_metrics[metric_name][f'{metric_name}_value'])
-				mlflow.log_metric(f'val_{metric_name}', val_metrics[metric_name][f'{metric_name}_value'])
+				# # Log the metrics
+				# for metric_name in self.config['metrics']:
+				# 	mlflow.log_metric(f'train_{metric_name}', train_metrics[metric_name][f'{metric_name}_value'])
+				# 	mlflow.log_metric(f'val_{metric_name}', val_metrics[metric_name][f'{metric_name}_value'])
 
 			# Log the loss
-			mlflow.log_metrics({'train_loss': train_loss, 'val_loss': val_loss}, step=epoch+1)
+			# mlflow.log_metrics({'train_loss': train_loss, 'val_loss': val_loss}, step=epoch+1)
 			
-			print(f'Epoch {epoch + 1}/{self.config["n_epochs"]}, Train Loss: {train_loss}, Val Loss: {val_loss}')
+			if self.verbose:
+				print(f'Epoch {epoch + 1}/{self.config["n_epochs"]}, Train Loss: {train_loss}, Val Loss: {val_loss}')
 
 			# Check early stopping
 			early_stopping(val_loss, self.model)
 			
 			if early_stopping.early_stop:
-				print("Early stopping")
+				if self.verbose:
+					print("Early stopping")
 				break
 
 		# if plot_results:
@@ -216,7 +219,14 @@ class SCDModel():
 		#     ax[2].legend(loc='best', shadow=True)
 		#     plt.show()
 		
-		self.load_weights_only() # Load best weights
+
+		# Load best weights encounter in training
+		model = torch.load('checkpoint.pth')
+		self.model.load_state_dict(model.state_dict())
+
+		# Save model
+		torch.save(self.model, self.config['model_file'])
+
 		print("Finished training")
 
 		return train_losses, val_losses

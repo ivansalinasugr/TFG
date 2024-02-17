@@ -5,21 +5,22 @@ from torch.utils.data import DataLoader
 import ssl
 import torch
 import mlflow
-import metrics as met
 from SCD_Dataset import CustomImageDataset
 from SCD_Model import SCDModel
 from sklearn.model_selection import train_test_split
 from telegram import Bot
 import asyncio
 import json
+import argparse
 
 # For telegram configuration
 async def enviar_mensaje(token, chat_id, mensaje):
 	bot = Bot(token=token)
 	await bot.send_message(chat_id=chat_id, text=mensaje)
 
-with open('telegram.json', 'r') as file:
-    config = json.load(file)
+#with open('/mnt/homeGPU/isalinas/FSCDnet/SCDnet/codigos/telegram.json', 'r') as file:
+with open('/Users/ivansalinas/Github/TFG/FSCDnet/SCDnet/codigos/telegram.json', 'r') as file:
+	config = json.load(file)
 
 TOKEN = config['TOKEN']
 CHAT_ID = config['CHAT_ID']
@@ -29,12 +30,10 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # src_root="/mnt/homeGPU/isalinas/FSCDnet"
 
 # Set our tracking server uri for logging
-mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+#mlflow.set_tracking_uri(uri="http://127.0.0.1:5000")
 
 # Create a new MLflow Experiment
-mlflow.set_experiment("Pruebas MLflow")
-
-src_root="/Users/ivansalinas/GitHub/TFG/FSCDnet/SCDnet"
+#mlflow.set_experiment("Pruebas MLflow")
 
 def init_filestructure(hparams):
 	if not os.path.exists(hparams['root_path']):
@@ -44,43 +43,20 @@ def init_filestructure(hparams):
 	if not os.path.exists(hparams['root_path'] + '/predictions'):
 		os.mkdir(hparams['root_path']+'/predictions')
 
-def base_conf(): 
-	hparams = { 
-		'focal':27, # 27 35 53 83.6
-		#''' Train Parameters '''
-		'n_epochs' : 10, # number of epochs for training
-		'batch_size' :  32,	# size of the batch 
-		'val_split' : 0.2 , # portion of the data that will be used for training
-		#''' Network Parameters '''
-		'patience' : 3, # learning rate will be reduced after this many epochs if the validation loss is not improving
-		'early_stop' : 6, # training will be stopped after this many epochs without the validation loss improving
-		'initial_learning_rate' : 0.0005, # initial learning rate
-		'minimum_learning_rate' : 1e-12, # minimum value for the learning rate after reduction
-		'learning_rate_drop' :  0.5,  # factor by which the learning rate will be reduced
-		'with_dropout' : True, # include a dropout layer if overfitting
-		'dropout':0.5, # amount of dropout
-		'with_batchnormalization' : True, # include a BatchNormalization layer if overfitting
-		'metrics': ['mae','mre'], # metrics
-		'loss':'distortloss', # loss function
-		'optimizer':'adam', # optimizers
-		'size_fc2':4096, # input size of fc2 layer
-		#''' General Data Parameters '''
-		'name': "FacialNet", # name of the dataset
-		'overwrite' : True,  # if True, will overwrite previous files. If False, will use previously written files.
-		'backbone': 'vgg', # vgg, resnet, inception
-		'image_shape' : (224, 224, 3), # this determines what shape the images will be cropped/resampled to
-		'load_model' : False, # if True, use a model from files
-		'load_weight_model': False, # if True, use weights from a model in files
-		'debug': False # if True, shows arquitecture
-	}
-	hparams['root_path'] = src_root
-	hparams['predictions_file'] = os.path.abspath(src_root + "/predictions/predictions_" + hparams['backbone'] + "_f" + str(hparams['focal']) + ".csv")
-	hparams['model_file']=os.path.abspath(src_root + "/best_models/best_model_f"+str(hparams['focal'])+ ".pth")
+def load_config(file_path, args):
+	with open(file_path, 'r') as f:
+		config = json.load(f)
 
-	hparams['training_file'] = os.path.abspath(src_root + "/input/train_labels.csv")
-	hparams['testing_file'] = os.path.abspath(src_root + "/input/test_labels.csv")
+	config['focal'] = args.focal
+	config['n_epochs'] = args.n_epochs
+	config['root_path'] = args.src_root
+	config['predictions_file'] = os.path.abspath(args.src_root + "/predictions/predictions_" + config['backbone'] + "_f" + str(config['focal']) + ".csv")
+	config['model_file']=os.path.abspath(args.src_root + "/best_models/best_model_f"+str(config['focal'])+ ".pth")
 
-	return hparams
+	config['training_file'] = os.path.abspath(args.src_root + "/input/train_labels.csv")
+	config['testing_file'] = os.path.abspath(args.src_root + "/input/test_labels.csv")
+
+	return config
 
 def purgeData(data,focal):
 	if(focal==35):
@@ -107,7 +83,7 @@ def loadData(db, hparams, val_split=0.2, sub_sample_size=-1):
 			train_dataset = CustomImageDataset(X_train, Y_train, hparams, augment=True)
 			val_dataset = CustomImageDataset(X_test, Y_test, hparams, augment=False)
 			train_data = DataLoader(train_dataset, batch_size=hparams['batch_size'], shuffle=True)
-			val_data = DataLoader(val_dataset, batch_size=hparams['batch_size'], shuffle=False)
+			val_data = DataLoader(val_dataset, batch_size=hparams['batch_size'], shuffle=True)
 			return train_data, val_data
 		else:
 			train_dataset = CustomImageDataset(image_data, labels, hparams, augment=True)
@@ -137,7 +113,7 @@ def set_seed(seed):
 		torch.backends.cudnn.deterministic = True
 		torch.backends.cudnn.benchmark = False
 
-def main(hparams):
+def main(hparams, args):
 	# Set seeds
 	seed = 42
 	set_seed(seed)
@@ -148,35 +124,28 @@ def main(hparams):
 	train_data, val_data = loadData('train', hparams)
 	
 	# Start an MLflow run
-	with mlflow.start_run(run_name = "pruebas_mlflow"):
-		mlflow.log_params(hparams)
+	#with mlflow.start_run(run_name = args.run_name):
+	#	mlflow.log_params(hparams)
 		
-		# Create model
-		model = SCDModel(hparams)
-		if(hparams['debug']):
-			model.summary()
-		
-		# Train model
-		train_losses, val_losses = model.train(train_data, val_data, plot_results=False)
+	# Create model
+	model = SCDModel(hparams)
+	if(hparams['debug']):
+		model.summary()
+	
+	# Train model
+	train_losses, val_losses = model.train(train_data, val_data)
 
-		# Get best validation loss
-		distortion = np.min(val_losses)
+	# Get best validation loss
+	distortion = np.min(val_losses)
 
-		# Log the model
-		mlflow.pytorch.log_model(model.getModel(), "model")
-		
-		# Predict labels for test
-		predicted_labels, true_labels = model.predict(val_data)
-		predictions_df = pd.DataFrame({"predictions": predicted_labels, "targets": true_labels})
-		predictions_df.to_csv(hparams['predictions_file'])
-		mlflow.log_artifact(hparams['predictions_file'])
-		
-		# Calculate metrics
-		results = met.calculate_metrics(hparams['metrics'], torch.tensor(true_labels), torch.tensor(predicted_labels))
-		
-		# Record the metrics in MLflow
-		for metric_name in hparams['metrics']:
-			mlflow.log_metrics(results[metric_name])
+	# Log the model
+#	mlflow.pytorch.log_model(model.getModel(), "model")
+	
+	# Predict labels for test
+	predicted_labels, true_labels = model.predict(val_data)
+	predictions_df = pd.DataFrame({"predictions": predicted_labels, "targets": true_labels})
+	predictions_df.to_csv(hparams['predictions_file'])
+	#	mlflow.log_artifact(hparams['predictions_file'])
 		
 		# best_val_metric=np.min(val_metrics['MAE'])
 	
@@ -199,7 +168,19 @@ def main(hparams):
 	return distortion
 
 if __name__ == "__main__":
-	hparams = base_conf()
-	distortion = main(hparams)
+	parser = argparse.ArgumentParser(description="FacialSCDnet programa")
+	
+	# Definimos los argumentos que nuestro programa aceptará
+	parser.add_argument("--src_root", type=str, required=True, help="Directorio raíz de origen")
+	parser.add_argument("--run_name", type=str, required=True, help="Nombre del run en MLflow")
+	parser.add_argument("--focal", type=float, required=True, help="Valor de focal")
+	parser.add_argument("--n_epochs", type=int, required=True, help="Número de épocas")
+	
+	# Parseamos los argumentos de la línea de comandos
+	args = parser.parse_args()
+
+	#hparams = load_config('/mnt/homeGPU/isalinas/FSCDnet/SCDnet/codigos/config.json', args)
+	hparams = load_config('/Users/ivansalinas/Github/TFG/FSCDnet/SCDnet/codigos/config.json', args)
+	distortion = main(hparams, args)
 	mensaje = f"El script ha finalizado. La distorsión es: {distortion}"
 	asyncio.run(enviar_mensaje(TOKEN, CHAT_ID, mensaje))

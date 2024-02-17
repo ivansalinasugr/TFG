@@ -176,15 +176,6 @@ class SCDModel():
                                      save_best_only=True,
                                      mode='min',
                                      save_weights_only=True)
-        # visualize training data
-        tensorboard = TensorBoard(log_dir=self.config['root_path']+'/logs/'+self.config['uuid'],
-                                  histogram_freq=0,
-                                  write_graph=True,
-                                  write_grads=True,
-                                  write_images=False)
-        #reduce resource usage(keeps laptop from melting)
-        idle = LambdaCallback(on_epoch_end=lambda batch, logs: time.sleep(3),
-                              on_batch_end=lambda batch, logs: time.sleep(0.005)) 
 
         # train on data
         #STEP_SIZE_TRAIN=(train_data.n//train_data.batch_size)/150

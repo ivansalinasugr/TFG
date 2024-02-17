@@ -50,6 +50,15 @@ def mean_squared_log_error(y_true, y_pred):
     desviacion_tipica = torch.std(y_true - y_pred)
     return msle, percentil_99, mediana, desviacion_tipica
 
+def distortloss(y_true, y_pred): 
+    true = (1/(1 + y_true/12.6572))
+    pred = (1/(1 + y_pred/12.6572))
+    value = torch.mean(torch.abs(true - pred))
+    percentil_99 = torch.kthvalue(torch.abs(true - pred), int(len(true) * 0.99)).values
+    mediana = torch.median(torch.abs(true - pred))
+    desviacion_tipica = torch.std(true - pred)
+    return value, percentil_99, mediana, desviacion_tipica
+
 
 # Dictionary mapping metric names to their corresponding functions
 metric_functions = {
@@ -59,7 +68,8 @@ metric_functions = {
     'medae': median_absolute_error,
     'r2': r2_score,
     'mre': mean_relative_error,
-    'msle': mean_squared_log_error
+    'msle': mean_squared_log_error,
+    'distortloss': distortloss
 }
 
 # Function for calculate metrics
