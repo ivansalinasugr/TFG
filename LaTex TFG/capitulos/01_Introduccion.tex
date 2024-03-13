@@ -38,7 +38,7 @@ La SCD, a diferencia de otros parámetros de la cámara como la longitud focal o
 %\end{figure}
 
 % el final podría estar mejor explicado porque no se entiende mucho lo de las longitudes focales
-En los últimos años se han utilizado varios métodos que combinan técnicas manuales y automatizadas basadas en puntos de referencia de la cara o en características anatómicas \cite{28,30}. Sin embargo, no se han obtenido resultados favorables debido a la dificultad para obtener estimaciones precisas en largas distancias por la diversa fisionomía de la cara, y a los problemas relacionados con los parámetros de la cámara, como el recorte de imágenes o la combinación de diferentes longitudes focales en el mismo conjunto de datos.
+En los últimos años se han utilizado varios métodos que combinan técnicas manuales y automatizadas basadas en puntos de referencia o en características anatómicas de la cara\cite{28,30}. Sin embargo, no se han obtenido resultados favorables debido a la dificultad para obtener estimaciones precisas en largas distancias por la diversa fisionomía de la cara, y a los problemas relacionados con los parámetros de la cámara, como el recorte de imágenes o la combinación de diferentes longitudes focales en el mismo conjunto de datos.
 
 El único método totalmente automatizado para estimar la SCD en fotografías faciales, hasta la fecha, se conoce como FacialSCDnet~\cite{14}. Este método utiliza una arquitectura basada en aprendizaje profundo para procesar fotografías faciales y estimar la SCD con precisión. Sin embargo, las soluciones basadas en aprendizaje profundo tienen sesgos sobre los datos y las muestras deben ser lo más representativas posible. 
 
@@ -73,21 +73,22 @@ En el ámbito de la biometría y el reconocimiento facial, conocer la SCD es fun
 
 
 % Aquí hablar sobre mejora de actual estado del arte por sesgos en los datos pero más detallado
-En el campo del aprendizaje profundo, es común encontrar sesgos \cite{28} en los datos que pueden afectar a la precisión y generalización de las soluciones. Estos sesgos pueden surgir de diversos factores, como la falta de diversidad o ruido excesivo en los conjuntos de datos utilizados para entrenar los modelos. 
-% Esta parte?
-"Reconociendo esta problemática, es crucial mejorar el estado del arte en la estimación de la distancia cámara-sujeto." Al hacerlo, se busca mitigar los sesgos inherentes a los datos y desarrollar modelos más robustos y equitativos. Esta mejora no solo implica una comprensión más profunda de la relación entre la distancia y la distorsión de perspectiva en fotografías faciales, sino también la implementación de técnicas avanzadas de aprendizaje automático que puedan adaptarse a una variedad más amplia de situaciones y contextos. Este enfoque busca promover la igualdad y la precisión en las aplicaciones de reconocimiento facial y biometría, garantizando una representación justa y precisa de las identidades humanas.
+En el campo del aprendizaje profundo, es común encontrar sesgos \cite{39} en los datos que pueden afectar a la precisión y generalización de las soluciones. Dichos sesgos pueden surgir de diversos factores, como la falta de diversidad o el ruido excesivo en el conjunto de datos utilizado para entrenar los modelos. Esto también ocurre en los métodos actuales para la estimación automática de la SCD. Es por ello que, una forma de mejorar el conjunto de datos podría ser incluir una variedad más amplia de grupos étnicos, edades, géneros, expresiones faciales, condiciones de iluminación y fondos, así como modelos tanto faciales como de cuerpo completo.
+Al hacerlo, se busca mitigar los sesgos inherentes a los datos y desarrollar modelos más robustos y equitativos. Esta mejora implica una mayor capacidad de generalización y adaptación a una amplia gama de situaciones y contextos.
+
+Por todo ello, la estimación de la SCD de forma precisa y generalizable tiene el potencial de impulsar avances significativos en diversos campos de investigación.
 
 
 \section{Objetivos}
 % Cambiar esto
 %El objetivo general de este TFG consiste en mejorar el método actual del estado del arte en la estimación automática de la distancia cámara-sujeto en fotografías faciales.
- El objetivo general de este TFG consiste en desarrollar un modelo de aprendizaje profundo adecuado para mejorar la estimación de la distancia cámara-sujeto en fotografías faciales.Para el desarrollo del proyecto, dividiremos el objetivo general en una serie de objetivos parciales:
+ El objetivo general de este TFG consiste en desarrollar un modelo de aprendizaje profundo adecuado para mejorar la estimación de la distancia cámara-sujeto en fotografías faciales. Para el desarrollo del proyecto, dividiremos el objetivo general en una serie de objetivos parciales:
 \begin{enumerate}
     \item Realizar un análisis exhaustivo del estado del arte para la estimación de la SCD en fotografías faciales.
-    \item Generar un conjunto de datos sintético de mayor calidad (modelos 3D más completos de cuerpo entero y poses distintas, con fondos e iluminación más realistas)
+    \item Generar un conjunto de datos sintético de mayor calidad (utilizando modelos 3D más completos de cuerpo entero y poses distintas, con fondos e iluminación más realistas).
     \item Realizar un estudio experimental que permita validar los enfoques propuestos y extraer conclusiones sobre su aplicabilidad al problema.
-    \item Desarrollar y entrenar con nuevas arquitecturas que mejoren los resultados
-    \item Usar tecnologías más recientes que mejoren los tiempos de aprendizaje y los resultados obtenidos
+    \item Desarrollar y entrenar con nuevas arquitecturas que mejoren los resultados.
+    \item Usar tecnologías más recientes que mejoren los tiempos de aprendizaje y los resultados obtenidos.
 \end{enumerate}
 
 \section{Planificación del proyecto}

@@ -2,9 +2,9 @@
 \thispagestyle{empty}
 
 \section{Aprendizaje automático}
-El aprendizaje automático (Machine Learning, ML) \cite{16,17} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
+El aprendizaje automático (Machine Learning, ML) \cite{20,21} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
 
-Existen 3 tipos de aprendizaje dentro del ML \cite{18,19}:
+Existen 3 tipos de aprendizaje dentro del ML \cite{22,23}:
 
 El \textbf{aprendizaje supervisado} consiste en entrenar con datos de los que se saben sus etiquetas (una etiqueta nos indica qué es cada dato). Por ejemplo, los datos de entrada podrían ser imágenes de animales y sus etiquetas podrían ser "perro" o "gato". A partir de los datos y sus etiquetas, el agente aprende una función que dado un nuevo dato, predice su etiqueta. Es el tipo de aprendizaje más utilizado, los datos vienen ya 'preparados' para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
 
@@ -29,7 +29,7 @@ Las redes neuronales (ANNs) \cite{24, 25, 27} son redes computacionales que inte
 	\label{fig3}
 \end{figure}
 
-Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (ver Figura \ref{fig4}:
+Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (ver Figura \ref{fig4}):
 
 \begin{itemize}
 	\item Un conjunto de conexiones con las señales de entrada. Cada conexión tiene su propio peso/fuerza.
@@ -59,42 +59,77 @@ El objetivo del entrenamiento es minimizar el error de predicción de la salida 
 El sobreentrenamiento es un factor importante a evitar. Sobreentrenar el modelo de aprendizaje, significa, ajustarlo demasiado al conjunto de datos de entrenamiento, de manera que, al recibir nuevos datos no utilizados para entrenar, se estime un mal resultado debido a la poca capacidad de generalización ante nuevos datos.
 
 
-
 \subsection{Redes neuronales convolucionales}
-Las Redes Neuronales Convolucionales (Convolutional Neural Network, CNN) \cite{35, 36, 37} son un tipo de red neuronal profunda que trabaja con patrones de cuadrícula, como pueden ser imágenes.
+Las Redes Neuronales Convolucionales (Convolutional Neural Network, CNN) \cite{35, 36, 37} son un tipo de red neuronal profunda que trabaja con patrones de cuadrícula, como pueden ser imágenes (ver Figura \ref{fig5}).
 
+Este tipo de redes neuronales incluyen dos tipos de capas adicionales: capas convolucionales y capas de pooling. Estas capas están en la primera parte de la red y son las encargadas de extraer las características relevantes de la entrada. Esto nos permite automatizar el proceso de extracción de características, a la vez que mejorarlo tanto en tiempo como en rendimiento.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{imagenes/cap2/cnn.png}
+	\caption{Ejemplo de CNN \cite{41}.}
+	\label{fig5}
+\end{figure}
 
+A continuación, se describen los posibles tipos de capas presentes en una CNN \cite{39,40}:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-A. Dhillon and G. Verma. Convolutional neural network: a review of models, methodologies and applications to object detection. Progress
-in Artificial Intelligence, 9(2):85–112, 2019
-
-R. Yamashita, M. Nishio, R. K. G. Do y K. Togashi, ((Convolutional neural networks: an overview and application in radiology,)) Insights
-into Imaging, vol. 9, n.o 4, págs. 611-629, 2018.
 
 \subsubsection*{Capa de convolución}
 
-\subsubsection*{Capa de pooling}
+La capa convolucional es un componente fundamental de las CNN que se utiliza para extraer características de una imagen o conjunto de datos. Funciona aplicando operaciones de convolución a través de un conjunto de filtros o kernels sobre la entrada para detectar patrones visuales o características específicas en los datos (ver Figura \ref{fig6}).
 
-\subsubsection*{Capa de normalización}
+%En términos simples, la operación de convolución implica deslizar un pequeño filtro (kernel) sobre la entrada, multiplicando los valores del filtro por los valores correspondientes en la región de la entrada en la que se encuentra. Estos productos se suman para producir un único valor en la salida, que se conoce como mapa de características o feature map.
+%Al aplicar múltiples filtros en paralelo, la capa convolucional puede detectar diferentes características en paralelo, como bordes, texturas o formas en una imagen. Además, al compartir los pesos de los filtros a lo largo de la entrada, se logra la propiedad de "weight sharing", lo que reduce la cantidad de parámetros entrenables y hace que la red sea más eficiente.
+%En resumen, la capa convolucional es responsable de extraer características significativas de los datos de entrada mediante operaciones de convolución, lo que permite a la red aprender patrones visuales complejos y realizar tareas como clasificación, detección de objetos o segmentación de imágenes de manera efectiva.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{imagenes/cap2/convolution.png}
+	\caption{Ejemplo de convolución en CNN \cite{40}.}
+	\label{fig6}
+\end{figure}
+
+Estos kernels pueden tener distintos tamaños y sus valores se aprenden a lo largo del entrenamiento de la red. Sin embargo, hay que tener en cuenta que la operación de convolución es lineal y no permite aprender patrones complejos. En este contexto es donde entra la capa de activación.
 
 \subsubsection*{Capa de activación}
 
-\subsubsection*{Capa densamente conectada}
+La capa de activación en una CNN sigue a la capa convolucional y se encarga de introducir no linealidades en el modelo mediante una función de activación.
+Esta función aumenta la capacidad de la red para aprender relaciones no lineales en los datos, lo que es fundamental para capturar patrones más complejos. Algunas de las funciones de activación comunes utilizadas son la función ReLU (Rectified Linear Unit), la función sigmoide y la función tangente hiperbólica (ver Figura \ref{fig7}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{imagenes/cap2/activation.png}
+	\caption{Funciones de activación comúnmente aplicadas en CNN \cite{40}.}
+	\label{fig7}
+\end{figure}
+
+\subsubsection*{Capa de pooling}
+La capa de pooling también es específica de las CNN y se encarga de reducir la dimensionalidad de las características conservando la información más relevante.
+
+Esta capa resume la información en regiones locales mediante una operación de downsampling en las características de entrada. Al reducir la dimensionalidad de las características, la capa de pooling disminuye el número de parámetros aprendibles en la red, lo que puede ayudar a prevenir el sobreajuste y mejorar la eficiencia computacional del modelo. Además, la capa de pooling también ayuda a introducir invariancia a pequeñas traslaciones y distorsiones en los datos de entrada, lo que permite a la red reconocer patrones incluso si están ligeramente desplazados en la imagen. 
+
+Los dos tipos más comunes de pooling son el max pooling, que selecciona el valor máximo de una región local en las características de entrada, y el average pooling, que calcula el promedio de los valores en una región local (ver Figura \ref{fig8}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{imagenes/cap2/pooling.png}
+	\caption{Tipos de pooling comúnmente utilizados en CNN \cite{40}.}
+	\label{fig8}
+\end{figure}
+
+Los hiperparámetros de la capa de pooling incluyen el tamaño del filtro, el stride y el tipo de padding. Estos hiperparámetros afectan la forma en que se realiza el downsampling en las características.
+
+% \subsubsection*{Capa de normalización}
+
+\subsubsection*{Capa totalmente conectada}
+
+La capa totalmente conectada sigue a las capas de convolución y pooling. En esta capa, las características extraídas por las capas anteriores se transforman en un formato unidimensional (vector) antes de conectarse a una o más capas totalmente conectadas, también conocidas como capas densas.
+
+Esta capa, al igual que en las redes neuronales clásicas, tiene la responsabilidad de combinar y procesar las características extraídas para producir la salida final de la red.
+
+Cada neurona en una capa totalmente conectada está conectada a todas las neuronas de la capa anterior a través de pesos aprendibles. Estos pesos determinan la contribución de cada neurona de entrada a la neurona de salida correspondiente en la capa totalmente conectada. Durante el entrenamiento, estos pesos se ajustan mediante algoritmos de optimización como backpropagation y descenso de gradiente para minimizar la diferencia entre las salidas predichas y las etiquetas reales.
+
+Es importante destacar que la capa totalmente conectada suele estar seguida por una función de activación no lineal, como ReLU, para introducir no linealidades en el modelo y permitir la representación de patrones complejos en los datos. Además, la última capa de activación de la CNN, generalmente se selecciona según la naturaleza de la tarea que se está abordando.
 
 \subsection{Transferencia de aprendizaje}
 
