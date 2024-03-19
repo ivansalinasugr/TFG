@@ -6,7 +6,7 @@ El aprendizaje automático (Machine Learning, ML) \cite{20,21} es una rama de la
 
 Existen 3 tipos de aprendizaje dentro del ML \cite{22,23}:
 
-El \textbf{aprendizaje supervisado} consiste en entrenar con datos de los que se saben sus etiquetas (una etiqueta nos indica qué es cada dato). Por ejemplo, los datos de entrada podrían ser imágenes de animales y sus etiquetas podrían ser "perro" o "gato". A partir de los datos y sus etiquetas, el agente aprende una función que dado un nuevo dato, predice su etiqueta. Es el tipo de aprendizaje más utilizado, los datos vienen ya 'preparados' para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
+El \textbf{aprendizaje supervisado} consiste en entrenar con datos de los que se saben sus etiquetas (una etiqueta nos indica qué es cada dato). Por ejemplo, los datos de entrada podrían ser imágenes de animales y sus etiquetas podrían ser 'perro' o 'gato'. A partir de los datos y sus etiquetas, el modelo aprende una función que dado un nuevo dato, predice su etiqueta. Es el tipo de aprendizaje más utilizado, los datos vienen ya 'preparados' para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
 
 En el \textbf{aprendizaje no supervisado} el agente aprende los patrones de los datos de entrada sin ninguna realimentación, es decir, los datos no están etiquetados. La herramienta más usada en el aprendizaje no supervisado es el agrupamiento, que consiste en detectar potenciales grupos en los datos de entrada. Este enfoque requiere un mayor número de datos.
 
@@ -134,10 +134,59 @@ Es importante destacar que la capa totalmente conectada suele estar seguida por 
 \subsection{Transferencia de aprendizaje}
 
 \section{Parámetros de la cámara y perspectiva}
-	
-\subsection*{Distancia cámara sujeto}
 
 \subsection*{Longitud focal}
+La longitud focal \cite{44} mide la distancia, en milímetros, entre el 'punto nodal' (punto donde la luz converge en una lente) y el sensor de la cámara (ver Figura \ref{fig10}). 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.25]{imagenes/cap2/focal.png}
+	\caption{Relación entre punto nodal y longitud focal \cite{44}}
+	\label{fig10}
+\end{figure}
+
+La longitud focal es importante porque se relaciona con el campo de visión de una lente, es decir, cuánta escena capturarás. También explica qué tan grande o pequeño aparecerá un sujeto en la fotografía.
+
+Valores más altos de longitud focal (como 500 mm) se ven más 'cerca', mientras que valores más bajos (como 20 mm) están más 'lejos'.
+
+\subsection*{Sensor de la cámara}
+El sensor de la cámara \cite{45,47} es el componente que captura la luz y la convierte en una imagen digital. El tamaño del sensor afecta a la calidad de la imagen y a la cantidad de luz que puede capturar. El tamaño estándar es de 36mm x 24mm, también conocido como Full frame o 35mm.
+
+Otra forma equivalente de referirnos al tamaño del sensor es mediante el factor de recorte, que se define como la relación existente entre el tamaño de un sensor de 35mm y el sensor de nuestra cámara (ver Figura \ref{fig11}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.1]{imagenes/cap2/tam_sensor_factor.jpeg}
+	\caption{Tamaños del sensor expresados según el factor de recorte}
+	\label{fig11}
+\end{figure}
+
+Uno de los aspectos más importantes de utilizar un sensor con factor de recorte distinto a 1, es que la longitud focal se ve afectada, de forma que hablamos de longitud focal equivalente.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.13]{imagenes/cap2/focal-equivalente.png}
+	\caption{Ejemplo de longitud focal equivalente según el tamaño del sensor \cite{46}.}
+	\label{fig12}
+\end{figure}
+
+
+\subsection*{Distancia cámara-sujeto}
+%La distancia cámara-sujeto se refiere a la distancia física entre la cámara y el sujeto que está siendo fotografiado (ver Figura \ref{fig9}). Modificar esta distancia produce cambios en la apariencia óptica del rostro en la imagen capturada \cite{43}. Estos cambios pueden influir en la percepción de la identidad facial y en la precisión a la hora de identificar rostros. A este fenómeno se le conoce como distorsión de perspectiva.
+
+La distancia cámara-sujeto se define como la separación física entre la cámara y el sujeto que está siendo fotografiado (ver Figura \ref{fig9}). Alterar esta distancia provoca variaciones en la apariencia visual del rostro en la fotografía obtenida \cite{43}. Este fenómeno se conoce como distorsión de perspectiva.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.125]{imagenes/cap2/SCD_final.png}
+	\caption{Distancia desde la cámara al sujeto.}
+	\label{fig9}
+\end{figure}
+
+En este TFG se utilizarán los ojos del sujeto como punto de referencia para medir la SCD, esto se debe a su importancia y su posición central en el rostro.
+
 	
 \subsection*{Distorsión de perspectiva}
 
