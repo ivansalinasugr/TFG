@@ -9,9 +9,11 @@ Procesamiento de modelos/datasets/*
 Procesamiento de modelos/referencia H3DS-net/*
 Procesamiento de modelos/models/*
 Procesamiento de modelos/images/*
+Procesamiento de modelos/images2/*
 Procesamiento de modelos/models_scaled.zip
 Procesamiento de modelos/HeadSpace/*
 Procesamiento de modelos/matrices_transformacion.csv
+Procesamiento de modelos/labels.csv
 Procesamiento de modelos/matrices_transformacion HeadSpace.csv
 Procesamiento de modelos/modelos_HeadSpace.csv
 
@@ -45,3 +47,16 @@ FSCDnet/SCDnet/codigos/mlruns
 
 FSCDnet_Keras/input*
 
+Procesamiento de modelos/subir.sh
+FSCDnet/MLOps 2 - Experiment Handling con MLFlow.pdf
+FSCDnet/MLOps 3 - Hyperparameter Tuning con Optuna.pdf
+FSCDnet/MLOps 3 - Hyperparameter Tuning con Optuna.pdf
+FSCDnet/MLOps 2 - Experiment Handling con MLFlow.pdf
+Procesamiento de modelos/labels.csv
+Procesamiento de modelos/labels.csv
+Procesamiento de modelos/labels.csv
+Procesamiento de modelos/labels.csv
+Procesamiento de modelos/labels.csv
+Procesamiento de modelos/FINAL_Synthetic_generator copia.blend
+Procesamiento de modelos/FINAL_Synthetic_generator copia.blend1
+Procesamiento de modelos/labels.csv
