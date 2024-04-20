@@ -3,62 +3,59 @@
 
 \section{Definición del problema}
 
-En la era digital actual, las imágenes faciales han adquirido una relevancia significativa (véase Figura \ref{fig1.1}), dado su amplio uso en aplicaciones multimedia, plataformas de redes sociales, sistemas de vigilancia/seguridad, así como en investigaciones criminales y forenses. % Citar aplicaciones
+En la era digital actual, las imágenes faciales han adquirido una relevancia significativa (véase Figura \ref{fig1} \footnote{Las búsquedas se pueden consultar en el apéndice}), dado su amplio uso  en aplicaciones multimedia, redes sociales, sistemas de vigilancia y seguridad para la identificación de personas o control de accesos en edificios, así como en investigaciones criminales y forenses para la identificación de sospechosos o la reconstrucción de rostros.
 Esta expansión se debe en gran medida al continuo desarrollo tecnológico, que ha mejorado tanto la calidad como la ubicuidad de las fotografías faciales, permitiendo su presencia en una variedad cada vez mayor de contextos y aplicaciones.
-
-% \footnote{Las búsquedas se pueden consultar en el apéndice}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.7]{imagenes/cap1/tabla1_facial_images_grande2.png}
-	\caption{Número de publicaciones, en Scopus, relacionadas con imágenes faciales en los últimos 45 años.}
-	\label{fig1.1}
+	\includegraphics[scale=0.6]{imagenes/cap1/tabla1_facial_images_grande2.png}
+	\caption[Número de publicaciones de imágenes faciales.]{Número de publicaciones, en Scopus, relacionadas con imágenes faciales en los últimos 45 años.}
+	\label{fig1}
 \end{figure}
 
 En este contexto, es importante resaltar el papel que tienen las imágenes faciales en campos como la biometría para la verificación de identidad, así como en la seguridad nacional, donde se pueden utilizar para la identificación facial. 
 Para garantizar el correcto desempeño de estas aplicaciones, se debe tener en cuenta la calidad de las imágenes y todos los factores que afectan a la escena fotográfica.
-Por ello, existen numerosas herramientas y técnicas dirigidas a la extracción de metadatos, la detección facial o la estimación de la pose \cite{56}, todas ellas fundamentales para asegurar la fiabilidad y precisión de los sistemas de identificación facial. % no me convence esta frase
+Por ello, existen numerosas herramientas y técnicas dirigidas a la extracción de metadatos, la detección facial o la estimación de la pose \cite{56}, todas ellas fundamentales para asegurar la fiabilidad y precisión de los sistemas de identificación facial.
 
 En el ámbito forense, una de las técnicas más empleadas en la identificación facial es la comparación facial forense (CFF) \cite{3}. Esta técnica, llevada a cabo por expertos manualmente o con la ayuda de sistemas automáticos, consiste en identificar similitudes y diferencias entre dos o más imágenes con el objetivo de determinar si representan a la misma persona. 
-Para que este análisis sea confiable y concluyente, las imágenes faciales deben estar en unas condiciones adecuadas. Aspectos como la calidad, la resolución, el enfoque o la iluminación deben cumplir unos requisitos mínimos. Además, es importante que las características de la escena, como el ángulo de la cámara, la posición de la cabeza y la expresión facial, no varíen significativamente, con el fin de asegurar la similitud entre las imágenes y permitir una comparación precisa entre pares \cite{1,2}. % Analizar los factores que influyen?
+Para que este análisis sea confiable y concluyente, las imágenes faciales deben estar en unas condiciones adecuadas. Aspectos como la calidad, la resolución, el enfoque o la iluminación deben cumplir unos requisitos mínimos. Además, es importante que las características de la escena, como el ángulo de la cámara, la posición de la cabeza y la expresión facial, no varíen significativamente, con el fin de asegurar la similitud entre las imágenes y permitir una comparación precisa entre pares \cite{1,2}.
 
-%Actualmente, existen cuatro enfoques a la hora de aplicar la CFF: análisis morfológico, superposición, foto-antropometría y comparación holística~\cite{3}. Todos estos enfoques utilizan pares de imágenes para el análisis
-
-Uno de los factores más importantes a tener en cuenta en las fotografías faciales es la distorsión de perspectiva, la cual puede provocar deformaciones en los rasgos faciales, como en las orejas, la nariz o la forma general del rostro, especialmente cuando la cámara está muy cerca del sujeto al momento de tomar la fotografía~\cite{12} (ver Figura\ref{fig1.1.1}). 
-Esta alteración en la perspectiva repercute negativamente tanto en los sistemas de reconocimiento facial como en la CFF, complicando el análisis visual al alterar como se perciben ciertos rasgos. % Darle una vuelta a esta frase
+Uno de los factores más importantes a tener en cuenta en las fotografías faciales es la distorsión de perspectiva, la cual puede provocar deformaciones en los rasgos faciales, como en las orejas, la nariz o la forma general del rostro, especialmente cuando la cámara está muy cerca del sujeto al momento de tomar la fotografía~\cite{12} (ver Figura \ref{fig2}). 
+Esta alteración en la perspectiva repercute negativamente tanto en los sistemas de reconocimiento facial como en la CFF, complicando el análisis visual al alterar como se perciben ciertos rasgos.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.25]{imagenes/cap1/scd_distorsion3.png}
-	\caption{Efectos de la distorsión de perspectiva en fotografías faciales realizadas a diferentes distancias: 0.3 m, 0.6 m y 1.5 m respectivamente.}
-	\label{fig1.1.1}
+	\caption[Efectos de la distorsión de perspectiva en fotografías faciales.]{Efectos de la distorsión de perspectiva en fotografías faciales realizadas a diferentes distancias: 0.3 m, 0.6 m y 1.5 m respectivamente.}
+	\label{fig2}
 \end{figure}
 
 La distorsión de perspectiva está estrechamente relacionada con la distancia cámara-sujeto (\textit{subject-to-camera distance}, SCD en adelante). Esta relación es de decremento logarítmico, lo que significa que a distancias cortas se produce una mayor distorsión, la cual va disminuyendo a medida que la distancia entre la cámara y el sujeto aumenta~\cite{55}. Conocer la SCD en fotografías faciales permite cuantificar la cantidad de distorsión presente en una imagen, así como las diferencias en la distorsión entre dos pares de imágenes. Esta información puede ser determinante a la hora de evaluar la identidad de un individuo al aplicar la técnica de CFF. Además, conocer la SCD facilita el desarrollo de técnicas que permitan corregir con precisión dicha distorsión \cite{16}.
 
-%También se podría incluir un esquema visual en donde se presente lo que es la SCD (e, incluso, su relación con la distancia focal)
-
 La SCD, a diferencia de otros parámetros de la cámara como la longitud focal o el tamaño del sensor, no puede obtenerse directamente desde los metadatos de la fotografía~\cite{8}. Por tanto, se necesita un método preciso para su estimación. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{imagenes/cap1/perspective.png}
+	\caption[Relación entre parámetros de la cámara.]{Relación entre longitud focal, distancia cámara-sujeto y la profundidad de campo.}
+	\label{fig2.1}
+\end{figure}
 
 En los últimos años se han utilizado varios métodos que combinan técnicas manuales y automatizadas basadas en puntos de referencia o en características anatómicas de la cara\cite{28,30}. Sin embargo, no se han obtenido resultados favorables debido a la dificultad para obtener estimaciones precisas en largas distancias por la diversa fisionomía de la cara, y a los problemas relacionados con los parámetros de la cámara, como el recorte de imágenes o la combinación de diferentes longitudes focales en el mismo conjunto de datos.
 
 Hasta la fecha, uno de los métodos completamente automatizados para estimar la SCD en fotografías faciales es conocido como FacialSCDnet~\cite{14}. Este método emplea una arquitectura basada en aprendizaje profundo para procesar las imágenes faciales y calcular su SCD correspondiente.
 Sin embargo, FacialSCDnet presenta ciertas limitaciones. En primer lugar, el conjunto de datos utilizado es limitado, debido al número reducido de individuos y al hecho de que solo incluye adultos. Además, el conjunto de datos utilizado solo incluye modelos faciales. Estos factores aumentan el riesgo de sesgo en el modelo, lo que puede afectar a su capacidad para realizar estimaciones precisas en poblaciones más diversas.
 
-%hablar de las desventajas de FacialSCDnet
-% más diversidad: en género, edad y etnia
-
 Considerando todos estos aspectos, el presente Trabajo de Fin de Grado (TFG) pretende mejorar el método actual del estado del arte en la estimación automática de la distancia cámara-sujeto en fotografías faciales. Para ello, partimos de FacialSCDnet como una prueba de concepto sólida, reconociendo sus ventajas pero también identificando sus limitaciones inherentes. Nos centraremos en incorporar mejoras significativas que permitan solventar estas limitaciones con el objetivo de elevar el rendimiento y la precisión del sistema.
 
 \section{Motivación}
 
 En el campo del aprendizaje profundo, es común encontrar sesgos en los datos que pueden afectar la precisión y la capacidad de generalización de las soluciones. Estos sesgos pueden surgir debido a varios factores, como la falta de diversidad o el ruido excesivo en el conjunto de datos utilizado para entrenar los modelos. Este fenómeno también se observa en el método FacialSCDnet.
-Por lo tanto, para mejorar la calidad del conjunto de datos, sería beneficioso incorporar una mayor diversidad de sujetos en términos de edad, sexo biológico, ancestría, expresiones faciales, condiciones de iluminación y fondos, así como la inclusión de modelos tanto faciales como de cuerpo completo. 
+Por lo tanto, para mejorar la calidad del conjunto de datos, sería beneficioso incorporar una mayor diversidad de sujetos en términos de edad, sexo biológico, ascendencia, expresiones faciales, condiciones de iluminación y fondos, así como la inclusión de modelos tanto faciales como de cuerpo completo. 
 
 Una estrategia para abordar este desafío consiste en integrar múltiples bases de datos con el objetivo de construir un conjunto de datos más completo y diverso. Esta mejora contribuiría a una mejor capacidad de generalización y adaptación del modelo, al mitigar los sesgos inherentes a los datos.
 
-
-Por otro lado, obtener conjuntos de datos reales de alta calidad no siempre es una tarea sencilla. La recopilación y etiquetado de datos pueden resultar costosos y requerir mucho tiempo. En muchos casos, los conjuntos de datos reales disponibles pueden ser limitados en términos de tamaño y diversidad, como ocurre con FacialSCDnet.
+Por otro lado, obtener conjuntos de datos reales de alta calidad no siempre es una tarea sencilla. La recopilación y etiquetado de datos pueden resultar costosos y requerir bastante tiempo. En muchos casos, los conjuntos de datos reales disponibles pueden ser limitados en términos de tamaño y diversidad, como ocurre con FacialSCDnet.
 Una solución ampliamente utilizada consiste en emplear conjuntos de datos sintéticos en lugar de conjuntos de datos reales \cite{57,58,59}.
 El uso de conjuntos de datos sintéticos puede ayudar a reducir costos y tiempo de recopilación de datos, manteniendo o mejorando el rendimiento de los modelos.
 
@@ -79,8 +76,8 @@ Con el propósito de aumentar la calidad de los conjuntos de datos empleados en 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.35]{imagenes/cap1/resumen.png}
-	\caption{Diagrama del proceso de estimación automática de la SCD en este proyecto.}
-	\label{fig5}
+	\caption[Diagrama del proyecto.]{Diagrama del proceso de estimación automática de la SCD en este proyecto.}
+	\label{fig3}
 \end{figure}
 
 En este contexto, es relevante citar el trabajo de referencia \cite{14}, el cual proporciona una base sólida para el desarrollo del TFG.
@@ -91,11 +88,9 @@ Para abordar el desarrollo de este proyecto, es esencial considerar que el TFG t
 
 En cuanto a la metodología de desarrollo, se ha optado por seguir un enfoque basado en el ciclo de vida en cascada~\cite{38}, aunque con una variante que permite retroalimentación. Aunque el proyecto presenta requisitos y objetivos claros, se reconoce la posibilidad de ajustes menores durante su desarrollo, especialmente a medida que se obtenga más información sobre el problema y los métodos. Esta flexibilidad se considera crucial para adaptarse a posibles cambios en el contexto o los requisitos del proyecto.
 
-Las fases del ciclo de vida del proyecto son las siguientes:
-
 A continuación se describen las fases del ciclo de vida del proyecto:
 \begin{itemize}
-	\item Análisis de Requisitos: Consiste en las reuniones iniciales con los clientes, en este caso los directores del TFG. Se realiza un análisis del problema y un estudio detallado de la bibliografía existente
+	\item Análisis de Requisitos: Consiste en las reuniones iniciales con los clientes, en este caso los directores del TFG. Se realiza un análisis del problema y un estudio detallado de la bibliografía existente.
 	\item Diseño: Consiste en la exploración y selección de los métodos apropiados así como de los conjuntos de datos basados en el análisis previo, tanto para la resolución como para la validación de la solución propuesta. Además, se llevarán a cabo pruebas preliminares y se elaborará el diseño del software experimental.
 	\item Implementación: Consiste en la adaptación del código de los modelos investigados, la implementación de nuevas funcionalidades y la generación de un conjunto de datos sintético junto con su posterior preprocesado.
 	\item Pruebas: Consiste en la realización de diversos experimentos para validar el funcionamiento del software desarrollado, utilizando los modelos y datos previamente definidos.
@@ -132,13 +127,35 @@ La planificación inicial se detalla en la tabla \ref{planif-ini}, sin embargo, 
 	\multirow{-2}{*}{\cellcolor[HTML]{FFC702}Tarea} & \multirow{-2}{*}{\cellcolor[HTML]{FFC702}\begin{tabular}[c]{@{}c@{}}Semanas\\ - Horas\end{tabular}} & 5 & 12 & 19 & 26 & 4 & 11 & 18 & 25 & 1 & 8 & 15 & 22 & 29 & 6 & 13 & 20 & 27 & 3 & 10 & 17 \\ \hline
 	Análisis de Requisitos & 3 - 60 & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \cline{1-1}
 	Diseño & 4 - 70 &  &  &  & \cellcolor[HTML]{9B9B9B}{\color[HTML]{C0C0C0} } & \cellcolor[HTML]{9B9B9B}{\color[HTML]{C0C0C0} } & \cellcolor[HTML]{9B9B9B}{\color[HTML]{C0C0C0} } & \cellcolor[HTML]{9B9B9B} &  &  &  &  &  &  &  &  &  &  &  &  &  \\ \cline{1-1}
-	Implementación & 6 - 100 &  &  &  &  &  &  & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} &  &  &  &  &  &  &  \\ \cline{1-1}
-	Pruebas & 6 - 100 &  &  &  &  &  &  &  &  &  &  &  & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} &  \\ \hline
+	Implementación & 6 - 100 &  &  &  &  &  &  & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} &  &  &  &  &  \\ \cline{1-1}
+	Pruebas & 6 - 100 &  &  &  &  &  &  &  &  &  & \cellcolor[HTML]{FFFFFF}{\color[HTML]{FFFFFF} } & \cellcolor[HTML]{FFFFFF}{\color[HTML]{FFFFFF} } & \cellcolor[HTML]{9B9B9B}{\color[HTML]{9B9B9B} } & \cellcolor[HTML]{9B9B9B}{\color[HTML]{9B9B9B} } & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{FFFFFF} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} & \cellcolor[HTML]{9B9B9B} &  \\ \hline
 	\end{tabular}%
 	}
-	\caption{}
+	\caption{Planificación final del proyecto}
 	\label{planif-fin}
-	\end{table}
-
+\end{table}
 
 % Aquí las dimensiones económicas
+
+Para estimar los costos, comenzamos considerando un salario de 30 euros por hora para un responsable I+D en una empresa tecnológica o para un investigador senior. Además de esto, se contemplan los gastos asociados a los materiales, como el costo del portátil utilizado en el desarrollo del TFG y el uso de un servidor GPU de alto rendimiento. Estos costes se desglosan detalladamente en la Tabla \ref{tab:coste-proyecto}. 
+
+En relación al servidor GPU, su valoración se estima en x euros.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{ll}
+	\hline
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Fecha de inicio} & \multicolumn{1}{l|}{05/02/2024} \\ \hline
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Fecha de fin} & \multicolumn{1}{l|}{} \\ \hline
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Duración} & \multicolumn{1}{l|}{} \\ \hline
+	 &  \\ \hline
+	\rowcolor[HTML]{FFCB2F} 
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Item} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFCB2F}Costo} \\ \hline
+	\multicolumn{1}{|l|}{Salario} & \multicolumn{1}{l|}{} \\ \hline
+	\multicolumn{1}{|l|}{Portátil de Gama Alta} & \multicolumn{1}{l|}{2.600 euros} \\ \hline
+	\multicolumn{1}{|l|}{Servidor GPU} & \multicolumn{1}{l|}{} \\ \hline
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Total} & \multicolumn{1}{l|}{} \\ \hline
+	\end{tabular}
+	\caption{Estimación del coste del proyecto}
+	\label{tab:coste-proyecto}
+\end{table}

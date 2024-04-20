@@ -15,7 +15,7 @@ Por otro lado, en el \textbf{aprendizaje por refuerzo}, el modelo aprende a trav
 \section{Aprendizaje profundo}
 
 \subsection{Redes neuronales artificiales}
-Las redes neuronales artificiales (\textit{Artificial Neural Networks}, ANN) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de animales y humano. Las ANN poseen unidades de procesamiento de información llamadas neuronas, las cuales están conectadas entre sí. La estructura básica de una ANN se compone de (ver Figura \ref{fig3}):
+Las redes neuronales artificiales (\textit{Artificial Neural Networks}, ANN) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de animales y humano. Las ANN poseen unidades de procesamiento de información llamadas neuronas, las cuales están conectadas entre sí. La estructura básica de una ANN se compone de (ver Figura \ref{fig4}):
 \begin{itemize}
 	\item Una capa de entrada, que tendrá tantos \textit{inputs} como características o variables tenga el problema
 	\item Una o varias capas ocultas, compuestas por neuronas. El número de capas ocultas define la profundidad de la red neuronal.
@@ -25,11 +25,11 @@ Las redes neuronales artificiales (\textit{Artificial Neural Networks}, ANN) \ci
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{imagenes/cap2/neural-network.png}
-	\caption{Esquema de una red neuronal \cite{26}.}
-	\label{fig3}
+	\caption[Esquema de red neuronal.]{Esquema de una red neuronal \cite{26}.}
+	\label{fig4}
 \end{figure}
 
-Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (ver Figura \ref{fig4}):
+Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (ver Figura \ref{fig5}):
 
 \begin{itemize}
 	\item Un conjunto de conexiones con las señales de entrada. Cada conexión tiene su propio peso/fuerza.
@@ -40,8 +40,8 @@ Las neuronas son la unidad fundamental de cómputo, tienen varios valores de ent
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.25]{imagenes/cap2/neuron-model.png}
-	\caption{Modelo neuronal para una neurona $k$ \cite{25}.}
-	\label{fig4}
+	\caption[Modelo neuronal.]{Modelo neuronal para una neurona $k$ \cite{25}.}
+	\label{fig5}
 \end{figure}
 
 En términos matemáticos, podemos describir la salida de una neurona como:
@@ -60,15 +60,15 @@ El sobreentrenamiento es un factor importante a evitar. Sobreentrenar el modelo 
 
 
 \subsection{Redes neuronales convolucionales}
-Las redes neuronales convolucionales (\textit{Convolutional Neural Networks}, CNN) \cite{35, 36, 37} son un tipo de red neuronal profunda que trabaja con patrones de cuadrícula, como pueden ser imágenes (ver Figura \ref{fig5}).
+Las redes neuronales convolucionales (\textit{Convolutional Neural Networks}, CNN) \cite{35, 36, 37} son un tipo de red neuronal profunda que trabaja con patrones de cuadrícula, como pueden ser imágenes (ver Figura \ref{fig6}).
 
 En estas redes neuronales, las capas convolucionales desempeñan un papel fundamental, y a menudo se complementan con capas de \textit{pooling}. Dichas capas se encuentran en la primera parte de la red y son las encargadas de extraer las características relevantes de la entrada. Esto posibilita la automatización del proceso de extracción de características, mejorando simultáneamente tanto el tiempo como el rendimiento.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.55]{imagenes/cap2/cnn.png}
-	\caption{Ejemplo de CNN \cite{41}.}
-	\label{fig5}
+	\includegraphics[scale=0.5]{imagenes/cap2/cnn.png}
+	\caption[Ejemplo de red neuronal convolucional.]{Ejemplo de red neuronal convolucional \cite{41}.}
+	\label{fig6}
 \end{figure}
 
 A continuación, se describen los posibles tipos de capas presentes en una CNN \cite{39,40}:
@@ -76,13 +76,13 @@ A continuación, se describen los posibles tipos de capas presentes en una CNN \
 
 \subsubsection*{Capa de convolución}
 
-La capa convolucional es un componente fundamental de las CNN, utilizada para la extracción de características de una imagen o un conjunto de imágenes. Esta capa aplica una operación lineal especializada conocida como convolución, que consiste en aplicar un filtro o \textit{kernel} a la imagen de entrada. El \textit{kernel} es una matriz que se desliza a lo largo de la imagen, multiplicando sus valores con los píxeles correspondientes y sumándolos para producir un único valor en la imagen de salida. Este proceso se repite en todas las posiciones de la imagen dando como resultado una nueva matriz denominada mapa de características (ver Figura \ref{fig6}).
+La capa convolucional es un componente fundamental de las CNN, utilizada para la extracción de características de una imagen o un conjunto de imágenes. Esta capa aplica una operación lineal especializada conocida como convolución, que consiste en aplicar un filtro o \textit{kernel} a la imagen de entrada. El \textit{kernel} es una matriz que se desliza a lo largo de la imagen, multiplicando sus valores con los píxeles correspondientes y sumándolos para producir un único valor en la imagen de salida. Este proceso se repite en todas las posiciones de la imagen dando como resultado una nueva matriz denominada mapa de características (ver Figura \ref{fig7}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.75]{imagenes/cap2/convolution.png}
-	\caption{Ejemplo de convolución en CNN \cite{40}.}
-	\label{fig6}
+	\caption[Ejemplo de operación de convolución.]{Ejemplo de operación de convolución en CNN \cite{40}.}
+	\label{fig7}
 \end{figure}
 
 Los pesos de los filtros se aprenden durante el proceso de entrenamiento de la red neuronal. Cada \textit{kernel} tiene sus propios pesos que se ajustan iterativamente durante el entrenamiento para minimizar la función de pérdida y mejorar el rendimiento del modelo.
@@ -102,13 +102,13 @@ Sin embargo, es importante tener en cuenta que la operación de convolución por
 \subsubsection*{Capa de activación}
 
 La capa de activación en una CNN sigue a la capa convolucional y se encarga de introducir no linealidades en el modelo mediante una función de activación.
-Esta función aumenta la capacidad de la red para aprender relaciones no lineales en los datos, lo que es fundamental para capturar patrones más complejos. Algunas de las funciones de activación comunes utilizadas son la función ReLU, la función sigmoide y la función tangente hiperbólica (ver Figura \ref{fig7}).
+Esta función aumenta la capacidad de la red para aprender relaciones no lineales en los datos, lo que es fundamental para capturar patrones más complejos. Algunas de las funciones de activación comunes utilizadas son la función ReLU, la función sigmoide y la función tangente hiperbólica (ver Figura \ref{fig8}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{imagenes/cap2/activation.png}
-	\caption{Funciones de activación comúnmente aplicadas en CNN \cite{40}.}
-	\label{fig7}
+	\caption[Funciones de activación comunes.]{Funciones de activación comúnmente aplicadas en CNN \cite{40}.}
+	\label{fig8}
 \end{figure}
 
 \subsubsection*{Capa de \textit{pooling}}
@@ -116,13 +116,13 @@ La capa de \textit{pooling} también es específica de las CNN y se encarga de r
 
 Esta capa resume la información en regiones locales mediante una operación de \textit{downsampling} en las características de entrada. Al reducir la dimensionalidad de las características, la capa de \textit{pooling} disminuye el número de parámetros aprendibles en la red, lo que puede ayudar a prevenir el sobreajuste y mejorar la eficiencia computacional del modelo. Además, esta capa también ayuda a introducir invariancia a pequeñas traslaciones y distorsiones en los datos de entrada, permititiendo a la red reconocer patrones incluso si están ligeramente desplazados en la imagen. 
 
-Los dos tipos más comunes de \textit{pooling} son el \textit{max pooling}, que selecciona el valor máximo de una región local en las características de entrada, y el \textit{average pooling}, que calcula el promedio de los valores en una región local (ver Figura \ref{fig8}).
+Los dos tipos más comunes de \textit{pooling} son el \textit{max pooling}, que selecciona el valor máximo de una región local en las características de entrada, y el \textit{average pooling}, que calcula el promedio de los valores en una región local (ver Figura \ref{fig9}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{imagenes/cap2/pooling.png}
-	\caption{Tipos de \textit{pooling} comúnmente utilizados en CNN \cite{40}.}
-	\label{fig8}
+	\caption[Tipos de \textit{pooling} comunes.]{Tipos de \textit{pooling} comúnmente utilizados en CNN \cite{40}.}
+	\label{fig9}
 \end{figure}
 
 Los hiperparámetros de la capa de \textit{pooling} incluyen el tamaño del filtro, el \textit{stride} y el tipo de \textit{padding}. Estos hiperparámetros afectan la forma en que se realiza el \textit{downsampling} en las características.
@@ -147,7 +147,7 @@ En este contexto, es común utilizar los pesos pre-entrenados en el conjunto de 
 
 
 \subsection{Regularización}
-Tanto en las redes neuronales clásicas como en las convolucionales, el sobreajuste a los datos de entrenamiento es una problema importante (ver Figura \ref{fig13}). Aunque la solución óptima sería adquirir más datos para el entrenamiento, esta opción no siempre está disponible. Por tanto, se recurre a técnicas de regularización para mitigar este problema. Entre las más destacadas se encuentran:
+Tanto en las redes neuronales clásicas como en las convolucionales, el sobreajuste a los datos de entrenamiento es una problema importante (ver Figura \ref{fig10}). Aunque la solución óptima sería adquirir más datos para el entrenamiento, esta opción no siempre está disponible. Por tanto, se recurre a técnicas de regularización para mitigar este problema. Entre las más destacadas se encuentran:
 
 \begin{itemize}
 	\item \textit{Dropout}: es una técnica de regularización donde se establecen aleatoriamente ciertas activaciones a 0 durante el entrenamiento, de modo que el modelo se vuelve menos sensible a pesos específicos en la red.
@@ -160,8 +160,8 @@ Tanto en las redes neuronales clásicas como en las convolucionales, el sobreaju
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{imagenes/cap2/sobreajuste.png}
-	\caption{Zona de infraajuste y sobreajuste durante el entrenamiento \cite{40}.}
-	\label{fig13}
+	\caption[Infraajuste y sobreajuste en entrenamiento.]{Zona de infraajuste y sobreajuste durante el entrenamiento \cite{40}.}
+	\label{fig10}
 \end{figure}
 
 A pesar de las técnicas anteriores, persiste la preocupación por el sobreajuste al conjunto de validación en lugar del conjunto de entrenamiento, principalmente debido a la filtración de información durante el ajuste fino de hiperparámetros y el proceso de selección del modelo. Por tanto, es importante evaluar el rendimiento del modelo final en un conjunto de prueba separado, preferiblemente no visto previamente. Esto es fundamental para validar la capacidad de generalización del modelo y garantizar su fiabilidad.
@@ -172,13 +172,13 @@ A pesar de las técnicas anteriores, persiste la preocupación por el sobreajust
 Dado que el conjunto de datos utilizado en este TFG son imágenes creadas sintéticamente, es importante conocer los parámetros de la cámara que influyen a la hora de sacar las fotografías.
 
 \subsection*{Longitud focal}
-La longitud focal \cite{44} mide la distancia, en milímetros, entre el 'punto nodal' (punto donde la luz converge en una lente) y el sensor de la cámara (ver Figura \ref{fig10}). 
+La longitud focal \cite{44} mide la distancia, en milímetros, entre el 'punto nodal' (punto donde la luz converge en una lente) y el sensor de la cámara (ver Figura \ref{fig11}). 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.25]{imagenes/cap2/focal.png}
-	\caption{Relación entre punto nodal y longitud focal \cite{44}}
-	\label{fig10}
+	\includegraphics[scale=0.2]{imagenes/cap2/focal.png}
+	\caption[Relación entre punto nodal y longitud focal.]{Relación entre punto nodal y longitud focal \cite{44}}
+	\label{fig11}
 \end{figure}
 
 La longitud focal es importante porque se relaciona con el campo de visión de una lente, es decir, cuánta escena se captura. También explica qué tan grande o pequeño aparecerá un sujeto en la fotografía.
@@ -188,13 +188,13 @@ Valores más altos de longitud focal (como 500 mm) se ven más 'cerca', mientras
 \subsection*{Sensor de la cámara}
 El sensor de la cámara \cite{45,47} es el componente que captura la luz y la convierte en una imagen digital. El tamaño del sensor afecta a la calidad de la imagen y a la cantidad de luz que puede capturar. El tamaño estándar es de 36mm x 24mm, también conocido como \textit{full frame} o 35mm.
 
-Otra forma equivalente de referirnos al tamaño del sensor es mediante el factor de recorte, que se define como la relación existente entre el tamaño de un sensor de 35mm y el sensor de nuestra cámara (ver Figura \ref{fig11}).
+Otra forma equivalente de referirnos al tamaño del sensor es mediante el factor de recorte, que se define como la relación existente entre el tamaño de un sensor de 35mm y el sensor de nuestra cámara (ver Figura \ref{fig12}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.08]{imagenes/cap2/tam_sensor_factor.jpeg}
-	\caption{Tamaños del sensor expresados según el factor de recorte \cite{48}}
-	\label{fig11}
+	\caption[Tipos de tamaños de sensor.]{Tamaños del sensor expresados según el factor de recorte \cite{48}}
+	\label{fig12}
 \end{figure}
 
 Uno de los aspectos más importantes del factor de recorte es su influencia en la longitud focal, lo que nos lleva a hablar de 'longitud focal equivalente'. Por ejemplo, al tener una focal de 300 mm en un sensor con factor de recorte 1.6, estaríamos obteniendo un efecto equivalente al de una focal de 480 mm (300 mm x 1.6) en un sensor \textit{full frame} (factor de recorte 1).
@@ -202,31 +202,31 @@ Uno de los aspectos más importantes del factor de recorte es su influencia en l
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.13]{imagenes/cap2/focal-equivalente.png}
-	\caption{Ejemplo de longitud focal equivalente según el tamaño del sensor \cite{46}.}
-	\label{fig12}
+	\caption[Ejemplo de longitud focal equivalente.]{Ejemplo de longitud focal equivalente según el tamaño del sensor \cite{46}.}
+	\label{fig13}
 \end{figure}
 
 
 \subsection*{Distancia cámara-sujeto}
 
-La distancia cámara-sujeto se define como la separación física entre la cámara y el sujeto que está siendo fotografiado (ver Figura \ref{fig9}). Modificar esta distancia provoca variaciones en la apariencia visual del rostro en la fotografía obtenida \cite{43}. Este fenómeno se conoce como distorsión de perspectiva.
+La distancia cámara-sujeto se define como la separación física entre la cámara y el sujeto que está siendo fotografiado (ver Figura \ref{fig14}). Modificar esta distancia provoca variaciones en la apariencia visual del rostro en la fotografía obtenida \cite{43}. Este fenómeno se conoce como distorsión de perspectiva.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.1]{imagenes/cap2/SCD_final.png}
-	\caption{Distancia desde la cámara al sujeto.}
-	\label{fig9}
+	\caption[Distancia desde la cámara al sujeto.]{Distancia desde la cámara al sujeto.}
+	\label{fig14}
 \end{figure}
 
 \subsection*{Distorsión de perspectiva}
 
-La distorsión de perspectiva \cite{8,51} es la transformación que sufre un objeto y su entorno debido a la proximidad del mismo respecto al objetivo (ver Figura \ref{fig14}). En el caso de las fotografías faciales, cuanto menor es la distancia cámara-sujeto, mayor es la distorsión de perspectiva que afecta a la persona fotografiada. Esto afecta a rasgos de la cara que pueden aparecer más grandes, como la nariz, o más pequeños, como las orejas, de lo que realmente son.
+La distorsión de perspectiva \cite{8,51} es la transformación que sufre un objeto y su entorno debido a la proximidad del mismo respecto al objetivo (ver Figura \ref{fig15}). En el caso de las fotografías faciales, cuanto menor es la distancia cámara-sujeto, mayor es la distorsión de perspectiva que afecta a la persona fotografiada. Esto afecta a rasgos de la cara que pueden aparecer más grandes, como la nariz, o más pequeños, como las orejas, de lo que realmente son.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{imagenes/cap2/distorsion.png}
-	\caption{Efecto de la distorsión conforme se acerca la cámara al objeto \cite{51}.}
-	\label{fig14}
+	\caption[Efectos de la distorsión según distancia.]{Efecto de la distorsión conforme se acerca la cámara al objeto \cite{51}.}
+	\label{fig15}
 \end{figure}
 
 Uno de los malentendidos comunes en fotografía es la creencia de que la longitud focal distorsiona los rasgos faciales, sin embargo, la longitud focal  no tiene nada que ver con la distorsión del rostro de un sujeto, siendo esta únicamente provocada por la distancia de la cámara al sujeto \cite{52}.

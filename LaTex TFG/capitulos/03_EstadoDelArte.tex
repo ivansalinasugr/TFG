@@ -1,15 +1,15 @@
 \chapter{Estado del Arte}
 \thispagestyle{empty}
 
-En el campo del aprendizaje automático, el tema de la estimación de la distancia en fotografías faciales ha ganado recientemente mucha atención. Se puede observar en la Figura \ref{fig5} la cantidad de publicaciones existentes en la base de datos Scopus \footnote{Las búsquedas se pueden consultar en el apéndice} que hacen referencia a la estimación de la SCD. Hay 441 publicaciones registradas desde 1992.
+En el campo del aprendizaje automático, el tema de la estimación de la distancia en fotografías faciales ha ganado recientemente mucha atención. Se puede observar en la Figura \ref{fig16} la cantidad de publicaciones existentes en la base de datos Scopus \footnote{Las búsquedas se pueden consultar en el apéndice} que hacen referencia a la estimación de la SCD. Hay 441 publicaciones registradas desde 1992.
 
 El número de publicaciones relacionadas con este tema, va aumentando a lo largo del tiempo, llegando a obtener un mayor número de publicaciones en 2020. Pese al aumento de publicaciones en este ámbito, es a partir del 2015 cuando se empiezan a aplicar las técnicas de aprendizaje profundo. Este aumento está relacionado con los avances tecnológicos que permiten aplicar nuevas técnicas y conocimientos. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{imagenes/cap3/grafica_scopus5.png}
-	\caption{Número de publicaciones, en Scopus, relacionadas con la estimación de la distancia en fotografías faciales en función del año de publicación}
-	\label{fig5}
+	\caption[Número de publicaciones sobre la estimación de la SCD.]{Número de publicaciones, en Scopus, relacionadas con la estimación de la distancia en fotografías faciales en función del año de publicación.}
+	\label{fig16}
 \end{figure}
 
 \section{Primeros enfoques}
@@ -81,7 +81,7 @@ donde $y_i$ son los valores reales (etiquetas) de la distorsión facial, y $x_i$
 
 En la ecuación \ref{eq:df}, $d = 12.6572 $ cm corresponde a un valor derivado de cálculos geométricos \cite{55} para obtener experimentalmente el factor de distorsión de una cabeza humana de tamaño promedio, según la SCD de la fotografía.
 
-FacialSCDnet consta de 4 modelos de aprendizaje profundo, cada uno asociado a una longitud focal utilizada en el conjunto de datos. La estructura de cada CNN se basa en la arquitectura VGG-16, cuyos pesos se inicializan con los pre-entrenados en ImageNet \footnote{ImageNet: https://www.image-net.org/}. Para adaptar la arquitectura al problema de estimación de la SCD, se conservan los 5 bloques convolucionales, se elimina la capa superior y se añaden 2 capas totalmente conectadas que se entrenan desde cero. Finalmente, la última capa del modelo consiste en una activación lineal que realiza la tarea de regresión.
+FacialSCDnet consta de 4 modelos de aprendizaje profundo, cada uno asociado a una longitud focal utilizada en el conjunto de datos. La estructura de cada CNN se basa en la arquitectura VGG-16, cuyos pesos se inicializan con los pre-entrenados en ImageNet \footnote{ImageNet: https://www.image-net.org/}. Para adaptar la arquitectura al problema de estimación de la SCD, se conservan los 5 bloques convolucionales, se elimina la cabeza superior de la red y se añaden 2 capas totalmente conectadas que se entrenan desde cero. Finalmente, la última capa del modelo consiste en una activación lineal que realiza la tarea de regresión.
 
 El proceso de entrenamiento de los modelos constó de dos fases. En primer lugar, los modelos se entrenaron con el conjunto de datos sintético para aprender las relaciones entre la SCD y las características faciales. Posteriormente, se realizó un ajuste fino utilizando el conjunto de datos reales.
 
