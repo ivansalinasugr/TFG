@@ -8,7 +8,6 @@ Procesamiento de modelos/*
 !Procesamiento de modelos/notebooks
 !Procesamiento de modelos/*.blend
 !Procesamiento de modelos/models_3D.csv
-!Procesamiento de modelos/labels.csv
 !Procesamiento de modelos/*.task
 
 LaTex TFG/*.log
