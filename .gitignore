@@ -27,5 +27,5 @@ LaTex TFG/*.fdb_latexmk
 LaTex TFG/*.fls
 *.DS_Store
 
-FSCDnet/*
+FSCDnet/SCDnet/mlruns/*
 FSCDnet_Keras/*
