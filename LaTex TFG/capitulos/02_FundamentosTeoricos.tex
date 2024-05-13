@@ -2,11 +2,11 @@
 \thispagestyle{empty}
 
 \section{Aprendizaje automático}
-El aprendizaje automático (\textit{Machine Learning}, ML) \cite{20,21} es una rama de la inteligencia artificial y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
+El aprendizaje automático (\textit{Machine Learning}, ML) \cite{22,23} es una rama de la inteligencia artificial y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
 
-Existen 3 tipos de aprendizaje dentro del ML \cite{22,23}:
+Existen 3 tipos de aprendizaje dentro del ML:
 
-El \textbf{aprendizaje supervisado} consiste en entrenar un modelo con datos que tienen etiquetas conocidas, lo que indica la categoría a la que pertenece cada dato. Por ejemplo, si los datos de entrada son imágenes de animales, las etiquetas podrían ser 'perro' o 'gato'. A partir de estos datos etiquetados, el modelo aprende a predecir la etiqueta de nuevos datos. Es el tipo de aprendizaje más utilizado y los datos vienen ya 'preparados' para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
+El \textbf{aprendizaje supervisado} consiste en entrenar un modelo con datos que tienen etiquetas conocidas, lo que indica la categoría a la que pertenece cada dato. Por ejemplo, si los datos de entrada son imágenes de animales, las etiquetas podrían ser \enquote*{perro} o \enquote*{gato}. A partir de estos datos etiquetados, el modelo aprende a predecir la etiqueta de nuevos datos. Es el tipo de aprendizaje más utilizado y los datos vienen ya \enquote*{preparados} para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
 
 En el \textbf{aprendizaje no supervisado}, el modelo analiza los datos de entrada sin etiquetas, buscando patrones y estructuras inherentes a los datos. El agrupamiento es una técnica común en este tipo de aprendizaje, ya que identifica posibles grupos dentro de los datos. Este enfoque suele requerir un gran volumen de datos para ser efectivo.
 
@@ -56,7 +56,7 @@ El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pe
 
 El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de modificar adecuadamente los pesos para generar una mejor estimación de la predicción.
 
-El sobreentrenamiento es un factor importante a evitar. Sobreentrenar el modelo de aprendizaje, significa, ajustarlo demasiado al conjunto de datos de entrenamiento, de manera que, al recibir nuevos datos no utilizados para entrenar, se estime un mal resultado debido a la poca capacidad de generalización ante nuevos datos.
+Uno de los aspectos más importantes al entrenar un modelo es el sobreajuste. Este fenómeno ocurre cuando el modelo se adapta excesivamente al conjunto de datos de entrenamiento, lo que resulta en un rendimiento deficiente al enfrentarse a nuevos datos no incluidos en el entrenamiento. Esto se debe a una limitada capacidad de generalización, que puede mitigarse mediante técnicas de regularización \ref{regularizacion}.
 
 
 \subsection{Redes neuronales convolucionales}
@@ -121,7 +121,7 @@ Los dos tipos más comunes de \textit{pooling} son el \textit{max pooling}, que 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{imagenes/cap2/pooling.png}
-	\caption[Tipos de \textit{pooling} comunes.]{Tipos de \textit{pooling} comúnmente utilizados en CNN \cite{40}.}
+	\caption[Tipos de \textit{pooling} comunes.]{Tipos de \textit{pooling} comúnmente utilizados en CNN \cite{42}.}
 	\label{fig9}
 \end{figure}
 
@@ -146,7 +146,7 @@ En las arquitecturas convolucionales, la forma más común de llevar a cabo la t
 En este contexto, es común utilizar los pesos pre-entrenados en el conjunto de datos de ImageNet \cite{50} debido a su gran tamaño, diversidad, representatividad y disponibilidad.
 
 
-\subsection{Regularización}
+\subsection{Regularización}\label{regularizacion}
 Tanto en las redes neuronales clásicas como en las convolucionales, el sobreajuste a los datos de entrenamiento es una problema importante (ver Figura \ref{fig10}). Aunque la solución óptima sería adquirir más datos para el entrenamiento, esta opción no siempre está disponible. Por tanto, se recurre a técnicas de regularización para mitigar este problema. Entre las más destacadas se encuentran:
 
 \begin{itemize}
@@ -167,12 +167,12 @@ Tanto en las redes neuronales clásicas como en las convolucionales, el sobreaju
 A pesar de las técnicas anteriores, persiste la preocupación por el sobreajuste al conjunto de validación en lugar del conjunto de entrenamiento, principalmente debido a la filtración de información durante el ajuste fino de hiperparámetros y el proceso de selección del modelo. Por tanto, es importante evaluar el rendimiento del modelo final en un conjunto de prueba separado, preferiblemente no visto previamente. Esto es fundamental para validar la capacidad de generalización del modelo y garantizar su fiabilidad.
 
 
-\section{Parámetros de la cámara y perspectiva}
+\section{Parámetros de la cámara}
 
-Dado que el conjunto de datos utilizado en este TFG son imágenes creadas sintéticamente, es importante conocer los parámetros de la cámara que influyen a la hora de sacar las fotografías.
+A la hora de trabajar con imágenes faciales y, particularmente, para comprender todos los factores que intervienen en el proceso de la simulación de imágenes faciales, es esencial introducir una serie de conceptos relativos a los parámetros de la cámara \cite{51,67,68,69}. Estos parámetros, como la longitud focal, el sensor de la cámara y la distancia cámara-sujeto, entre otros, están estrechamente relacionados entre sí y ejercen una influencia significativa tanto en la configuración de la escena fotográfica como en la percepción visual de los sujetos retratados en ella.
 
 \subsection*{Longitud focal}
-La longitud focal \cite{44} mide la distancia, en milímetros, entre el 'punto nodal' (punto donde la luz converge en una lente) y el sensor de la cámara (ver Figura \ref{fig11}). 
+La longitud focal mide la distancia, en milímetros, entre el \textit{punto nodal} (punto donde la luz converge en una lente) y el sensor de la cámara (ver Figura \ref{fig11}). 
 
 \begin{figure}[h]
 	\centering
@@ -181,14 +181,21 @@ La longitud focal \cite{44} mide la distancia, en milímetros, entre el 'punto n
 	\label{fig11}
 \end{figure}
 
-La longitud focal es importante porque se relaciona con el campo de visión de una lente, es decir, cuánta escena se captura. También explica qué tan grande o pequeño aparecerá un sujeto en la fotografía.
+La longitud focal es un factor importante, ya que determina el campo de visión de una lente, es decir, la cantidad de escena que se captura (ver Figura \ref{fig11.2}).  En longitudes focales más largas, los objetos parecen estar más cerca del objetivo de la cámara, lo que puede hacer que parezcan más grandes en la imagen. Por el contrario, con longitudes focales más cortas, los objetos aparentan estar más distantes en la fotografía.
 
-Valores más altos de longitud focal (como 500 mm) se ven más 'cerca', mientras que valores más bajos (como 20 mm) están más 'lejos'.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{imagenes/cap1/perspective.png}
+	\caption[Relación entre longitud focal y campo de visión.]{Relación entre longitud focal y campo de visión. La longitud focal afecta al tamaño aparente de los objetos y a la cantidad de escena que aparece en la imagen.}
+	\label{fig11.2}
+\end{figure}
 
 \subsection*{Sensor de la cámara}
-El sensor de la cámara \cite{45,47} es el componente que captura la luz y la convierte en una imagen digital. El tamaño del sensor afecta a la calidad de la imagen y a la cantidad de luz que puede capturar. El tamaño estándar es de 36mm x 24mm, también conocido como \textit{full frame} o 35mm.
+El sensor de la cámara es el componente encargado de capturar la luz y transformarla en una imagen digital. Su tamaño incide directamente en la calidad de la imagen y en su capacidad para capturar la luz. El estándar comúnmente utilizado es de 36mm x 24mm, conocido como \textit{full frame} o 35mm, siendo este tamaño una referencia debido a su similitud con el formato de película fotográfica analógica utilizado en el pasado.
 
-Otra forma equivalente de referirnos al tamaño del sensor es mediante el factor de recorte, que se define como la relación existente entre el tamaño de un sensor de 35mm y el sensor de nuestra cámara (ver Figura \ref{fig12}).
+La necesidad de establecer un estándar es esencial para comparar equitativamente imágenes capturadas por diferentes dispositivos. Al referirnos a un estándar de 35 mm, disponemos de un sistema de referencia común que nos permite convertir las imágenes, de manera que los objetos visibles en la escena tengan dimensiones similares, facilitando así su comparación y análisis.
+
+Otra manera de expresar el tamaño del sensor es a través del factor de recorte, que se calcula como la proporción entre el tamaño del sensor de 35 mm y el de nuestra cámara (ver Figura \ref{fig12}). El factor de recorte se emplea a menudo para comprender la dimensión del sensor de la cámara en relación con el estándar de 35 mm. Esta medida facilita una comparación directa entre el tamaño del sensor de 35 mm y el de nuestra cámara, lo que permite entender mejor su capacidad para capturar imágenes.
 
 \begin{figure}[h]
 	\centering
@@ -197,7 +204,7 @@ Otra forma equivalente de referirnos al tamaño del sensor es mediante el factor
 	\label{fig12}
 \end{figure}
 
-Uno de los aspectos más importantes del factor de recorte es su influencia en la longitud focal, lo que nos lleva a hablar de 'longitud focal equivalente'. Por ejemplo, al tener una focal de 300 mm en un sensor con factor de recorte 1.6, estaríamos obteniendo un efecto equivalente al de una focal de 480 mm (300 mm x 1.6) en un sensor \textit{full frame} (factor de recorte 1).
+Uno de los aspectos más importantes del factor de recorte es su impacto en la longitud focal, lo que nos lleva al concepto de \textit{longitud focal equivalente}. Por ejemplo, al tener una focal de 300 mm en un sensor con factor de recorte 1.6, estaríamos obteniendo un efecto equivalente al de una focal de 480 mm (300 mm x 1.6) en un sensor \textit{full frame} con factor de recorte 1.
 
 \begin{figure}[h]
 	\centering
@@ -218,9 +225,7 @@ La distancia cámara-sujeto se define como la separación física entre la cáma
 	\label{fig14}
 \end{figure}
 
-\subsection*{Distorsión de perspectiva}
-
-La distorsión de perspectiva \cite{8,51} es la transformación que sufre un objeto y su entorno debido a la proximidad del mismo respecto al objetivo (ver Figura \ref{fig15}). En el caso de las fotografías faciales, cuanto menor es la distancia cámara-sujeto, mayor es la distorsión de perspectiva que afecta a la persona fotografiada. Esto afecta a rasgos de la cara que pueden aparecer más grandes, como la nariz, o más pequeños, como las orejas, de lo que realmente son.
+La distorsión de perspectiva \cite{8,51} es la transformación que sufre un objeto y su entorno debido a la proximidad del mismo respecto al objetivo (ver Figura \ref{fig15}). En el caso de las fotografías faciales, cuanto menor es la distancia cámara-sujeto, mayor es la distorsión de perspectiva que afecta a la persona fotografiada. Esto afecta a rasgos de la cara que pueden aparecer más grandes, como la nariz, o más pequeños, como las orejas, de lo que realmente son (ver Figura \ref{fig2}).
 
 \begin{figure}[h]
 	\centering
@@ -229,5 +234,7 @@ La distorsión de perspectiva \cite{8,51} es la transformación que sufre un obj
 	\label{fig15}
 \end{figure}
 
-Uno de los malentendidos comunes en fotografía es la creencia de que la longitud focal distorsiona los rasgos faciales, sin embargo, la longitud focal  no tiene nada que ver con la distorsión del rostro de un sujeto, siendo esta únicamente provocada por la distancia de la cámara al sujeto \cite{52}.
+Uno de los malentendidos comunes en fotografía es la creencia de que la longitud focal distorsiona los rasgos faciales, sin embargo, la longitud focal no tiene nada que ver con la distorsión del rostro de un sujeto, siendo esta únicamente provocada por la distancia de la cámara al sujeto \cite{52}.
+
+
 
