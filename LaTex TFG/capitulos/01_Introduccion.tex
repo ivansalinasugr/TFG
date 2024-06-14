@@ -6,7 +6,9 @@
 En la era digital actual, las imágenes faciales han adquirido una relevancia significativa (Figura~\ref{fig1}), dado su amplio uso  en aplicaciones multimedia, redes sociales, sistemas de vigilancia y seguridad para la identificación de personas o control de accesos en edificios, así como en investigaciones criminales y forenses para la identificación de sospechosos o la reconstrucción de rostros.
 Esta expansión se debe en gran medida al continuo desarrollo tecnológico, que ha mejorado tanto la calidad como la ubicuidad de las fotografías faciales, permitiendo su presencia en una variedad cada vez mayor de contextos y aplicaciones \cite{74,75,76,77}.
 
-\begin{figure}[H]
+\renewcommand{\thefootnote}{1}
+
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{imagenes/cap1/tabla_facial_images.png}
 	\caption[Número de publicaciones de imágenes faciales.]{Número de publicaciones, en Scopus, relacionadas con imágenes faciales en los últimos 45 años \protect\footnotemark.}
@@ -14,6 +16,9 @@ Esta expansión se debe en gran medida al continuo desarrollo tecnológico, que 
 \end{figure}
 
 \footnotetext{Las búsquedas se pueden consultar en el \hyperref[scopus]{Apéndice}.}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{2}
 
 En este contexto, es importante resaltar el papel que tienen las imágenes faciales en campos como la biometría para la verificación de identidad, así como en la seguridad nacional y las ciencias forenses, donde se pueden utilizar para la identificación facial \cite{80, 81, 82}. A fin de garantizar el correcto desempeño de estas aplicaciones, se debe tener en cuenta la calidad de las imágenes y todos los factores que afectan a la escena fotográfica \cite{86,87}. Aspectos como la resolución, el enfoque o la iluminación deben cumplir unos requisitos mínimos. Por ello, desde hace años existen numerosas herramientas y técnicas dirigidas a la extracción de metadatos, la detección facial \cite{83, 84} o la estimación de la pose~\cite{56, 85}, todas ellas fundamentales para asegurar la fiabilidad y precisión de los sistemas de identificación facial.
 
@@ -23,14 +28,14 @@ En este contexto, es importante resaltar el papel que tienen las imágenes facia
 Uno de los factores más importantes a tener en cuenta en las fotografías faciales es la distorsión de perspectiva, la cual puede provocar deformaciones en los rasgos faciales, como en las orejas, la nariz o la forma general del rostro, especialmente cuando la cámara está muy cerca del sujeto al momento de tomar la fotografía~\cite{12} (Figura \ref{fig2}). 
 Esta alteración en la perspectiva repercute negativamente tanto en los sistemas de reconocimiento facial como en el análisis de imágenes, complicando la interpretación visual al alterar cómo se perciben ciertos rasgos.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.25]{imagenes/cap1/scd_distorsion.png}
 	\caption[Efectos de la distorsión de perspectiva en fotografías faciales.]{Efectos de la distorsión de perspectiva en fotografías faciales realizadas a diferentes distancias: 0.3 m, 0.6 m y 1.5 m respectivamente.}
 	\label{fig2}
 \end{figure}
 
-La distorsión de perspectiva está estrechamente relacionada con la \textbf{distancia cámara-sujeto} (\textit{subject-to-camera distance}, SCD en adelante), que se define como la separación física entre la posición de la cámara y el sujeto fotografiado. Esta relación entre la distorsión y la SCD sigue un patrón de decremento logarítmico, lo que significa que a distancias cortas se produce una mayor distorsión, la cual disminuye gradualmente a medida que la distancia entre la cámara y el sujeto aumenta~\cite{55}. Conocer la SCD en fotografías faciales permite cuantificar la cantidad de distorsión presente en una imagen, así como las diferencias en la distorsión entre dos pares de imágenes. Esta información puede ser determinante al evaluar la identidad de un individuo mediante técnicas forenses de identificación facial, además de facilitar el desarrollo de métodos precisos para corregir dichas distorsiones \cite{16}.
+La distorsión de perspectiva está estrechamente relacionada con la \textbf{distancia cámara-sujeto} (\textit{subject-to-camera distance}, SCD en adelante), que se define como la separación física entre la posición de la cámara y el sujeto fotografiado. Esta relación entre la distorsión de perspectiva y la SCD sigue un patrón de decremento logarítmico, lo que significa que a distancias cortas se produce una mayor distorsión, la cual disminuye gradualmente a medida que la distancia entre la cámara y el sujeto aumenta~\cite{55}. Conocer la SCD en fotografías faciales permite cuantificar la cantidad de distorsión de perspectiva presente en una imagen, así como las diferencias en la distorsión entre dos pares de imágenes. Esta información puede ser determinante al evaluar la identidad de un individuo mediante técnicas forenses de identificación facial, además de facilitar el desarrollo de métodos precisos para corregir dichas distorsiones \cite{16}.
 
 La SCD, a diferencia de otros parámetros de la cámara \ref{param_camera} como la distancia focal o el tamaño del sensor, no se puede obtener directamente desde los metadatos de la fotografía~\cite{8}. Por tanto, es necesario un método preciso para su estimación.
 
@@ -53,7 +58,8 @@ Por otro lado, obtener conjuntos de datos reales de alta calidad no siempre es u
 Una solución ampliamente utilizada consiste en emplear conjuntos de datos sintéticos en lugar de conjuntos de datos reales \cite{57,58,59}.
 El uso de conjuntos de datos sintéticos puede ayudar a reducir costos y tiempo de recopilación de datos, manteniendo o mejorando el rendimiento de los modelos. Además, al emplear datos sintéticos, se tiene un mayor control sobre los parámetros de generación de la imagen, lo que permite ajustar la escena de manera precisa y reproducible.
 
-En resumen, la distancia entre la cámara y el sujeto desempeña un papel esencial en diversas disciplinas debido a su impacto en la distorsión de los  sujetos en las imágenes. Estimar con precisión la SCD es esencial para avanzar en el desarrollo de las técnicas de reconocimiento y análisis de imágenes faciales. Además, el uso de técnicas de deep learning en la estimación de la SCD enfrenta desafíos relacionados con el sesgo y los costos de los conjuntos de datos. Por lo tanto, es fundamental contar con un conjunto de datos sintético, completo y diverso para que estas técnicas logren un mejor rendimiento y una mayor capacidad de generalización.
+En resumen, la distancia entre la cámara y el sujeto desempeña un papel esencial en diversas disciplinas debido a su impacto en la distorsión de los
+sujetos en las imágenes. Estimar con precisión la SCD es vital para mejorar el análisis de las fotografías faciales, por lo que este trabajo pretende abordar algunas limitaciones y sesgos identificados en los métodos actuales.
 
 \section{Objetivos}
  El objetivo general de este TFG consiste en desarrollar un modelo de aprendizaje profundo para mejorar la estimación de la distancia cámara-sujeto en fotografías faciales (Figura \ref{fig3}). Para el desarrollo del proyecto, dividiremos el objetivo general en una serie de objetivos parciales:
@@ -67,7 +73,7 @@ En resumen, la distancia entre la cámara y el sujeto desempeña un papel esenci
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.55]{imagenes/cap1/resumen.png}
+	\includegraphics[width=\textwidth]{imagenes/cap1/resumen.png}
 	\caption[Diagrama del proyecto.]{Diagrama del proceso de estimación automática de la SCD en este proyecto. El punto de partida es una serie de modelos 3D, tanto completos como faciales, a los cuales se les aplicará un proceso de estandarización y normalización. Posteriormente, se añadirán fondos HDR para generar imágenes fotorrealistas a diferentes distancias, las cuales se utilizarán para entrenar el modelo de aprendizaje con el objetivo de estimar la SCD ante nuevos datos de entrada.}
 	\label{fig3}
 \end{figure}
@@ -105,7 +111,7 @@ A continuación se describen las fases del ciclo de vida del proyecto:
 	\label{planif-ini}
 \end{table}
 
-La planificación inicial se detalla en la tabla \ref{planif-ini}, sin embargo, experimentó varios retrasos, principalmente debido a que el autor también estaba trabajando en un proyecto en colaboración con la Universidad de Granada. Por otro lado, la obtención de los conjuntos de datos 3D no resultó ser una tarea sencilla, debido a su escasa disponibilidad y a los permisos necesarios para acceder a ellos. Además, el preprocesamiento de los datos 3D consumió más tiempo del previsto, ya que, aunque se automatizó en cierta medida, requirió ajustes manuales significativos. Estos contratiempos, junto con el aprendizaje de nuevas librerías por parte del autor, resultaron en modificaciones en la planificación original, tal como se ejemplifica en la tabla \ref{planif-fin}.
+La planificación inicial se detalla en la Tabla \ref{planif-ini}, sin embargo, experimentó varios retrasos, principalmente debido a que el autor también estaba trabajando en un proyecto en colaboración con la Universidad de Granada. Por otro lado, la obtención de los conjuntos de datos 3D no resultó ser una tarea sencilla, debido a su escasa disponibilidad y a los permisos necesarios para acceder a ellos. Además, el preprocesamiento de los datos 3D consumió más tiempo del previsto, ya que, aunque se automatizó en cierta medida, requirió ajustes manuales significativos. Estos contratiempos, junto con el aprendizaje de nuevas librerías por parte del autor, resultaron en modificaciones en la planificación original, tal como se ejemplifica en la Tabla \ref{planif-fin}.
 
 \begin{table}[H]
 	\centering
@@ -130,7 +136,7 @@ La planificación inicial se detalla en la tabla \ref{planif-ini}, sin embargo, 
 
 Para estimar los costos, comenzamos considerando un salario de 30 euros por hora para un responsable I+D en una empresa tecnológica o para un investigador senior. Además de esto, se contemplan los gastos asociados a los materiales, como el costo del portátil utilizado en el desarrollo del TFG y el uso de un servidor GPU de alto rendimiento. Estos costes se desglosan detalladamente en la Tabla \ref{tab:coste-proyecto}. 
 
-En relación al servidor GPU, su valoración se estima en 16 000 euros. Con una amortización proyectada a dos años, lo que equivale a un pago diario de 21.92 euros, su contribución al costo total del proyecto se estima en 3 090.72 euros.
+En relación al servidor GPU, su valoración se estima en 16000 euros. Con una amortización proyectada a dos años, lo que equivale a un pago diario de 21.92 euros, su contribución al costo total del proyecto se estima en 3090.72 euros.
 
 
 \begin{table}[H]
@@ -143,10 +149,10 @@ En relación al servidor GPU, su valoración se estima en 16 000 euros. Con una 
 	 &  \\ \hline
 	\rowcolor[HTML]{FFCB2F} 
 	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Item} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFCB2F}Costo} \\ \hline
-	\multicolumn{1}{|l|}{Salario} & \multicolumn{1}{l|}{12 120 euros} \\ \hline
-	\multicolumn{1}{|l|}{Portátil de Gama Alta} & \multicolumn{1}{l|}{2 600 euros} \\ \hline
-	\multicolumn{1}{|l|}{Servidor GPU} & \multicolumn{1}{l|}{3 090.72 euros} \\ \hline
-	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Total} & \multicolumn{1}{l|}{17 810.72 euros} \\ \hline
+	\multicolumn{1}{|l|}{Salario} & \multicolumn{1}{l|}{12120 euros} \\ \hline
+	\multicolumn{1}{|l|}{Portátil de Gama Alta} & \multicolumn{1}{l|}{2600 euros} \\ \hline
+	\multicolumn{1}{|l|}{Servidor GPU} & \multicolumn{1}{l|}{3090.72 euros} \\ \hline
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Total} & \multicolumn{1}{l|}{17810.72 euros} \\ \hline
 	\end{tabular}
 	\caption{Estimación del coste del proyecto.}
 	\label{tab:coste-proyecto}

@@ -90,7 +90,7 @@ Por otro lado, en cuanto a los modelos completos, se seleccionaron 2 modelos de 
 
 Estas selecciones se hicieron con el propósito de garantizar una amplia diversidad en términos de sexos biológicos, ascendencias y poses, teniendo en cuenta las bases de datos disponibles. Sin embargo, a pesar de que inicialmente la muestra era de 300 modelos 3D, después de algunas pruebas preliminares, se descartaron 23 modelos debido a su potencial impacto negativo en el aprendizaje, lo que resultó en un conjunto final de 277 modelos.
 
-\subsection{Preparación del conjunto de datos}
+\subsection{Preparación del conjunto de datos}\label{gen-img}
 
 \subsubsection{Procesamiento de modelos 3D}
 
@@ -109,32 +109,37 @@ Una vez procesados los modelos 3D, se procedió a generar el conjunto de imágen
 \begin{algorithm}
 	\caption{Generación de imágenes}\label{alg:render_images}
 	\begin{algorithmic}[1]
-	\State $model\_iters = 14$
-	\State $image\_width = 224$
-	\State $image\_height = 224$
-	\State $distances = [50, 55, 60, ..., 500, 600]$
-	\State $focals = [35]$
 	\For{\textbf{each} $model$ \textbf{in} $models$}
-		\State \Call{load\_model}{$model$}
 		\For {\textbf{each} $d$ \textbf{in} $distances$}
-			\State \Call{set\_distance}{$d$}
 			\For{\textbf{each} $f$ \textbf{in} $focals$}
-				\State \Call{set\_focal}{$f$}
 				\For{$i = 0$ \textbf{to} $model\_iters-1$}
 					\State $background \gets \Call{select\_random\_background}{}() $
-					\State \Call{set\_background}{$background$}
 					\State $rx \gets \Call{uniform}{-30, 30}$ %\Comment{Degrees}
 					\State $rz \gets \Call{uniform}{-70,70}$
 					\State \Call{apply\_rotation}{$rx, 0, rz$}
-					\State \Call{apply\_random\_translation}{}()
+					\State $value = (d/10.0) * (83.6/f)$ \protect\footnotemark
+					\State $tx \gets \Call{uniform}{-value, value}$
+					\State $tz \gets \Call{uniform}{-value, value}$
+					\State $ty \gets \sqrt{d^2 - tx^2 - tz^2}$ \protect\footnotemark
+					\State \Call{apply\_translation}{$tx, ty, tz$}
 					\State \Call{set\_random\_ilumination}{}()
-					\State \Call{save\_image}{}()
 				\EndFor
 			\EndFor
 		\EndFor
 	\EndFor
 	\end{algorithmic}
 \end{algorithm}
+
+\renewcommand{\thefootnote}{5}
+
+\footnotetext{Fórmula aplicada para evitar traslaciones que provoquen que el sujeto salga del encuadre de la imagen. Esta fórmula se desarrolló mediante un proceso de prueba y error.}
+
+\renewcommand{\thefootnote}{6}
+
+\footnotetext{Ajuste realizado para mantener invariante la distancia cámara-sujeto tras la traslación en los ejes X y Z.}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{6}
 
 A continuación, se detallan las tareas específicas llevadas a cabo para cada modelo del conjunto de datos 3D:
 
@@ -194,13 +199,12 @@ Tras este proceso de generación de imágenes, y considerando que se contaba con
 
 \section{Métodos}
 
-% Algo?
-
 \subsection{FacialSCDnet}\label{fscdnet}
 
-El método FacialSCDnet \cite{14}, es un enfoque de aprendizaje profundo para estimar la distancia entre el sujeto y la cámara en fotografías faciales. Se basa en una red neuronal convolucional, en concreto VGG-16 \ref{vgg16}, adaptada para regresar la distancia métrica de los individuos directamente desde las fotografías faciales. Este método consta de cuatro modelos de aprendizaje, uno por cada distancia focal presente en el conjunto de datos: 27 mm, 35 mm, 53 mm y 83.6 mm.
+El método FacialSCDnet \cite{14}, es un enfoque de aprendizaje profundo para estimar la distancia entre el sujeto y la cámara en fotografías faciales. Se basa en una red neuronal convolucional, en concreto VGG-16, adaptada para regresar la distancia métrica de los individuos directamente desde las fotografías faciales. Este método consta de cuatro modelos de aprendizaje, uno por cada distancia focal presente en el conjunto de datos: 27 mm, 35 mm, 53 mm y 83.6 mm.
+\newline 
 
-Para entrenar los modelos, se empleó un conjunto de datos compuesto por dos colecciones: 
+Para entrenar estos modelos, se empleó un conjunto de datos compuesto por dos colecciones: 
 
 \begin{itemize}
 	\item Conjunto sintético: se generaron imágenes sintéticas 2D a partir de los modelos 3D de la base de datos Stirling ESRC 3D Face \footnote{Stirling ESRC 3D Face: https://pics.stir.ac.uk/ESRC/}. En particular, se utilizaron 315 modelos faciales de 54 individuos femeninos diferentes para generar aproximadamente 150.000 fotografías sintéticas.
@@ -224,27 +228,31 @@ El proceso de entrenamiento de los modelos consta de dos fases. En primer lugar,
 	\label{fig24.2}
 \end{figure}
 
-A pesar de obtener resultados satisfactorios, este método presenta diversas limitaciones, entre las cuales destacan las siguientes: 
+Durante el análisis preliminar del método publicado en 
+\cite{14}, se detectaron dos limitaciones de gran relevancia que impiden su aplicabilidad real:
 
 \begin{itemize}
-	\item Sesgo del modelo con respecto al fondo: Las predicciones muestran una mejora significativa al introducir un fondo sintético en las imágenes originales, lo que indica una dependencia del modelo con este aspecto. Esta tendencia sugiere una limitada capacidad de generalización, dado que las imágenes con el fondo original obtienen un rendimiento inferior en las predicciones en comparación con aquellas con fondo sintético.
-	\item Limitación del conjunto de datos: La colección sintética consta de una única base de datos facial que está compuesta exclusivamente por individuos femeninos. Además, la colección real incluye un número reducido de individuos.
-	\item Eficiencia del \textit{framework}: La implementación del método en \textit{Keras}, si bien popular, se ve afectada por su relativa lentitud en comparación con otros \textit{frameworks} para trabajar con arquitecturas de \textit{deep learning}.
+	\item \textbf{Limitación del conjunto de datos:} La colección sintética consta de una única base de datos facial que está compuesta exclusivamente por individuos femeninos. Además, la colección real incluye un número reducido de individuos.
+	% \item Eficiencia del \textit{framework}: La implementación del método en \textit{Keras}, si bien popular, se ve afectada por su relativa lentitud en comparación con otros \textit{frameworks} para trabajar con arquitecturas de \textit{deep learning}.
+	\item \textbf{Sesgo sobre el preprocesamiento original:} Como hemos visto en la Figura \ref{fig24.2}, el preprocesamiento aplicado en \cite{14} suponía la aplicación de una máscara de transparencia a la imagen facial con el fin de dotar al método de mayor robustez gracias a la variabilidad de fondos simulados. Sin embargo, una batería de pruebas preliminares han permitido detectar que, gracias a esta máscara, el modelo estaría aprendiendo a localizar más facilmente la posición de los individuos en las fotografías y, por ende, sesgando los resultados. Así, FacialSCDnet tendría una capacidad limitada de generalización en un entorno real.
 \end{itemize}
+
+Estas limitaciones motivan los desarrollos propuestos en el presente TFG, como se describe en la siguiente sección.
 
 \subsection{FacialSCDnet+}
 
-El método FacialSCDnet+, basado en FacialSCDnet \ref{fscdnet}, es un enfoque mejorado para estimar la distancia entre el sujeto y la cámara en fotografías faciales. Este método presenta dos modelos de aprendizaje: uno basado en la arquitectura VGG-16 y otro en la arquitectura ResNet-50, ambos adaptados para regresar la SCD. Estos modelos fueron entrenados para predecir en imágenes con una distancia focal aproximada de 35 mm.
+En este trabajo se propone un enfoque alternativo que permita superar las limitaciones identificadas en el principal método del estado del arte para la estimación de la distancia cámara-sujeto en fotografías faciales: FacialSCDnet+. Entre las mejoras se presentan dos modelos de aprendizaje diferentes, basados en las arquitecturas VGG-16 y ResNet-50, respectivamente. Ambos modelos se entrenaron con el propósito de estimar la SCD en imágenes con una distancia focal aproximada de 35mm. Además de integrar nuevas arquitecturas, FacialSCDnet+ se ha desarrollado completamente desde cero para optimizar el rendimiento y la eficiencia empleando un framework alternativo como se describirá más adelante.
 
-A diferencia de FacialSCDnet, este método emplea un conjunto de datos completamente sintético, el cual es considerablemente más realista, diverso y extenso en comparación con su predecesor. Además, se ha rediseñado el sistema de aumento de imágenes aplicando las operaciones siguientes:
+Otra de las principales diferencias es el uso exclusivo de un dataset sintético (siguiendo el procedimiento descrito en la Sección \ref{gen-img}), considerablemente más realista, diverso y extenso que el empleado en \cite{14}. Eliminando la necesidad de realizar una segunda etapa de fine-tuning con datos reales para el entrenamiento. Además, se ha rediseñado
+el sistema de aumento de imágenes aplicando las operaciones siguientes
 
 \begin{itemize}
-	\item Transformaciones afines: Se aplican rotaciones aleatorias de hasta 15 grados en sentido horario o antihorario, así como traslaciones horizontales y verticales de hasta el 20\% del tamaño de la imagen, con una probabilidad del 100\%. Esta transformación simula diferentes perspectivas de las imágenes.
-	\item Emborronado Gaussiano: Se aplica un emborronado gaussiano con un \textit{kernel} de tamaño 1 y un sigma aleatorio entre 0.1 y 2.0, lo que suaviza la imagen, con una probabilidad del 25\%. Esta transformación ayuda a introducir algo de ruido en las imágenes.
-	\item Nitidez: Se ajusta la nitidez de la imagen aplicandole un factor de nitidez de valor 2, con una probabilidad del 25\%. Esta transformación simula una mejor definición de las imágenes
-	\item Alteraciones de color: Se aplican ajustes aleatorios en el brillo, contraste y tono de la imagen, con un rango de variación entre $\pm$ 0.1 en cada canal, con una probabilidad del 25\%. Esta transformación contribuye a aumentar la diversidad en la apariencia de las imágenes.
-	\item Borrado de píxeles: Se borran zonas de píxeles aleatorias de la image. Estas zonas tienen un tamaño de entre el 2\% y el 5\% de la imagen, y la relación de aspecto está entre un 0.5 y un 1.5, dotando a estas zonas de un aspecto más rectangular. Esta transformación tiene una probabilidad del 25\%. Esta transformación introduce un grado adicional de variabilidad y robustez frente a la ocultación parcial de información.
-	\item Escala de grises: La imagen se convierte a escala de grises, perdiendo la información de color, con una probabilidad del 25\%. Esta transformación permite al modelo mejorar su invarianza al color.
+	\item \textbf{Transformaciones afines:} Se aplican rotaciones aleatorias de hasta 15 grados en sentido horario o antihorario, así como traslaciones horizontales y verticales de hasta el 20\% del tamaño de la imagen, con una probabilidad del 100\%. Esta transformación simula diferentes perspectivas de las imágenes.
+	\item \textbf{Emborronado Gaussiano:} Se aplica un emborronado gaussiano con un \textit{kernel} de tamaño 1 y un sigma aleatorio entre 0.1 y 2.0, lo que suaviza la imagen, con una probabilidad del 25\%. Esta transformación ayuda a introducir algo de ruido en las imágenes.
+	\item \textbf{Nitidez:} Se ajusta la nitidez de la imagen aplicandole un factor de nitidez de valor 2, con una probabilidad del 25\%. Esta transformación simula una mejor definición de las imágenes
+	\item \textbf{Alteraciones de color:} Se aplican ajustes aleatorios en el brillo, contraste y tono de la imagen, con un rango de variación entre $\pm$ 0.1 en cada canal, con una probabilidad del 25\%. Esta transformación contribuye a aumentar la diversidad en la apariencia de las imágenes.
+	\item \textbf{Borrado de píxeles:} Se borran zonas de píxeles aleatorias de la image. Estas zonas tienen un tamaño de entre el 2\% y el 5\% de la imagen, y la relación de aspecto está entre un 0.5 y un 1.5, dotando a estas zonas de un aspecto más rectangular. Esta transformación tiene una probabilidad del 25\%. Esta transformación introduce un grado adicional de variabilidad y robustez frente a la ocultación parcial de información.
+	\item \textbf{Escala de grises:} La imagen se convierte a escala de grises, perdiendo la información de color, con una probabilidad del 25\%. Esta transformación permite al modelo mejorar su invarianza al color.
 \end{itemize}
 
 Estas nuevas transformaciones aumentan la calidad del conjunto de datos de entrenamiento, mejorando la robustez y la capacidad de generalización del modelo ante diferentes condiciones y variaciones en las imágenes de entrada.
@@ -252,7 +260,7 @@ Estas nuevas transformaciones aumentan la calidad del conjunto de datos de entre
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4]{imagenes/cap4/augmented_images.png}
-	\caption[Transformaciones utilizadas en el aumento de datos.]{Transformaciones aplicadas a las imágenes: a) transformaciones afines, b) emborronado gaussiano, c) nitidez, d) alteraciones de color, e) borrado de píxeles, f) escala de grises.}
+	\caption[Transformaciones utilizadas en el aumento de datos.]{Transformaciones aplicadas a las imágenes en el conjunto de datos de FacialSCDnet+: a) transformaciones afines, b) emborronado gaussiano, c) nitidez, d) alteraciones de color, e) borrado de píxeles, f) escala de grises.}
 	\label{fig25}
 \end{figure}
 
@@ -264,7 +272,7 @@ En el método FacialSCDnet+ se ha puesto en práctica la metodología MLOps. Est
 
 Para llevar a cabo esta metodología, se ha hecho uso de la librería \textit{MLflow}, una herramienta que facilita la gestión y el seguimiento del proceso de desarrollo de modelos de aprendizaje automático. Esta librería no solo proporciona un entorno unificado para organizar experimentos y compartir resultados, sino que también ofrece capacidades avanzadas de seguimiento y visualización de métricas, parámetros y artefactos asociados con cada iteración del proceso de desarrollo.
 
-\subsubsection{Optimización de hiperparámetros}
+\subsubsection{Optimización de hiperparámetros}\label{sec-hipertuneo}
 
 El ajuste de hiperparámetros es esencial en el desarrollo de modelos de ML, ya que éstos controlan el comportamiento y la complejidad del algoritmo de aprendizaje. La optimización adecuada puede mejorar significativamente el rendimiento del modelo en términos de precisión, velocidad de entrenamiento y capacidad de generalización. Además, el proceso de ajuste de hiperparámetros permite explorar el espacio de búsqueda de manera sistemática, lo que proporciona una comprensión más profunda del comportamiento del modelo y sus interacciones con los datos.
 
@@ -289,16 +297,16 @@ Por esta razón, en FacialSCDnet+ se modifica el \textit{framework} utilizado. E
 
 La técnica empleada para llevar a cabo el entrenamiento se conoce como \textit{hold-out} (Figura \ref{fig27}). Esta metodología implica dividir el conjunto de datos en dos partes distintas: el conjunto de entrenamiento y el conjunto de test. A su vez, dentro del conjunto de entrenamiento, se realiza una subdivisión adicional para crear un conjunto de validación. Este conjunto se utiliza durante el proceso de entrenamiento del modelo para evaluar periódicamente la calidad del mismo mediante comparaciones con las métricas obtenidas en el conjunto de entrenamiento. Una vez finalizado el entrenamiento, se evalúa el modelo utilizando el conjunto de test, que contiene datos que no se han visto nunca durante el entrenamiento, con el propósito de obtener una evaluación definitiva sobre la calidad del aprendizaje.
 
-\begin{figure}[H]
+El uso de la metodología \textit{hold-out} en lugar de \textit{cross-validation} se debe a dos razones principales: el alto costo de tiempo asociado al entrenamiento de los modelos y el hecho de ser el protocolo empleado en el trabajo de referencia.
+
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{imagenes/cap5/hold-out.png}
 	\caption[Esquema de división del conjunto de datos.]{Esquema de división del conjunto de datos total en los subconjuntos de entrenamiento, validación y test.}
 	\label{fig27}
 \end{figure}
 
-El primer paso consiste en reservar todas las imágenes de 30 sujetos de forma aleatoria para el conjunto de test. Posteriormente, se añaden imágenes adicionales de manera aleatoria, para constituir el 20\% del conjunto total de test, mientras que el 80\% restante se asigna al conjunto de entrenamiento.
-
-Finalmente, durante el proceso de entrenamiento de los modelos, se aparta un 20\% aleatorio del conjunto de entrenamiento como conjunto de validación, dejando el 80\% restante para el entrenamiento propiamente dicho. Por tanto, contamos con 135730 imágenes, de las cuales 85435 se destinan al entrenamiento, 21360 a la validación y 28935 a test.
+El primer paso de esta metodología consiste en reservar todas las imágenes de 30 sujetos de forma aleatoria para el conjunto de test. Posteriormente, se añaden imágenes adicionales de manera aleatoria, para constituir el 20\% del conjunto total de test, mientras que el 80\% restante se asigna al conjunto de entrenamiento. Finalmente, durante el proceso de entrenamiento de los modelos, se aparta un 20\% aleatorio del conjunto de entrenamiento como conjunto de validación, dejando el 80\% restante para el entrenamiento propiamente dicho. Por tanto, contamos con 135730 imágenes, de las cuales 85435 se destinan al entrenamiento, 21360 a la validación y 28935 a test.
 
 
 \subsubsection{Métricas}
@@ -311,7 +319,7 @@ Dado que se aborda un problema de regresión en el que la importancia de la dist
 
 siendo $y_i$ la distancia verdadera en la imagen $i$, $x_i$ la distancia predicha en la imagen $i$, y $d = 12.6572 $ cm, que corresponde a un valor derivado de cálculos geométricos \cite{55} para obtener experimentalmente el factor de distorsión de una cabeza humana de tamaño promedio, según la SCD de la fotografía.
 
-Esta función de pérdida asegura que el modelo aprenda a predecir distancias cercanas con mayor precisión, mitigando así la posibilidad de una distorsión significativa.
+En cuanto a la interpretabilidad de esta métrica, podremos considerar que la predicción de la distancia obtenida es aceptable cuando baje del 1\% de error. Este umbral se ha definido como el máximo admisible para realizar comparaciones en contextos forenses \cite{55}.
 
 Aunque la distorsión se considera la medida principal de rendimiento, también se han empleado otras métricas como el error absoluto medio (MAE) y el error relativo medio (MRE) para evaluar el desempeño del modelo:
 
@@ -350,7 +358,7 @@ Las arquitecturas VGGnet destacan por emplear convoluciones únicamente de tama�
 	\item Agregación implícita de escalas: Combinando las pequeñas convoluciones y la profundidad de la red, se pueden detectar características a pequeña escala, mientras que la agregación de escalas mayores va implícita al pasar de capa.
 \end{itemize}
 
-En FacialSCDnet y FacialSCDnet+, se realizó una modificación estructural en la red originalmente diseñada para clasificación. Se mantuvo la extracción de características a través de los 5 bloques convolucionales, aprovechando los pesos preentrenados en ImageNet \footnote{ImageNet: https://www.image-net.org/}. Sin embargo, se eliminó la parte superior de la red y se agregaron 2 capas totalmente conectadas de 4096 neuronas, junto con una capa final de una neurona configurada para llevar a cabo la tarea de regresión.
+En FacialSCDnet y FacialSCDnet+, se realizó una modificación estructural en la red originalmente diseñada para clasificación. Se mantuvo la extracción de características a través de los 5 bloques convolucionales, aprovechando los pesos preentrenados en ImageNet \cite{97}. Sin embargo, se eliminó la parte superior de la red y se agregaron 2 capas totalmente conectadas de 4096 neuronas, junto con una capa final de una neurona configurada para llevar a cabo la tarea de regresión.
 
 Tras realizar estos ajustes en la estructura de la red, se congelaron los pesos de los bloques convolucionales, mientras que la parte final de la red se entrenó desde cero. En total, la red cuenta con 119,545,857 parámetros para el entrenamiento.
 

@@ -2,7 +2,8 @@
 \thispagestyle{empty}
 
 
-%\thispagestyle{empty}
+%Aquí es donde sale el espacio en blanco al principio de la página
+\vspace*{-3cm}
 
 \begin{center}
 {\large\bfseries Estimación de distancia cámara-sujeto en fotografías faciales usando aprendizaje profundo}\\
@@ -11,17 +12,17 @@
 Iván Salinas López\\
 \end{center}
 
-%\vspace{0.7cm}
 \noindent{\textbf{Palabras clave}: aprendizaje automático, aprendizaje profundo, distorsión de perspectiva, estimación de distancia cámara-sujeto, regresión, visión por computador.}\\
 
 \vspace{0.7cm}
 \noindent{\textbf{Resumen}}\\
 
-La relevancia de las imágenes faciales ha aumentado significativamente a lo largo de los años, gracias a su amplio uso en diversos contextos. En particular, la estimación de la distancia entre la cámara y el sujeto es un factor crucial en estas fotografías. Esta predicción permite calcular la distorsión de los sujetos en las imágenes y, en consecuencia, desarrollar avances tanto en la corrección de dichas distorsiones como en ámbitos de identificación o reconocimiento facial.
+La relevancia de las imágenes faciales ha aumentado significativamente a lo largo de los años, debido a la creciente disponibilidad de los dispositivos fotográficos y su uso en el contexto digital. Esta amplia disponibilidad ha permitido su uso en sectores como la biometría o la seguridad, donde el análisis de la calidad y las condiciones de adquisición de las imágenes es especialmente relevante. En particular, la estimación de la distancia entre la cámara y el sujeto es un factor crucial para dicho análisis. Esta predicción permite calcular la distorsión de perspectiva y, en consecuencia, desarrollar avances tanto en la corrección de dichas distorsiones como en ámbitos de identificación o reconocimiento facial.
 
-En este TFG se ha generado un conjunto de datos de imágenes completamente sintético, diverso y realista, a partir de diferentes modelos 3D tanto faciales como de cuerpo completo. Estas imágenes se generaron a distancias que van desde 50 cm hasta 600 cm. A partir de este conjunto, se desarrolló el método FacialSCDnet+, basado en FacialSCDnet, que utiliza dos modelos de aprendizaje profundo para estimar automáticamente la distancia. En concreto, se emplearon las arquitecturas VGG-16 y ResNet-50 adaptadas para el problema de regresión. El método FacialSCDnet+ superó el rendimiento del método anterior, tanto en predicciones sobre conjuntos de imágenes sintéticas como en conjuntos de imágenes reales. En concreto, en este último conjunto se logró una distorsión de 0.007 frente a 0.012 del conjunto FacialSCDnet, y un error medio absoluto de 26.05 cm frente a 31.504 cm.
+En este TFG se ha diseñado un método para la estimación de la distancia cámara-sujeto a partir de una fotografía con una longitud focal conocida. El objetivo principal es mejorar la única propuesta basada en aprendizaje profundo conocida hasta la fecha. Para ello, se ha generado un conjunto de 135730 imágenes completamente sintéticas, diversas y realistas, utilizando una variedad de 277 modelos 3D tanto faciales como de cuerpo completo. Con este \textit{dataset}, se pretende abordar diversos sesgos identificados en propuestas anteriores.
 
-En definitiva, la estimación de la distancia cámara-sujeto en fotografías faciales aún tiene un amplio margen de mejora, especialmente en el campo del aprendizaje profundo. Por tanto, se trata de una prometedora línea de investigación.
+La propuesta de este trabajo, denominada FacialSCDnet+, analiza el comportamiento de dos modelos diferentes de aprendizaje profundo para estimar automáticamente la distancia. En concreto, se han empleado las arquitecturas VGG-16 y ResNet-50, adaptadas para el problema de regresión. Además, se ha diseñado un \textit{benchmark} para evaluar el rendimiento de ambas arquitecturas y del método en el que se basa este trabajo, empleando tanto conjuntos de imágenes sintéticas como reales. Los experimentos demuestran cómo las modificaciones propuestas superan la precisión en la estimación de distancias mejorando el error medio absoluto en 5.5 cm y obteniendo un error de distorsión menor de 1\% tanto en imágenes reales como sintéticas.
+
 \cleardoublepage
 
 
@@ -41,11 +42,11 @@ Iván Salinas López\\
 \vspace{0.7cm}
 \noindent{\textbf{Abstract}}\\
 
-The significance of facial images has increased significantly over the years, thanks to their widespread use in various contexts. In particular, estimating the distance between the camera and the subject is a crucial factor in these photographs. This prediction allows for calculating the distortion of subjects in the images and, consequently, developing advances both in correcting such distortions and in fields like identification or facial recognition.
+The relevance of facial images has significantly increased over the years due to the growing availability of photographic devices and their use in the digital context. This wide availability has enabled their use in sectors such as biometrics or security, where the analysis of the quality and acquisition conditions of the images is particularly relevant. Specifically, estimating the distance between the camera and the subject is a crucial factor for such analysis. This prediction allows calculating the perspective distortion and, consequently, developing advancements both in correcting these distortions and in the fields of identification or facial recognition.
 
-In this Final Degree Project, a completely synthetic, diverse, and realistic dataset of images was generated from various 3D models, including both facial and full-body models. These images were generated at distances ranging from 50 cm to 600 cm. From this dataset, the method FacialSCDnet+ was developed, based on FacialSCDnet, which uses two deep learning models to automatically estimate the distance. Specifically, the VGG-16 and ResNet-50 architectures adapted for the regression problem were used. The FacialSCDnet+ method outperformed the previous method, both in predictions on synthetic image sets and on real image sets. Specifically, in the latter set, a distortion of 0.007 was achieved compared to 0.012 of the FacialSCDnet set, and a mean absolute error of 26.05 cm compared to 31.504 cm.
+In this Final Degree Project, a method has been designed to estimate the subject-to-camera distance from a photograph with a known focal length. The main objective is to improve the only proposal based on deep learning known to date. To achieve this, a set of 135730 fully synthetic, diverse, and realistic images has been generated, using a variety of 277 3D models, including both facial and full-body models. With this dataset, the aim is to address various biases identified in previous proposals.
 
-In conclusion, estimating the camera-subject distance in facial photographs still has ample room for improvement, especially in the field of deep learning. Therefore, it is a promising line of research.
+The proposal of this work, called FacialSCDnet+, analyzes the behavior of two different deep learning models to automatically estimate the distance. Specifically, the VGG-16 and ResNet-50 architectures, adapted for the regression problem, have been employed. Additionally, a benchmark has been designed to evaluate the performance of both architectures and the method on which this work is based, using both synthetic and real image sets. The experiments demonstrate how the proposed modifications improve the accuracy of distance estimation, enhancing the mean absolute error by 5.5 cm and achieving a distortion error of less than 1\% in both real and synthetic images.
 
 \chapter*{}
 \thispagestyle{empty}

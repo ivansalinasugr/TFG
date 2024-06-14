@@ -59,7 +59,7 @@ El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pe
 
 El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de modificar adecuadamente los pesos para generar una mejor estimación de la predicción.
 
-Uno de los aspectos más importantes al entrenar un modelo es el sobreajuste. Este fenómeno ocurre cuando el modelo se adapta excesivamente al conjunto de datos de entrenamiento, lo que resulta en un rendimiento deficiente al enfrentarse a nuevos datos no incluidos en el entrenamiento. Esto se debe a una limitada capacidad de generalización, que puede mitigarse mediante técnicas de regularización \ref{regularizacion}.
+Uno de los aspectos más importantes al entrenar un modelo es el sobreajuste. Este fenómeno ocurre cuando el modelo se adapta excesivamente al conjunto de datos de entrenamiento, lo que resulta en un rendimiento deficiente al enfrentarse a nuevos datos no incluidos en el entrenamiento. Esto se debe a una limitada capacidad de generalización, que puede mitigarse mediante técnicas de regularización (Sección \ref{regularizacion}).
 
 
 \subsection{Redes neuronales convolucionales}
@@ -189,7 +189,7 @@ La distancia focal es un factor importante, ya que determina el campo de visión
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.12]{imagenes/cap2/perspective.png}
-	\caption[Relación entre distancia focal y campo de visión.]{Relación entre distancia focal y campo de visión. La distancia focal afecta al tamaño aparente de los objetos y a la cantidad de escena que aparece en la imagen.}
+	\caption[Relación entre distancia focal y campo de visión.]{Relación entre distancia focal y campo de visión \cite{96}. La distancia focal afecta al tamaño aparente de los objetos y a la cantidad de escena que aparece en la imagen.}
 	\label{fig11.2}
 \end{figure}
 

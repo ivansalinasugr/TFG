@@ -29,3 +29,9 @@ LaTex TFG/*.fls
 
 FSCDnet/SCDnet/mlruns/*
 FSCDnet_Keras/*
+/resnet
+/vgg
+Procesamiento de modelos/notebooks/train_loss_resnet
+Procesamiento de modelos/notebooks/train_loss_vgg
+Procesamiento de modelos/notebooks/val_loss_resnet
+Procesamiento de modelos/notebooks/val_loss_vgg
