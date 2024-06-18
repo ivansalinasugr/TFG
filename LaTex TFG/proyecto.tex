@@ -6,8 +6,9 @@
 \usepackage[spanish]{babel}
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 \usepackage{csquotes}
-\usepackage[backend=biber, citestyle=numeric, style=numeric, sorting=nyt]{biblatex}
+\usepackage[sortcites, backend=biber, citestyle=numeric, style=numeric, sorting=none]{biblatex}
 \bibliography{referencias}
+%\addbibresource{referencias.bib}
 
 %\usepackage[style=list, number=none]{glossary} %
 %\usepackage{titlesec}
@@ -29,10 +30,27 @@
 \usepackage{afterpage}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
+
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmo} %Change the name Algorithm to Algoritme
+\makeatother
+
 
 \usepackage{longtable}
 
 \usepackage[colorlinks=false, urlcolor=blue, pdfborder={1 0 1}]{hyperref}
+
+\usepackage[compact]{titlesec}         % you need this package
+\titlespacing{\section}{0pt}{0pt}{0pt} % this reduces space between (sub)sections to 0pt, for example
+\AtBeginDocument{%                     % this will reduce spaces between parts (above and below) of texts within a (sub)section to 0pt, for example - like between an 'eqnarray' and text
+  \setlength\abovedisplayskip{0pt}
+  \setlength\belowdisplayskip{0pt}
+}
+
 
 
 % ********************************************************************
@@ -59,9 +77,12 @@
 \usepackage{url}
 \usepackage{colortbl,longtable}
 \usepackage[stable]{footmisc}
-%\usepackage{index}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
 
-%\makeindex
+% \usepackage{index}
+
+% \makeindex
 %\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
 %\makeglossary
 
@@ -146,7 +167,14 @@
 
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
-
+\newcommand*{\nchapter}[1]{%
+    % Create the inline heading
+    \chapter*{#1}%
+    % Set the mark (for headers/footers)
+    \markboth{\uppercase{#1}}{}%
+    % Make a Table of Contents entry
+    \addcontentsline{toc}{chapter}{#1}%
+}
 
 %Para conseguir que en las páginas en blanco no ponga cabeceras
 \makeatletter
@@ -182,32 +210,26 @@
 
 \input{capitulos/02_FundamentosTeoricos}
 
-% \input{capitulos/03_EstadoDelArte}
+\input{capitulos/03_EstadoDelArte}
 
-% \input{capitulos/04_MaterialesYMetodos}
+\input{capitulos/04_MaterialesYMetodos}
 
-% \input{capitulos/05_Experimentos}
+\input{capitulos/05_Experimentos}
 
-% \input{capitulos/06_Conclusiones}
+\input{capitulos/06_Conclusiones}
 
-%
-%
+\input{apendices/busquedas_scopus}
+
+
 %%\nocite{*}
 %\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliographystyle{miunsrturl}
-%
-\printbibliography
-\chapter*{}
-\thispagestyle{empty}
+\printbibliography[heading=bibintoc, title={Bibliografía}]
 
-\appendix
-\input{apendices/busquedas_scopus}
+
 %%\input{apendices/paper/paper}
 %\input{glosario/entradas_glosario}
 % \addcontentsline{toc}{chapter}{Glosario}
 % \printglossary
-
-
 
 \end{document}
 

@@ -1,47 +1,50 @@
 \chapter{Fundamentos teóricos}
 \thispagestyle{empty}
 
-\section{Aprendizaje automático}
-El aprendizaje automático (Machine Learning, ML) \cite{20,21} es una rama de la IA y de las ciencias de la computación centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
+\section{Aprendizaje automático y aprendizaje profundo}
 
-Existen 3 tipos de aprendizaje dentro del ML \cite{22,23}:
+\subsection{Fundamentos}
 
-El \textbf{aprendizaje supervisado} consiste en entrenar con datos de los que se saben sus etiquetas (una etiqueta nos indica qué es cada dato). Por ejemplo, los datos de entrada podrían ser imágenes de animales y sus etiquetas podrían ser 'perro' o 'gato'. A partir de los datos y sus etiquetas, el modelo aprende una función que dado un nuevo dato, predice su etiqueta. Es el tipo de aprendizaje más utilizado, los datos vienen ya 'preparados' para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
+El aprendizaje automático (\textit{Machine Learning}, ML) \cite{22,23} es una rama de la inteligencia artificial centrada en el uso de datos y algoritmos para imitar la forma en la que los humanos aprenden, detectando patrones o regularidades para realizar predicciones.
 
-En el \textbf{aprendizaje no supervisado} el agente aprende los patrones de los datos de entrada sin ninguna realimentación, es decir, los datos no están etiquetados. La herramienta más usada en el aprendizaje no supervisado es el agrupamiento, que consiste en detectar potenciales grupos en los datos de entrada. Este enfoque requiere un mayor número de datos.
+Existen 3 tipos de aprendizaje dentro del ML:
 
-En el \textbf{aprendizaje por refuerzo} el agente aprende mediante una serie de recompensas o castigos. El agente intentará realizar acciones que le proporcionen mejores recompensas en el futuro. Este tipo de aprendizaje es muy utilizado para enseñar a jugar a juegos.
-
-\section{Aprendizaje profundo}
-
-\subsection{Redes neuronales}
-Las redes neuronales (ANNs) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de los animales o humanos. Las ANNs poseen unidades de procesamiento de información llamadas neuronas, que están conectadas entre sí mediante capas. La red se compone de (ver Figura \ref{fig3}):
 \begin{itemize}
-	\item Una capa de entrada, que tendrá tantos inputs como características o variables tenga el problema
+	\item El \textbf{aprendizaje supervisado} consiste en entrenar un modelo con datos que tienen etiquetas conocidas, lo que indica la categoría a la que pertenece cada dato. Por ejemplo, si los datos de entrada son imágenes de animales, las etiquetas podrían ser \enquote*{perro} o \enquote*{gato}. A partir de estos datos etiquetados, el modelo aprende a predecir la etiqueta de nuevos datos. Es el tipo de aprendizaje más utilizado y los datos vienen ya \enquote*{preparados} para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
+	\item En el \textbf{aprendizaje no supervisado}, el modelo analiza los datos de entrada sin etiquetas, buscando patrones y estructuras inherentes a los datos. El agrupamiento es una técnica común en este tipo de aprendizaje, ya que identifica posibles grupos dentro de los datos. Este enfoque suele requerir un gran volumen de datos para ser efectivo.
+	\item Por otro lado, en el \textbf{aprendizaje por refuerzo}, el modelo aprende a través de recompensas o penalizaciones en función de las acciones que realiza. El objetivo del agente es maximizar las recompensas a largo plazo, lo que lo hace especialmente útil en la enseñanza de estrategias en juegos y otras interacciones dinámicas.
+\end{itemize}
+
+El aprendizaje profundo (\textit{Deep Learning}, DL) \cite{26,78} constituye una subárea del ML que se enfoca en algoritmos basados en redes neuronales profundas, capaces de aprender representaciones jerárquicas de los datos. Para ello, el DL suele requerir grandes cantidades de datos y poder computacional para entrenar modelos efectivos.
+
+\subsection{Redes neuronales artificiales}
+Las redes neuronales artificiales (\textit{Artificial Neural Networks}, ANN) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de animales y humano. Las ANN poseen unidades de procesamiento de información llamadas neuronas, las cuales están conectadas entre sí. La estructura básica de una ANN se compone de (Figura \ref{fig4}):
+\begin{itemize}
+	\item Una capa de entrada, que tendrá tantos \textit{inputs} como características o variables tenga el problema
 	\item Una o varias capas ocultas, compuestas por neuronas. El número de capas ocultas define la profundidad de la red neuronal.
-	\item Una capa de salida, que representa el valor o valores predichos
+	\item Una capa de salida, la cual representa el valor o valores predichos
 \end{itemize} 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{imagenes/cap2/neural-network.png}
-	\caption{Esquema de una red neuronal \cite{26}.}
-	\label{fig3}
+	\caption[Esquema de red neuronal.]{Esquema general de una red neuronal \cite{26}, que consta de una capa de unidades de entrada, una capa de unidades de salida y tres capas de unidades ocultas. Cada círculo representa una unidad de procesamiento simple, la cual incluye el producto escalar de pesos por entradas y una función de activación (generalmente no lineal), tal como se muestra en la Figura \ref{fig5}.}
+	\label{fig4}
 \end{figure}
 
-Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (ver Figura \ref{fig4}):
+Las neuronas son la unidad fundamental de cómputo, tienen varios valores de entrada y un valor de salida que se conecta con las neuronas de la siguiente capa. Los elementos básicos del modelo neuronal son (Figura \ref{fig5}):
 
 \begin{itemize}
 	\item Un conjunto de conexiones con las señales de entrada. Cada conexión tiene su propio peso/fuerza.
 	\item Una función de suma de las señales de entrada, ponderadas cada una con su peso. Estas operaciones constituyen una combinación lineal.
-	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1]. Existen muchos tipos de funciones de activación pero, se suelen utilizar cuatro: la función signo, la función logística, la función arco-tangente y la función ReLU.
+	\item Una función de activación, para limitar la amplitud de la salida de la neurona. Normalmente, el rango de salida está en el intervalo [0,1], o alternativamente en [-1,1]. Existen muchos tipos de funciones de activación pero, se suelen utilizar cuatro: la función signo, la función logística, la función arco-tangente o la función ReLU (\textit{Rectified Linear Unit}).
 \end{itemize} 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.25]{imagenes/cap2/neuron-model.png}
-	\caption{Modelo neuronal para una neurona $k$ \cite{25}.}
-	\label{fig4}
+	\caption[Digrama del modelo neuronal.]{Diagrama detallado del modelo neuronal para una neurona $k$ \cite{25}. El diagrama muestra las señales de entrada que se multiplican por sus respectivos pesos. Estas señales ponderadas se suman junto con el sesgo, y se les aplica una función de activación para producir la salida de la neurona.}
+	\label{fig5}
 \end{figure}
 
 En términos matemáticos, podemos describir la salida de una neurona como:
@@ -54,21 +57,21 @@ siendo $\phi$ la función de activación, $m$ el número de señales de entrada,
 
 El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pesos y el sesgo, iterativamente, hasta alcanzar el resultado deseado. Este proceso iterativo se conoce como entrenamiento, y permite, a través de las modificaciones de los pesos, reconocer y extraer las características más relevantes de los datos.
 
-El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de adecuadamente los pesos para generar una mejor estimación de la predicción.
+El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de modificar adecuadamente los pesos para generar una mejor estimación de la predicción.
 
-El sobreentrenamiento es un factor importante a evitar. Sobreentrenar el modelo de aprendizaje, significa, ajustarlo demasiado al conjunto de datos de entrenamiento, de manera que, al recibir nuevos datos no utilizados para entrenar, se estime un mal resultado debido a la poca capacidad de generalización ante nuevos datos.
+Uno de los aspectos más importantes al entrenar un modelo es el sobreajuste. Este fenómeno ocurre cuando el modelo se adapta excesivamente al conjunto de datos de entrenamiento, lo que resulta en un rendimiento deficiente al enfrentarse a nuevos datos no incluidos en el entrenamiento. Esto se debe a una limitada capacidad de generalización, que puede mitigarse mediante técnicas de regularización (Sección \ref{regularizacion}).
 
 
 \subsection{Redes neuronales convolucionales}
-Las Redes Neuronales Convolucionales (Convolutional Neural Network, CNN) \cite{35, 36, 37} son un tipo de red neuronal profunda que trabaja con patrones de cuadrícula, como pueden ser imágenes (ver Figura \ref{fig5}).
+Las redes neuronales convolucionales (\textit{Convolutional Neural Networks}, CNN) \cite{35, 36, 37} son un tipo de red neuronal profunda que trabaja con patrones de cuadrícula, como pueden ser imágenes (Figura \ref{fig6}).
 
-Este tipo de redes neuronales incluyen dos tipos de capas adicionales: capas convolucionales y capas de pooling. Estas capas están en la primera parte de la red y son las encargadas de extraer las características relevantes de la entrada. Esto nos permite automatizar el proceso de extracción de características, a la vez que mejorarlo tanto en tiempo como en rendimiento.
+En estas redes neuronales, las capas convolucionales desempeñan un papel fundamental, y a menudo se complementan con capas de \textit{pooling}. Dichas capas se encuentran en la primera parte de la red y son las encargadas de extraer las características relevantes de la entrada. Esto posibilita la automatización del proceso de extracción de características, mejorando simultáneamente tanto el tiempo como el rendimiento.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.55]{imagenes/cap2/cnn.png}
-	\caption{Ejemplo de CNN \cite{41}.}
-	\label{fig5}
+	\includegraphics[scale=0.5]{imagenes/cap2/cnn.png}
+	\caption[Arquitectura típica de red neuronal convolucional.]{Arquitectura típica de red neuronal convolucional \cite{41}, utilizada principalmente para la tarea de clasificación de imágenes. La entrada es una imagen de un objeto. La red consta de varias capas de convolución seguidas por funciones de activación y capas de \textit{pooling} que reducen la dimensionalidad de los mapas de características. Finalmente, las características extraídas se aplanan y se pasan a través de capas totalmente conectadas que terminan en una capa de clasificación \textit{softmax}, proporcionando una distribución de probabilidad sobre las posibles clases de salida.}
+	\label{fig6}
 \end{figure}
 
 A continuación, se describen los posibles tipos de capas presentes en una CNN \cite{39,40}:
@@ -76,117 +79,164 @@ A continuación, se describen los posibles tipos de capas presentes en una CNN \
 
 \subsubsection*{Capa de convolución}
 
-La capa convolucional es un componente fundamental de las CNN que se utiliza para extraer características de una imagen o conjunto de datos. Funciona aplicando operaciones de convolución a través de un conjunto de filtros o kernels sobre la entrada para detectar patrones visuales o características específicas en los datos (ver Figura \ref{fig6}).
-
-%En términos simples, la operación de convolución implica deslizar un pequeño filtro (kernel) sobre la entrada, multiplicando los valores del filtro por los valores correspondientes en la región de la entrada en la que se encuentra. Estos productos se suman para producir un único valor en la salida, que se conoce como mapa de características o feature map.
-%Al aplicar múltiples filtros en paralelo, la capa convolucional puede detectar diferentes características en paralelo, como bordes, texturas o formas en una imagen. Además, al compartir los pesos de los filtros a lo largo de la entrada, se logra la propiedad de "weight sharing", lo que reduce la cantidad de parámetros entrenables y hace que la red sea más eficiente.
-%En resumen, la capa convolucional es responsable de extraer características significativas de los datos de entrada mediante operaciones de convolución, lo que permite a la red aprender patrones visuales complejos y realizar tareas como clasificación, detección de objetos o segmentación de imágenes de manera efectiva.
+La capa convolucional es un componente fundamental de las CNN, utilizada para la extracción de características de una imagen o un conjunto de imágenes. Esta capa aplica una operación lineal especializada conocida como convolución, que consiste en aplicar un filtro o \textit{kernel} a la imagen de entrada. El \textit{kernel} es una matriz que se desliza a lo largo de la imagen, multiplicando sus valores con los píxeles correspondientes y sumándolos para producir un único valor en la imagen de salida. Este proceso se repite en todas las posiciones de la imagen dando como resultado una nueva matriz denominada mapa de características (Figura \ref{fig7}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.75]{imagenes/cap2/convolution.png}
-	\caption{Ejemplo de convolución en CNN \cite{40}.}
-	\label{fig6}
+	\caption[Ejemplo de operación de convolución.]{Ejemplo de operación de convolución en CNN \cite{40}. Se muestra cómo un \textit{kernel} se aplica sobre un tensor de entrada (una matriz de píxeles de la imagen), realizando un producto elemento a elemento. Los productos resultantes se suman para obtener un único valor en el mapa de características. Este proceso se repite para cada posición del \textit{kernel} sobre la imagen de entrada, generando así un nuevo mapa de características.}
+	\label{fig7}
 \end{figure}
 
-Estos kernels pueden tener distintos tamaños y sus valores se aprenden a lo largo del entrenamiento de la red. Sin embargo, hay que tener en cuenta que la operación de convolución es lineal y no permite aprender patrones complejos. En este contexto es donde entra la capa de activación.
+Los pesos de los filtros se aprenden durante el proceso de entrenamiento de la red neuronal. Cada \textit{kernel} tiene sus propios pesos que se ajustan iterativamente durante el entrenamiento para minimizar la función de pérdida y mejorar el rendimiento del modelo.
+
+La característica clave de la operación de convolución es el \textit{weight sharing}, que implica compartir los mismos \textit{kernels} en toda la imagen. Esto permite que la red detecte patrones locales independientemente de su ubicación en la imagen. Además, contribuye a aprender jerarquías de características espaciales, lo que permite capturar una amplia gama de características en varios niveles de abstracción. Este enfoque también aumenta la eficiencia del modelo al reducir la cantidad de parámetros que necesita aprender en comparación con las redes totalmente conectadas.
+
+Por otro lado, es importante la configuración de los hiperparámetros de cada capa convolucional, estos se definen antes de iniciar el entrenamiento de la red neuronal y afectan al comportamiento de la misma. Los más comunes son:
+\begin{itemize}
+	\item Tamaño del \textit{kernel}: se refiere a las dimensiones del filtro que se aplica a la imagen de entrada. Los tamaños comunes son 3x3, 5x5 o 7x7.
+	\item Número de \textit{kernels}: indica cuántos filtros se aplicarán a la imagen de entrada para extraer diferentes características. Cuantos más \textit{kernels} se utilicen, mayor será la profundidad de los mapas de características de salida.
+	\item \textit{Padding}: esta técnica consiste en añadir píxeles alrededor de la imagen de entrada tras el proceso de convolución. Su propósito es mantener el tamaño de la salida, ya que al aplicar la convolución, las dimensiones del mapa de características se reducen con respecto a la imagen original.
+	\item \textit{Stride}: es el número de píxeles que se desplaza el \textit{kernel} en cada paso durante la convolución. Un mayor \textit{stride} reduce el tamaño del mapa de características y la cantidad de operaciones necesarias.
+\end{itemize}
+
+Sin embargo, es importante tener en cuenta que la operación de convolución por sí sola es lineal y puede no ser suficiente para aprender patrones complejos. En este contexto, entra en juego la capa de activación, que introduce no linealidades en la red y potencia su capacidad para capturar relaciones más complejas entre las características extraídas.
 
 \subsubsection*{Capa de activación}
 
 La capa de activación en una CNN sigue a la capa convolucional y se encarga de introducir no linealidades en el modelo mediante una función de activación.
-Esta función aumenta la capacidad de la red para aprender relaciones no lineales en los datos, lo que es fundamental para capturar patrones más complejos. Algunas de las funciones de activación comunes utilizadas son la función ReLU (Rectified Linear Unit), la función sigmoide y la función tangente hiperbólica (ver Figura \ref{fig7}).
+Esta función aumenta la capacidad de la red para aprender relaciones no lineales en los datos, lo que es fundamental para capturar patrones más complejos. Algunas de las funciones de activación comunes utilizadas son la función ReLU, la función sigmoide y la función tangente hiperbólica (Figura \ref{fig8}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{imagenes/cap2/activation.png}
-	\caption{Funciones de activación comúnmente aplicadas en CNN \cite{40}.}
-	\label{fig7}
+	\caption[Funciones de activación comunes.]{Funciones de activación comúnmente aplicadas en CNN \cite{40}. (a) La función ReLU activa los valores positivos, estableciendo los negativos en cero. (b) La función sigmoide, que mapea los valores de entrada a un rango entre 0 y 1. (c) La función tangente hiperbólica, que mapea los valores de entrada a un rango entre -1 y 1.}
+	\label{fig8}
 \end{figure}
 
-\subsubsection*{Capa de pooling}
-La capa de pooling también es específica de las CNN y se encarga de reducir la dimensionalidad de las características conservando la información más relevante.
+\subsubsection*{Capa de \textit{pooling}}
+La capa de \textit{pooling} también es específica de las CNN y se encarga de reducir la dimensionalidad de las características conservando la información más relevante.
 
-Esta capa resume la información en regiones locales mediante una operación de downsampling en las características de entrada. Al reducir la dimensionalidad de las características, la capa de pooling disminuye el número de parámetros aprendibles en la red, lo que puede ayudar a prevenir el sobreajuste y mejorar la eficiencia computacional del modelo. Además, la capa de pooling también ayuda a introducir invariancia a pequeñas traslaciones y distorsiones en los datos de entrada, lo que permite a la red reconocer patrones incluso si están ligeramente desplazados en la imagen. 
+Esta capa resume la información en regiones locales mediante una operación de \textit{downsampling} en las características de entrada. Al reducir la dimensionalidad de las características, la capa de \textit{pooling} disminuye el número de parámetros aprendibles en la red, lo que puede ayudar a prevenir el sobreajuste y mejorar la eficiencia computacional del modelo. Además, esta capa también ayuda a introducir invariancia a pequeñas traslaciones y distorsiones en los datos de entrada, permititiendo a la red reconocer patrones incluso si están ligeramente desplazados en la imagen. 
 
-Los dos tipos más comunes de pooling son el max pooling, que selecciona el valor máximo de una región local en las características de entrada, y el average pooling, que calcula el promedio de los valores en una región local (ver Figura \ref{fig8}).
+Los dos tipos más comunes de \textit{pooling} son el \textit{max pooling}, que selecciona el valor máximo de una región local en las características de entrada, y el \textit{average pooling}, que calcula el promedio de los valores en una región local (Figura \ref{fig9}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{imagenes/cap2/pooling.png}
-	\caption{Tipos de pooling comúnmente utilizados en CNN \cite{40}.}
-	\label{fig8}
+	\caption[Tipos de \textit{pooling} comunes.]{Tipos de \textit{pooling} comúnmente utilizados en CNN \cite{42}. En el \textit{max pooling}, se selecciona el valor máximo de una región local de la matriz de características de entrada, mientras que en el \textit{average pooling}, se calcula el promedio de los valores en una región local.}
+	\label{fig9}
 \end{figure}
 
-Los hiperparámetros de la capa de pooling incluyen el tamaño del filtro, el stride y el tipo de padding. Estos hiperparámetros afectan la forma en que se realiza el downsampling en las características.
-
-% \subsubsection*{Capa de normalización}
+Los hiperparámetros de la capa de \textit{pooling} incluyen el tamaño del filtro, el \textit{stride} y el tipo de \textit{padding}. Estos hiperparámetros afectan la forma en que se realiza el \textit{downsampling} en las características.
 
 \subsubsection*{Capa totalmente conectada}
 
-La capa totalmente conectada sigue a las capas de convolución y pooling. En esta capa, las características extraídas por las capas anteriores se transforman en un formato unidimensional (vector) antes de conectarse a una o más capas totalmente conectadas, también conocidas como capas densas.
+La capa totalmente conectada sigue a las capas de convolución y \textit{pooling}. En esta capa, las características extraídas por las capas anteriores se transforman en un formato unidimensional (vector) antes de conectarse a una o más capas totalmente conectadas, también conocidas como capas densas.
 
 Esta capa, al igual que en las redes neuronales clásicas, tiene la responsabilidad de combinar y procesar las características extraídas para producir la salida final de la red.
 
-Cada neurona en una capa totalmente conectada está conectada a todas las neuronas de la capa anterior a través de pesos aprendibles. Estos pesos determinan la contribución de cada neurona de entrada a la neurona de salida correspondiente en la capa totalmente conectada. Durante el entrenamiento, estos pesos se ajustan mediante algoritmos de optimización como backpropagation y descenso de gradiente para minimizar la diferencia entre las salidas predichas y las etiquetas reales.
+Cada neurona en una capa totalmente conectada está conectada a todas las neuronas de la capa anterior a través de pesos aprendibles. Estos pesos determinan la contribución de cada neurona de entrada a la neurona de salida correspondiente en la capa totalmente conectada. Durante el entrenamiento, estos pesos se ajustan mediante algoritmos de optimización como \textit{backpropagation} y descenso de gradiente para minimizar la diferencia entre las salidas predichas y las etiquetas reales.
 
 Es importante destacar que la capa totalmente conectada suele estar seguida por una función de activación no lineal, como ReLU, para introducir no linealidades en el modelo y permitir la representación de patrones complejos en los datos. Además, la última capa de activación de la CNN, generalmente se selecciona según la naturaleza de la tarea que se está abordando.
 
 \subsection{Transferencia de aprendizaje}
 
-\section{Parámetros de la cámara y perspectiva}
+La transferencia de aprendizaje \cite{49}, también conocida como \textit{Transfer Learning} (TL), es una técnica fundamental en el campo del aprendizaje automático. Consiste en aprovechar el conocimiento adquirido al resolver un problema para mejorar el rendimiento en otro problema relacionado. En lugar de comenzar desde cero al entrenar un modelo para una tarea específica, el TL utiliza el aprendizaje previo en tareas similares, obteniendo múltiples beneficios, como una mayor eficiencia en el entrenamiento de modelos, una mejor generalización con conjuntos de datos limitados y una aceleración en el desarrollo de modelos.
 
-\subsection*{Longitud focal}
-La longitud focal \cite{44} mide la distancia, en milímetros, entre el 'punto nodal' (punto donde la luz converge en una lente) y el sensor de la cámara (ver Figura \ref{fig10}). 
+En las arquitecturas convolucionales, la forma más común de llevar a cabo la transferencia de aprendizaje es mediante el \textit{fine-tuning} \cite{39}, que implica utilizar pesos pre-entrenados, congelar todas las capas de la red excepto las superiores, y ajustar estas últimas para adaptarlas a nuestro problema específico, de manera que el entrenamiento se realice únicamente en esas capas superiores. Este enfoque aprovecha la capacidad de los modelos pre-entrenados para capturar características generales de los datos, lo cual es especialmente útil cuando se dispone de conjuntos de datos pequeños o limitados. Además, al congelar las capas iniciales se evita la pérdida de información importante aprendida durante el pre-entrenamiento, mientras que el \textit{fine-tuning} en las capas superiores permite adaptar el modelo a la nueva tarea específica.
 
-\begin{figure}[h]
+En este contexto, es común utilizar los pesos pre-entrenados en el conjunto de datos de ImageNet \cite{50} debido a su gran tamaño, diversidad, representatividad y disponibilidad.
+
+
+\subsection{Regularización}\label{regularizacion}
+Tanto en las redes neuronales clásicas como en las convolucionales, el sobreajuste a los datos de entrenamiento es un problema importante (Figura \ref{fig10}). Aunque la solución óptima sería adquirir más datos para el entrenamiento, esta opción no siempre está disponible. Por tanto, se recurre a técnicas de regularización para mitigar este problema. Entre las más destacadas se encuentran:
+
+\begin{itemize}
+	\item \textit{Dropout}: es una técnica de regularización donde se establecen aleatoriamente ciertas activaciones a 0 durante el entrenamiento, de modo que el modelo se vuelve menos sensible a pesos específicos en la red.
+	\item \textit{Weight decay}: también conocido como regularización L2, reduce el sobreajuste penalizando los pesos del modelo para que tomen solo valores pequeños.
+	\item \textit{Batch normalization}: es un tipo de capa suplementaria que normaliza adaptativamente los valores de entrada de la siguiente capa, mitigando el riesgo de sobreajuste, así como mejorando el flujo de gradiente a través de la red, permitiendo tasas de aprendizaje más altas y reduciendo la dependencia de la inicialización.
+	\item \textit{Data augmentation}: es un proceso de modificación de los datos de entrenamiento a través de transformaciones aleatorias, como volteo, traslación, recorte, rotación y borrado aleatorio, para que el modelo no vea exactamente las mismas entradas durante las iteraciones de entrenamiento. Esta técnica, además de reducir el sobreajuste, permite una mejor generalización del modelo.
+	\item \textit{Elección del modelo}: un modelo de una alta complejidad puede provocar sobreajuste ya que tiene la capacidad de ajustarse mucho mejor a los datos de entrenamiento. Es fundamental encontrar un modelo que tenga un equilibrio entre complejidad y generalización, es decir, que sea lo suficientemente complejo para captar las características importantes pero que a la vez sea capaz de generalizar sin sobreajustarse demasiado a los datos.
+\end{itemize}
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.25]{imagenes/cap2/focal.png}
-	\caption{Relación entre punto nodal y longitud focal \cite{44}}
+	\includegraphics[scale=0.8]{imagenes/cap2/sobreajuste.png}
+	\caption[Infraajuste y sobreajuste en entrenamiento.]{Zona de infraajuste y sobreajuste del modelodurante el entrenamiento \cite{40}. El eje vertical representa la función de pérdida, mientras que el eje horizontal muestra el número de iteraciones durante el entrenamiento. Al inicio del proceso, tanto el error de entrenamiento como el de validación son altos, indicando que el modelo no ha aprendido lo suficiente de los datos, situación conocida como infraajuste. A medida que el entrenamiento avanza, ambos errores disminuyen hasta alcanzar un punto óptimo donde el modelo generaliza bien en datos no vistos. Sin embargo, si el entrenamiento continúa, el error de validación comienza a aumentar mientras que el error de entrenamiento sigue disminuyendo, fenómeno conocido como sobreajuste.}
 	\label{fig10}
 \end{figure}
 
-La longitud focal es importante porque se relaciona con el campo de visión de una lente, es decir, cuánta escena capturarás. También explica qué tan grande o pequeño aparecerá un sujeto en la fotografía.
+A pesar de las técnicas anteriores, persiste la preocupación por el sobreajuste al conjunto de validación en lugar del conjunto de entrenamiento, principalmente debido a la filtración de información durante el ajuste fino de hiperparámetros y el proceso de selección del modelo. Por tanto, es importante evaluar el rendimiento del modelo final en un conjunto de prueba separado, preferiblemente no visto previamente. Esto es fundamental para validar la capacidad de generalización del modelo y garantizar su fiabilidad.
 
-Valores más altos de longitud focal (como 500 mm) se ven más 'cerca', mientras que valores más bajos (como 20 mm) están más 'lejos'.
 
-\subsection*{Sensor de la cámara}
-El sensor de la cámara \cite{45,47} es el componente que captura la luz y la convierte en una imagen digital. El tamaño del sensor afecta a la calidad de la imagen y a la cantidad de luz que puede capturar. El tamaño estándar es de 36mm x 24mm, también conocido como Full frame o 35mm.
+\section{Parámetros de la cámara}\label{param_camera}
 
-Otra forma equivalente de referirnos al tamaño del sensor es mediante el factor de recorte, que se define como la relación existente entre el tamaño de un sensor de 35mm y el sensor de nuestra cámara (ver Figura \ref{fig11}).
+A la hora de trabajar con imágenes faciales y, particularmente, para comprender todos los factores que intervienen en el proceso de la simulación de imágenes faciales, es esencial introducir una serie de conceptos relativos a los parámetros de la cámara \cite{51,67,68,69}. Estos parámetros, como la distancia focal, el sensor de la cámara y la distancia cámara-sujeto, entre otros, están estrechamente relacionados entre sí y ejercen una influencia significativa tanto en la configuración de la escena fotográfica como en la percepción visual de los sujetos retratados en ella.
+
+\subsection*{Distancia focal}
+La distancia focal mide la distancia, en milímetros, entre el \textit{punto nodal} (punto donde la luz converge en una lente) y el sensor de la cámara (Figura \ref{fig11}). 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.1]{imagenes/cap2/tam_sensor_factor.jpeg}
-	\caption{Tamaños del sensor expresados según el factor de recorte}
+	\includegraphics[scale=0.2]{imagenes/cap2/focal.png}
+	\caption[Relación entre punto nodal y distancia focal.]{Relación entre el punto nodal y la distancia focal en un sistema óptico \cite{44}. La imagen muestra cómo la luz que pasa por el punto nodal de la lente converge en el sensor de la cámara.}
 	\label{fig11}
 \end{figure}
 
-Uno de los aspectos más importantes de utilizar un sensor con factor de recorte distinto a 1, es que la longitud focal se ve afectada, de forma que hablamos de longitud focal equivalente.
+La distancia focal es un factor importante, ya que determina el campo de visión de una lente, es decir, la cantidad de escena que se captura (Figura \ref{fig11.2}).  En distancias focales más largas, los objetos parecen estar más cerca del objetivo de la cámara, lo que puede hacer que parezcan más grandes en la imagen. Por el contrario, con distancias focales más cortas, los objetos aparentan estar más distantes en la fotografía.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.12]{imagenes/cap2/perspective.png}
+	\caption[Relación entre distancia focal y campo de visión.]{Relación entre distancia focal y campo de visión \cite{96}. La distancia focal afecta al tamaño aparente de los objetos y a la cantidad de escena que aparece en la imagen.}
+	\label{fig11.2}
+\end{figure}
+
+\subsection*{Sensor de la cámara}
+El sensor de la cámara es el componente encargado de capturar la luz y transformarla en una imagen digital. Su tamaño incide directamente en la calidad de la imagen y en su capacidad para capturar la luz. El estándar comúnmente utilizado es de 36mm x 24mm, conocido como \textit{full frame} o 35mm, siendo este tamaño una referencia debido a su similitud con el formato de película fotográfica analógica utilizado en el pasado.
+
+La necesidad de establecer un estándar es esencial para comparar equitativamente imágenes capturadas por diferentes dispositivos. Al referirnos a un estándar de 35 mm, disponemos de un sistema de referencia común que nos permite convertir las imágenes, de manera que los objetos visibles en la escena tengan dimensiones similares, facilitando así su comparación y análisis.
+
+Otra manera de expresar el tamaño del sensor es a través del factor de recorte, que se calcula como la proporción entre el tamaño del sensor de 35 mm y el de nuestra cámara (Figura \ref{fig12}). El factor de recorte se emplea a menudo para comprender la dimensión del sensor de la cámara en relación con el estándar de 35 mm. Esta medida facilita una comparación directa entre el tamaño del sensor de 35 mm y el de nuestra cámara, lo que permite entender mejor su capacidad para capturar imágenes.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.08]{imagenes/cap2/tam_sensor_factor.jpeg}
+	\caption[Tipos de tamaños de sensor.]{Comparación de tamaños de sensores fotográficos expresados según el factor de recorte \cite{48}. Los tamaños van desde medio formato hasta 1/2.3".}
+	\label{fig12}
+\end{figure}
+
+Uno de los aspectos más importantes del factor de recorte es su impacto en la distancia focal, lo que nos lleva al concepto de \textit{distancia focal equivalente} (Figura \ref{fig13}). Por ejemplo, al tener una focal de 300 mm en un sensor con factor de recorte 1.6, estaríamos obteniendo un efecto equivalente al de una focal de 480 mm (300 mm x 1.6) en un sensor \textit{full frame} con factor de recorte 1.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.13]{imagenes/cap2/focal-equivalente.png}
-	\caption{Ejemplo de longitud focal equivalente según el tamaño del sensor \cite{46}.}
-	\label{fig12}
+	\caption[Ejemplo de distancia focal equivalente.]{Diagrama que muestra el concepto de distancia focal equivalente en función del tamaño del sensor \cite{46}. Se observa cómo un lente proyecta la luz en sensores de diferentes tamaños (APS-C y Full Frame), lo que modifica el ángulo de visión y, en consecuencia, la cantidad de escena capturada en la imagen resultante.}
+	\label{fig13}
 \end{figure}
 
-
 \subsection*{Distancia cámara-sujeto}
-%La distancia cámara-sujeto se refiere a la distancia física entre la cámara y el sujeto que está siendo fotografiado (ver Figura \ref{fig9}). Modificar esta distancia produce cambios en la apariencia óptica del rostro en la imagen capturada \cite{43}. Estos cambios pueden influir en la percepción de la identidad facial y en la precisión a la hora de identificar rostros. A este fenómeno se le conoce como distorsión de perspectiva.
 
-La distancia cámara-sujeto se define como la separación física entre la cámara y el sujeto que está siendo fotografiado (ver Figura \ref{fig9}). Alterar esta distancia provoca variaciones en la apariencia visual del rostro en la fotografía obtenida \cite{43}. Este fenómeno se conoce como distorsión de perspectiva.
-
+La distancia cámara-sujeto se define como la separación física entre la cámara y el sujeto que está siendo fotografiado (Figura \ref{fig14}). Modificar esta distancia provoca variaciones en la apariencia visual del rostro en la fotografía obtenida \cite{43}. Este fenómeno se conoce como distorsión de perspectiva.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.125]{imagenes/cap2/SCD_final.png}
-	\caption{Distancia desde la cámara al sujeto.}
-	\label{fig9}
+	\includegraphics[scale=0.1]{imagenes/cap2/SCD_final.png}
+	\caption[Distancia desde la cámara al sujeto.]{Distancia desde la cámara al sujeto. El punto de referencia utilizado para el sujeto es el centro de los ojos.}
+	\label{fig14}
 \end{figure}
 
-En este TFG se utilizarán los ojos del sujeto como punto de referencia para medir la SCD, esto se debe a su importancia y su posición central en el rostro.
+La distorsión de perspectiva \cite{8,51} es la transformación que sufre un objeto y su entorno debido a la proximidad del mismo respecto al objetivo (Figura \ref{fig15}). En el caso de las fotografías faciales, cuanto menor es la distancia cámara-sujeto, mayor es la distorsión de perspectiva que afecta a la persona fotografiada. Esto afecta a rasgos de la cara que pueden aparecer más grandes, como la nariz, o más pequeños, como las orejas, de lo que realmente son (Figura \ref{fig2}).
 
-	
-\subsection*{Distorsión de perspectiva}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{imagenes/cap2/distorsion.png}
+	\caption[Efectos de la distorsión según distancia.]{Efecto de la distorsión según la distancia al objeto \cite{51}. De izquierda a derecha, la distancia entre la cámara y el objeto disminuye, lo que provoca un aumento progresivo de la distorsión.}
+	\label{fig15}
+\end{figure}
+
+Uno de los malentendidos comunes en fotografía es la creencia de que la distancia focal distorsiona los rasgos faciales, sin embargo, la distancia focal no tiene nada que ver con la distorsión del rostro de un sujeto, siendo esta únicamente provocada por la distancia de la cámara al sujeto \cite{52}.
+
+
 
