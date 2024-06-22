@@ -10,7 +10,7 @@ El aprendizaje automático (\textit{Machine Learning}, ML) \cite{22,23} es una r
 Existen 3 tipos de aprendizaje dentro del ML:
 
 \begin{itemize}
-	\item El \textbf{aprendizaje supervisado} consiste en entrenar un modelo con datos que tienen etiquetas conocidas, lo que indica la categoría a la que pertenece cada dato. Por ejemplo, si los datos de entrada son imágenes de animales, las etiquetas podrían ser \enquote*{perro} o \enquote*{gato}. A partir de estos datos etiquetados, el modelo aprende a predecir la etiqueta de nuevos datos. Es el tipo de aprendizaje más utilizado y los datos vienen ya \enquote*{preparados} para su uso. Es el tipo de aprendizaje que utilizaremos en este TFG.
+	\item El \textbf{aprendizaje supervisado} consiste en entrenar un modelo con datos que tienen etiquetas conocidas, lo que indica la categoría a la que pertenece cada dato. Por ejemplo, si los datos de entrada son imágenes de animales, las etiquetas podrían ser \enquote*{perro} o \enquote*{gato}. A partir de estos datos etiquetados, el modelo aprende a predecir la etiqueta de nuevos datos. Es el tipo de aprendizaje más utilizado y los datos vienen ya \enquote*{preparados} para su uso. Este aprendizaje será el utilizado en este TFG.
 	\item En el \textbf{aprendizaje no supervisado}, el modelo analiza los datos de entrada sin etiquetas, buscando patrones y estructuras inherentes a los datos. El agrupamiento es una técnica común en este tipo de aprendizaje, ya que identifica posibles grupos dentro de los datos. Este enfoque suele requerir un gran volumen de datos para ser efectivo.
 	\item Por otro lado, en el \textbf{aprendizaje por refuerzo}, el modelo aprende a través de recompensas o penalizaciones en función de las acciones que realiza. El objetivo del agente es maximizar las recompensas a largo plazo, lo que lo hace especialmente útil en la enseñanza de estrategias en juegos y otras interacciones dinámicas.
 \end{itemize}
@@ -18,11 +18,11 @@ Existen 3 tipos de aprendizaje dentro del ML:
 El aprendizaje profundo (\textit{Deep Learning}, DL) \cite{26,78} constituye una subárea del ML que se enfoca en algoritmos basados en redes neuronales profundas, capaces de aprender representaciones jerárquicas de los datos. Para ello, el DL suele requerir grandes cantidades de datos y poder computacional para entrenar modelos efectivos.
 
 \subsection{Redes neuronales artificiales}
-Las redes neuronales artificiales (\textit{Artificial Neural Networks}, ANN) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de animales y humano. Las ANN poseen unidades de procesamiento de información llamadas neuronas, las cuales están conectadas entre sí. La estructura básica de una ANN se compone de (Figura \ref{fig4}):
+Las redes neuronales artificiales (\textit{Artificial Neural Networks}, ANN) \cite{24, 25, 27} son redes computacionales que intentan, a groso modo, simular el proceso de decisión de las neuronas del sistema nervioso central de animales y humanos. Las ANN poseen unidades de procesamiento de información llamadas neuronas, las cuales están conectadas entre sí. La estructura básica de una ANN se compone de (Figura \ref{fig4}):
 \begin{itemize}
-	\item Una capa de entrada, que tendrá tantos \textit{inputs} como características o variables tenga el problema
+	\item Una capa de entrada, que tendrá tantos \textit{inputs} como características o variables tenga el problema.
 	\item Una o varias capas ocultas, compuestas por neuronas. El número de capas ocultas define la profundidad de la red neuronal.
-	\item Una capa de salida, la cual representa el valor o valores predichos
+	\item Una capa de salida, la cual representa el valor o valores predichos.
 \end{itemize} 
 
 \begin{figure}[h]
@@ -55,7 +55,7 @@ En términos matemáticos, podemos describir la salida de una neurona como:
 
 siendo $\phi$ la función de activación, $m$ el número de señales de entrada, $w_j$ el peso de cada entrada $x_j$, y $b$ el sesgo.
 
-El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pesos y el sesgo, iterativamente, hasta alcanzar el resultado deseado. Este proceso iterativo se conoce como entrenamiento, y permite, a través de las modificaciones de los pesos, reconocer y extraer las características más relevantes de los datos.
+El algoritmo de aprendizaje de la red neuronal consiste en ir modificando los pesos y el sesgo, iterativamente, hasta alcanzar el resultado deseado. Este proceso iterativo se conoce como entrenamiento, y permite, a través de estas modificaciones, reconocer y extraer las características más relevantes de los datos.
 
 El objetivo del entrenamiento es minimizar el error de predicción de la salida de la red neuronal, para ello, se define una función de pérdida. Existen numerosas funciones de pérdida, algunas de las más conocidas son: el error cuadrático medio (MSE), el error absoluto medio (MAE) o la entropía cruzada. La información de la función de pérdida se transmite desde la salida a la capa inicial, con el fin de modificar adecuadamente los pesos para generar una mejor estimación de la predicción.
 
@@ -237,6 +237,3 @@ La distorsión de perspectiva \cite{8,51} es la transformación que sufre un obj
 \end{figure}
 
 Uno de los malentendidos comunes en fotografía es la creencia de que la distancia focal distorsiona los rasgos faciales, sin embargo, la distancia focal no tiene nada que ver con la distorsión del rostro de un sujeto, siendo esta únicamente provocada por la distancia de la cámara al sujeto \cite{52}.
-
-
-

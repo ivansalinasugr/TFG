@@ -61,7 +61,7 @@ HuMMan \cite{62} es un conjunto de datos 3D que consta de 153 sujetos humanos, c
 	\label{fig19}
 \end{figure}
 
-People Snapshot \cite{63} contiene 24 sujetos 3D con textiras adaptadas a diferentes situaciones tales como casual, deporte y actividades al aire libre (Figura \ref{fig20}).
+People Snapshot \cite{63} contiene 24 sujetos 3D con texturas adaptadas a diferentes situaciones tales como casual, deporte y actividades al aire libre (Figura \ref{fig20}).
 
 \begin{figure}[H]
 	\centering
@@ -86,7 +86,7 @@ Inicialmente, se seleccionaron 300 modelos 3D, de los cuales 206 son modelos fac
 
 En cuanto a los modelos faciales, se seleccionaron 23 modelos de H3DS-net, compuestos por 13 masculinos y 10 femeninos, todos de ascendencia europea. De HeadSpace, se seleccionaron 93 modelos, con una distribución de 46 masculinos y 47 femeninos, cubriendo una amplia gama de edades y representando diversas ascendencias, incluyendo europea, asiática, africana o mixta. Se seleccionaron 50 modelos de la base de datos Stirling ESRC 3D Face, con 43 femeninos y 7 masculinos, mayoritariamente de ascendencia europea. Por último, se seleccionaron 40 modelos de DI4D\_UGR, con una distribución de 17 femeninos y 23 masculinos, todos de ascendencia europea.
 
-Por otro lado, en cuanto a los modelos completos, se seleccionaron 2 modelos de RenderPeople, uno masculino y otro femenino, ambos de ascendencia europea. De People Snapshot, se eligieron 24 modelos, siendo 16 masculinos y 8 femeninos, todos de ascendencia europea. Finalmente, se seleccionaron 68 modelos de HuMMan, distribuidos equitativamente en 34 masculinos y 34 femeninos, con una variedad de ascendencias incluyendo asiática, africana y europea.
+Por otro lado, en cuanto a los modelos completos, se seleccionaron 2 modelos de RenderPeople, uno masculino y otro femenino, ambos de ascendencia europea. De People Snapshot, se eligieron 24 modelos, siendo 16 masculinos y 8 femeninos, todos de ascendencia europea. Finalmente, se seleccionaron 68 modelos de HuMMan, distribuidos equitativamente en 34 masculinos y 34 femeninos, con una variedad de ascendencias incluyendo mayoría asiática pero también africana y europea.
 
 Estas selecciones se hicieron con el propósito de garantizar una amplia diversidad en términos de sexos biológicos, ascendencias y poses, teniendo en cuenta las bases de datos disponibles. Sin embargo, a pesar de que inicialmente la muestra era de 300 modelos 3D, después de algunas pruebas preliminares, se descartaron 23 modelos debido a su potencial impacto negativo en el aprendizaje, lo que resultó en un conjunto final de 277 modelos.
 
@@ -94,17 +94,17 @@ Estas selecciones se hicieron con el propósito de garantizar una amplia diversi
 
 \subsubsection{Procesamiento de modelos 3D}
 
-Al contar con un conjunto de datos compuesto por múltiples conjuntos, cada uno con una escala específica, ya sea en centímetros o metros, y dispuestos de manera diversa, surge la necesidad de normalizar la escala y alinear los modelos con respecto a un punto de referencia. Para esto, se empleará el centro de los ojos como punto de origen (0, 0, 0), dado que son fácilmente visualizables, se ubican en una posición central y están presentes tanto en los modelos faciales como en los de cuerpo completo. Este procesamiento se produce para luego poder generar correctamente las imágenes a distintas distancias.
+Al contar con un conjunto de datos compuesto por múltiples conjuntos, cada uno con una escala específica, ya sea en centímetros o metros, y dispuestos de manera diversa, surge la necesidad de normalizar la escala y alinear los modelos con respecto a un punto de referencia. Para esto, se empleó el centro de los ojos como punto de origen (0, 0, 0), dado que son fácilmente visualizables, se ubican en una posición central y están presentes tanto en los modelos faciales como en los de cuerpo completo. Este procesamiento se produce para luego poder generar correctamente las imágenes a distintas distancias.
 
 La normalización de la escala se lleva a cabo mediante transformaciones de escala, multiplicando o dividiendo por un factor de 100. Esta se realiza solo en algunos modelos, para que todos estén a la misma escala.
 
-Para alinear los modelos, en primer lugar se aplicó un \textit{script} de \textit{Python} para realizar transformaciones (específicas para cada conjunto de datos) con el objetivo de posicionarlos de frente. Posteriormente, se desarrolló un programa en \textit{Python} que utiliza librerías como \textit{VTK}, \textit{PyVista} y \textit{Trimesh} para la manipulación de mallas 3D, junto con \textit{Mediapipe} para la detección de rostros. El proceso implica tener un modelo de referencia ya alineado manualmente, junto con 13 puntos de referencia faciales 3D (incluyendo la nariz, los ojos y la boca) obtenidos mediante \textit{Mediapipe}. Después, dado un nuevo modelo sin alinear, se calculan sus puntos de referencia correspondientes y se determina y aplica la matriz de transformación entre estos puntos y los del modelo de referencia.
+Para alinear los modelos, en primer lugar se aplicó un \textit{script} de \textit{Python} para realizar transformaciones (específicas para cada conjunto de datos) con el objetivo de posicionarlos de frente. Posteriormente, se desarrolló un programa en \textit{Python} que utiliza librerías como \textit{VTK}, \textit{PyVista} y \textit{Trimesh} para la manipulación de mallas 3D, junto con \textit{Mediapipe} para la detección de rostros. El proceso implica tener un modelo de referencia ya alineado manualmente, junto con 13 puntos de referencia faciales 3D (incluyendo la nariz, los ojos y la boca) obtenidos mediante \textit{Mediapipe}. Después, dado un nuevo modelo sin alinear, se calculan automáticamente sus puntos de referencia correspondientes y se determina y aplica la matriz de transformación entre estos puntos y los del modelo de referencia. Esta transformación ajusta el modelo desalineado al modelo de referencia previamente alineado.
 
 A excepción de algunos ajustes manuales en los modelos de HeadSpace y HuMMan, el proceso se automatizó de forma efectiva.
 
 \subsubsection{Generación de imágenes faciales sintéticas}
 
-Una vez procesados los modelos 3D, se procedió a generar el conjunto de imágenes faciales. Para ello, se utilizó un \textit{script} en \textit{Blender} cuyo pseucódigo está en el Algoritmo \ref{alg:render_images}. 
+Una vez procesados los modelos 3D, se procedió a generar el conjunto de imágenes faciales. Para ello, se utilizó un \textit{script} en \textit{Blender} cuyo pseucódigo se puede ver en el Algoritmo \ref{alg:render_images}. 
 
 \begin{algorithm}
 	\caption{Generación de imágenes}\label{alg:render_images}
@@ -158,8 +158,6 @@ A continuación, se detallan las tareas específicas llevadas a cabo para cada m
 	\end{enumerate}
 \end{enumerate}
 
-
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4]{imagenes/cap4/imagenes_fondos.png}
@@ -181,7 +179,7 @@ A continuación, se detallan las tareas específicas llevadas a cabo para cada m
 	\label{fig23}
 \end{figure}
 
-Tras este proceso de generación de imágenes, y considerando que se contaba con 277 modelos 3D, el conjunto total de datos ascendió a 135730 imágenes. La gran diversidad de poses, expresiones faciales, modelos y fondos del conjunto de datos se pueden observar en la Figura \ref{fig24}.
+Tras este proceso de generación de imágenes, y considerando que se contaba con 277 modelos 3D, el conjunto total de datos ascendió a 135 730 imágenes. La gran diversidad de poses, expresiones faciales, modelos y fondos del conjunto de datos se pueden observar en la Figura \ref{fig24}.
 
 % \begin{figure}[H]
 % 	\centering
@@ -207,7 +205,7 @@ El método FacialSCDnet \cite{14}, es un enfoque de aprendizaje profundo para es
 Para entrenar estos modelos, se empleó un conjunto de datos compuesto por dos colecciones: 
 
 \begin{itemize}
-	\item Conjunto sintético: se generaron imágenes sintéticas 2D a partir de los modelos 3D de la base de datos Stirling ESRC 3D Face \footnote{Stirling ESRC 3D Face: https://pics.stir.ac.uk/ESRC/}. En particular, se utilizaron 315 modelos faciales de 54 individuos femeninos diferentes para generar aproximadamente 150.000 fotografías sintéticas.
+	\item Conjunto sintético: se generaron imágenes sintéticas 2D a partir de los modelos 3D de la base de datos Stirling ESRC 3D Face \footnote{Stirling ESRC 3D Face: https://pics.stir.ac.uk/ESRC/}. En particular, se utilizaron 315 modelos faciales de 54 individuos femeninos diferentes para generar aproximadamente 150 000 fotografías sintéticas.
 	\item Conjunto de fotografías digitales: se adquirieron fotografías de 28 individuos siguiendo un protocolo de adquisición específico. Se consideraron 4 distancias focales diferentes (27 mm, 35 mm, 55 mm, 85 mm) en formato full frame y se capturaron 12 distancias diferentes de la cámara al sujeto, que oscilaron desde 50 cm hasta 6 m. Además, se fotografiaron 7 posiciones distintas de la cabeza, desde el perfil izquierdo hasta el perfil derecho, con intervalos de rotación de 30º. 
 	% En la Figura \ref{fig24.25} se pueden ver algunas de las fotografías digitales. 
 \end{itemize}
@@ -224,7 +222,7 @@ El proceso de entrenamiento de los modelos consta de dos fases. En primer lugar,
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{imagenes/cap4/figura_FSCDnet.png}
-	\caption[Ejemplos de imágenes reales con fondos FacialSCDnet.]{Imágenes reales con fondos utilizados en FacialSCDnet \cite{14}. Los rostros se integraron en los fondos aplicando una máscara con la silueta facial.}
+	\caption[Ejemplos de imágenes reales con fondos FacialSCDnet.]{Imágenes reales con fondos utilizados en FacialSCDnet. Los rostros se integraron en los fondos aplicando una máscara con la silueta facial.}
 	\label{fig24.2}
 \end{figure}
 
@@ -243,7 +241,7 @@ Estas limitaciones motivan los desarrollos propuestos en el presente TFG, como s
 
 En este trabajo se propone un enfoque alternativo que permita superar las limitaciones identificadas en el principal método del estado del arte para la estimación de la distancia cámara-sujeto en fotografías faciales: FacialSCDnet+. Entre las mejoras se presentan dos modelos de aprendizaje diferentes, basados en las arquitecturas VGG-16 y ResNet-50, respectivamente. Ambos modelos se entrenaron con el propósito de estimar la SCD en imágenes con una distancia focal aproximada de 35mm. Además de integrar nuevas arquitecturas, FacialSCDnet+ se ha desarrollado completamente desde cero para optimizar el rendimiento y la eficiencia empleando un framework alternativo como se describirá más adelante.
 
-Otra de las principales diferencias es el uso exclusivo de un dataset sintético (siguiendo el procedimiento descrito en la Sección \ref{gen-img}), considerablemente más realista, diverso y extenso que el empleado en \cite{14}. Eliminando la necesidad de realizar una segunda etapa de fine-tuning con datos reales para el entrenamiento. Además, se ha rediseñado
+Otra de las principales diferencias es el uso exclusivo de un \textit{dataset} sintético (siguiendo el procedimiento descrito en la Sección \ref{gen-img}), considerablemente más realista, diverso y extenso que el empleado en \cite{14}. Eliminando la necesidad de realizar una segunda etapa de fine-tuning con datos reales para el entrenamiento. Además, se ha rediseñado
 el sistema de aumento de imágenes aplicando las operaciones siguientes
 
 \begin{itemize}
@@ -306,7 +304,7 @@ El uso de la metodología \textit{hold-out} en lugar de \textit{cross-validation
 	\label{fig27}
 \end{figure}
 
-El primer paso de esta metodología consiste en reservar todas las imágenes de 30 sujetos de forma aleatoria para el conjunto de test. Posteriormente, se añaden imágenes adicionales de manera aleatoria, para constituir el 20\% del conjunto total de test, mientras que el 80\% restante se asigna al conjunto de entrenamiento. Finalmente, durante el proceso de entrenamiento de los modelos, se aparta un 20\% aleatorio del conjunto de entrenamiento como conjunto de validación, dejando el 80\% restante para el entrenamiento propiamente dicho. Por tanto, contamos con 135730 imágenes, de las cuales 85435 se destinan al entrenamiento, 21360 a la validación y 28935 a test.
+El primer paso de esta metodología consiste en reservar todas las imágenes de 30 sujetos de forma aleatoria para el conjunto de test. Posteriormente, se añaden imágenes adicionales de manera aleatoria, para constituir el 20\% del conjunto total de test, mientras que el 80\% restante se asigna al conjunto de entrenamiento. Finalmente, durante el proceso de entrenamiento de los modelos, se aparta un 20\% aleatorio del conjunto de entrenamiento como conjunto de validación, dejando el 80\% restante para el entrenamiento propiamente dicho. Por tanto, contamos con 135 730 imágenes, de las cuales 85 435 se destinan al entrenamiento, 21 360 a la validación y 28 935 a test.
 
 
 \subsubsection{Métricas}
@@ -321,7 +319,7 @@ siendo $y_i$ la distancia verdadera en la imagen $i$, $x_i$ la distancia predich
 
 En cuanto a la interpretabilidad de esta métrica, podremos considerar que la predicción de la distancia obtenida es aceptable cuando baje del 1\% de error. Este umbral se ha definido como el máximo admisible para realizar comparaciones en contextos forenses \cite{55}.
 
-Aunque la distorsión se considera la medida principal de rendimiento, también se han empleado otras métricas como el error absoluto medio (MAE) y el error relativo medio (MRE) para evaluar el desempeño del modelo:
+Aunque la distorsión se considera la medida principal de rendimiento, también se han empleado otras métricas como el error absoluto medio (MAE), el error relativo medio (MRE) y el coeficiente de determinación (R$^2$) para evaluar el desempeño del modelo:
 
 \begin{equation}
 	\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} | y_i - x_i |
@@ -331,8 +329,15 @@ Aunque la distorsión se considera la medida principal de rendimiento, también 
 	\text{MRE} = \frac{1}{n} \sum_{i=1}^{n} \frac{| y_i - x_i |}{y_i}
 \end{equation}
 
+\begin{equation}
+	\text{R$^2$} = 1 - \frac{\sum_{i=1}^{n} (y_i - x_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\end{equation}
+
 El MAE, al calcular la diferencia absoluta promedio entre las predicciones del modelo y los valores reales, mide cuánto se desvían las predicciones del modelo en términos absolutos. Esto es útil para entender la magnitud de los errores de predicción sin considerar su distorsión.
+
 Por otro lado, el MRE, al calcular la diferencia relativa promedio entre las predicciones del modelo y los valores reales, proporciona una medida de cuánto se desvían las predicciones del modelo en relación con la distancia real (normalmente en porcentaje). Esto es fundamental cuando se necesita evaluar el rendimiento del modelo en términos de precisión relativa.
+
+Finalmente, el coeficiente de determinación R$^2$, mide la proporción de la varianza en la variable dependiente que es predecible a partir de la variable independiente. Un valor de R$^2$ cercano a 1 indica que el modelo explica bien la varianza de los datos observados, mientras que un valor cercano a 0 sugiere que el modelo no explica bien la variabilidad de los datos.
 
 \subsection{\textit{Backend}}\label{backend}
 
@@ -340,7 +345,7 @@ Por otro lado, el MRE, al calcular la diferencia relativa promedio entre las pre
 
 VGG-16 es una red neuronal convolucional profunda basada en la arquitectura VGGNet \cite{65}. Esta red contiene 16 capas entrenables, como su nombre indica, y destaca por su eficacia en la extracción de características en imágenes.
 
-La arquitectura VGG-16 se puede ver en la Figura \ref{fig26}. Inicialmente, la red recibe como entrada una imagen RGB de tamaño fijo de 224x224. Esta imagen atraviesa una serie de capas convolucionales, donde se emplean filtros de tamaño 3x3. En estas capas, el \textit{stride} se mantiene constante en 1 píxel y se utiliza un \textit{padding} de 1 píxel para evitar la pérdida de dimensionalidad al aplicar los filtros de convolución 3x3. Cada capa convolucional contiene una capa de activación ReLU detrás.Tras algunas de las capas convolucionales, se realiza un \textit{max pooling} con filtros de 2x2 y \textit{stride} de 2 píxeles, esta operación se realizar para ir reduciendo el tamaño de los mapas de activación. En esta primera parte de la red es donde se extraen las características de la imagen.
+La arquitectura VGG-16 se puede ver en la Figura \ref{fig26}. Inicialmente, la red recibe como entrada una imagen RGB de tamaño fijo 224x224 píxeles. Esta imagen atraviesa una serie de capas convolucionales, donde se emplean filtros de tamaño 3x3. En estas capas, el \textit{stride} se mantiene constante en 1 píxel y se utiliza un \textit{padding} de 1 píxel para evitar la pérdida de dimensionalidad al aplicar los filtros de convolución 3x3. Cada capa convolucional contiene una capa de activación ReLU detrás. Tras algunas de las capas convolucionales, se realiza un \textit{max pooling} con filtros de tamaño 2x2 y \textit{stride} de 2 píxeles, esta operación se realizar para ir reduciendo el tamaño de los mapas de activación. En esta primera parte de la red es donde se extraen las características de la imagen.
 
 Posteriormente, esta primera parte de la red es sucedida por tres capas totalmente conectadas: las dos primeras cuentan con 4096 neuronas cada una, mientras que la tercera realiza la clasificación con 1000 neuronas (una por cada clase). Tras cada una de estas capas, sigue una capa de activación ReLU. La última capa corresponde a la capa de \textit{soft-max} que calcula las probabilidades de pertenecer a cada clase. En esta parte final de la red se realiza la clasificación final de las características extraídas para la tarea de reconocimiento de imágenes.
 
@@ -360,7 +365,7 @@ Las arquitecturas VGGnet destacan por emplear convoluciones únicamente de tama�
 
 En FacialSCDnet y FacialSCDnet+, se realizó una modificación estructural en la red originalmente diseñada para clasificación. Se mantuvo la extracción de características a través de los 5 bloques convolucionales, aprovechando los pesos preentrenados en ImageNet \cite{97}. Sin embargo, se eliminó la parte superior de la red y se agregaron 2 capas totalmente conectadas de 4096 neuronas, junto con una capa final de una neurona configurada para llevar a cabo la tarea de regresión.
 
-Tras realizar estos ajustes en la estructura de la red, se congelaron los pesos de los bloques convolucionales, mientras que la parte final de la red se entrenó desde cero. En total, la red cuenta con 119,545,857 parámetros para el entrenamiento.
+Tras realizar estos ajustes en la estructura de la red, se congelaron los pesos de los bloques convolucionales, mientras que la parte final de la red se entrenó desde cero. En total, la red cuenta con 119 545 857 parámetros para el entrenamiento.
 
 El uso de esta red se justifica por su sencillez y su capacidad para aprender características significativas de las imágenes mediante el bloque de capas convolucionales. Dado su alto número de parámetros a entrenar, VGG-16 demanda recursos computacionales significativos, sin embargo, su gran rendimiento en el procesamiento de imágenes lo convierte en una opción atractiva para este trabajo.
 
@@ -378,12 +383,12 @@ En las ResNets, en lugar de simplemente apilar capas una sobre otra, se añaden 
 	\label{fig28}
 \end{figure}
 
-La arquitectura ResNet-50 se puede observar en la Figura \ref{fig29}. Esta consta de 50 capas, incluyendo capas convolucionales, capas de \textit{pooling} y capas totalmente conectadas. Inicialmente, la imagen de entrada se procesa a través de una capa de convolución seguida de una capa de agrupamiento. A esta capa le siguen varias capas de bloques residuales, cada uno de ellos consta de múltiples capas de convolución
+La arquitectura ResNet-50 se puede observar en la Figura \ref{fig29}. Esta consta de 50 capas, incluyendo capas convolucionales, capas de \textit{pooling} y capas totalmente conectadas. La estructura se divide en una serie de módulos concatenados:
 
 \begin{itemize}
-	\item Entrada: La imagen de entrada se procesa inicialmente a través de una capa de convolución seguida de una capa de agrupamiento promedio.
-	\item Bloques de convolución: ResNet-50 tiene varias capas de bloques residuales. Estos bloques se repiten varias veces, y cada uno consta de múltiples capas de convolución. Aquí es donde se incorporan las conexiones \enquote*{residuales}, la entrada de cada bloque se añade a la salida del bloque.
-	\item Capa de \textit{pooling}: Tras los bloques convoluciones hay una capa de agrupamiento máximo.
+	\item Entrada: La imagen de entrada se procesa inicialmente a través de una capa de convolución seguida de una capa de \textit{average pooling}.
+	\item Bloques residuales: ResNet-50 tiene varias capas de bloques residuales. Estos bloques se repiten varias veces, y cada uno consta de múltiples capas de convolución. Aquí es donde se incorporan las conexiones \enquote*{residuales}, es decir, la entrada de cada bloque se añade a la salida del bloque.
+	\item Capa de \textit{pooling}: Tras los bloques convolucionales, los mapas de características atraviesan una capa de \textit{max pooling}.
 	\item Capas totalmente conectadas: Por último, las características se pasan a un vector unidimensional y se conectan a través de una capa totalmente conectada para generar las predicciones finales.
 \end{itemize}
 
@@ -396,6 +401,6 @@ La arquitectura ResNet-50 se puede observar en la Figura \ref{fig29}. Esta const
 
 En FacialSCDnet+, al igual que con VGG-16, se realizó una modificación estructural en la red originalmente diseñada para clasificación. Se mantuvo la extracción de características a través de los bloques residuales, aprovechando los pesos preentrenados en ImageNet. Sin embargo, se prescindió de la última capa de la red y se agregaron 2 capas totalmente conectadas de 4096 neuronas, junto con una capa final de una neurona configurada para llevar a cabo la tarea de regresión.
 
-Tras realizar estos ajustes en la estructura de la red, se congelaron los pesos de los bloques convolucionales, mientras que la parte final de la red se entrenó desde cero. En total, la red cuenta con 25,178,113 parámetros para el entrenamiento.
+Tras realizar estos ajustes en la estructura de la red, se congelaron los pesos de los bloques convolucionales, mientras que la parte final de la red se entrenó desde cero. En total, la red cuenta con 25 178 113 parámetros para el entrenamiento.
 
 La implementación de conexiones residuales en ResNet-50 posibilita la construcción de una red más profunda, con un gran conjunto de capas convolucionales. Esta estructura aumenta su capacidad para aprender características complejas en las imágenes. A pesar de no alcanzar la cantidad de parámetros de VGG-16, su profundidad implica una demanda notable de recursos computacionales. No obstante, su alto rendimiento en tareas de visión la posicionan como una opción atractiva para este proyecto.

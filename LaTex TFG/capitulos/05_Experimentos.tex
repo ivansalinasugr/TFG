@@ -100,7 +100,7 @@ Para hacer la comparación más visual, se complementarán las métricas con fig
 
 \subsubsection{Test imágenes sintéticas}
 
-Este conjunto de datos contiene 28935 imágenes sintéticas en 35 distancias desde 50 a 600 cm. Los resultados de evaluar los modelos en este conjunto de datos se muestran en la Tabla \ref{test-mio}.
+Este conjunto de datos contiene 28 935 imágenes sintéticas en 35 distancias desde 50 a 600 cm. Los resultados de evaluar los modelos en este conjunto de datos se muestran en la Tabla \ref{test-mio}.
 
 \begin{table}[h]
 	\centering
@@ -229,7 +229,7 @@ En la Figura \ref{fig37} se pueden observar predicciones de la distancia para al
 	\label{fig37}
 \end{figure}
 
-La Figura \ref{fig34} representa una comparativa del rendimiento de los métodos a la hora de prededir la SCD, de forma que podemos observar la dispersión real de las estimaciones con respecto a la SCD real. La primera fila muestra los resultados en test de los tres métodos comparados para el conjunto de imágenes sintético, mientras que la segunda fila muestra los resultados sobre el conjunto de imágenes reales. La principal diferencia entre ambos conjuntos de datos es evidente, el número de imágenes sintéticas que podemos generar permite cubrir un amplio rango de distancias en comparacion con las imágenes reales. Esto nos permite identificar el rendimiento real de los modelos. 
+La Figura \ref{fig34} representa una comparativa del rendimiento de los métodos a la hora de prededir la SCD, de forma que podemos observar la dispersión concreta de las estimaciones con respecto a la SCD real. La primera fila muestra los resultados en test de los tres métodos comparados para el conjunto de imágenes sintético, mientras que la segunda fila muestra los resultados sobre el conjunto de imágenes reales. La principal diferencia entre ambos conjuntos de datos es evidente, el número de imágenes sintéticas que podemos generar permite cubrir un amplio rango de distancias en comparacion con las imágenes reales. Esto nos permite contextualizar el rendimiento de los modelos. 
 
 \begin{figure}[h]
 	\centering
@@ -238,6 +238,6 @@ La Figura \ref{fig34} representa una comparativa del rendimiento de los métodos
 	\label{fig34}
 \end{figure}
 
-En línea con los resultados cuantitativos mostrados en las Tablas \ref{test-mio} y \ref{test-real}, ambas arquitecturas de FacialSCDnet+ tienen un comportamiento similar, realizando estimaciones mucho más precisas a distancias cortas (en torno a 1.5 metros) y mostrando más variabilidad a distancias mayores. Es precisamente en esos casos donde el impacto de la distorsión de perspectiva es menos relevante, con lo que los resultados se explican al emplear la metrica de distorsión para guiar el entrenamiento del modelo. Para el conjunto de datos real se puede extraer una conclusión similar, destacando cómo el modelo basado en VGG-16 de FacialSCDnet+ parece minimizar la dispersión en la estimación de SCD, reduciendo los outliers y mostrando un comportamiento más consistente.
+En línea con los resultados cuantitativos mostrados en las Tablas \ref{test-mio} y \ref{test-real}, ambas arquitecturas de FacialSCDnet+ tienen un comportamiento similar, realizando estimaciones mucho más precisas a distancias cortas (en torno a 1.5 metros) y mostrando más variabilidad a distancias mayores. Es precisamente en esos casos donde el impacto de la distorsión de perspectiva es menos relevante, con lo que los resultados se explican al emplear la metrica de distorsión para guiar el entrenamiento del modelo. Para el conjunto de datos real se puede extraer una conclusión similar, destacando cómo el modelo basado en VGG-16 de FacialSCDnet+ parece minimizar la dispersión en la estimación de SCD, reduciendo los outliers y mostrando un comportamiento más consistente. En el caso del modelo de referencia, FacialSCDnet, la gráfica deja patente cómo el método, al no ser ayudado por la aplicación de las máscaras de transparencia, tiene un rendimiento real considerablemente peor al reportado en \cite{14} y del obtenido por FacialSCDnet+.
 
-Además, los coeficientes de determinación R$^2$ (Tablas \ref{test-mio} y \ref{test-real}) proporcionan una medida cuantitativa adicional del rendimiento de los modelos, indicando qué tan bien se ajustan las líneas de regresión de la Figura \ref{fig34} a los datos. En concreto, el modelo VGG-16 de FacialSCDnet+ alcanza un valor de 0.895 para el conjunto de datos sintéticos, mientras que para el conjunto de datos reales se reduce a 0.829. Esto indica que VGG-16 tiene una buena capacidad (mayor del 80\%) para explicar la variabilidad en los datos de ambos conjuntos.
+Además, los coeficientes de determinación R$^2$ (Tablas \ref{test-mio} y \ref{test-real}) proporcionan una medida cuantitativa adicional del rendimiento de los modelos, indicando qué tan bien se ajustan las líneas de regresión de la Figura \ref{fig34} a los datos. En concreto, el modelo VGG-16 de FacialSCDnet+ alcanza un valor de 0.895 para el conjunto de datos sintéticos, mientras que para el conjunto de datos reales se reduce a 0.829. Esto indica que dicho modelo tiene una buena capacidad (mayor del 80\%) para explicar la variabilidad en los datos de ambos conjuntos, mientras que el resto de modelos tienen un R$^2$ más reducido, sobre todo en el conjunto de datos real.

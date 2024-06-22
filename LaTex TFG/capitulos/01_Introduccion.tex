@@ -3,7 +3,7 @@
 
 \section{Definición del problema}
 
-En la era digital actual, las imágenes faciales han adquirido una relevancia significativa (Figura~\ref{fig1}), dado su amplio uso  en aplicaciones multimedia, redes sociales, sistemas de vigilancia y seguridad para la identificación de personas o control de accesos en edificios, así como en investigaciones criminales y forenses para la identificación de sospechosos o la reconstrucción de rostros.
+En la era digital actual, las imágenes faciales han adquirido una relevancia significativa (Figura \ref{fig1}), dado su amplio uso  en aplicaciones multimedia, redes sociales, sistemas de vigilancia y seguridad para la identificación de personas o control de accesos en edificios, así como en investigaciones criminales y forenses para la identificación de sospechosos o la reconstrucción de rostros.
 Esta expansión se debe en gran medida al continuo desarrollo tecnológico, que ha mejorado tanto la calidad como la ubicuidad de las fotografías faciales, permitiendo su presencia en una variedad cada vez mayor de contextos y aplicaciones \cite{74,75,76,77}.
 
 \renewcommand{\thefootnote}{1}
@@ -20,12 +20,12 @@ Esta expansión se debe en gran medida al continuo desarrollo tecnológico, que 
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \setcounter{footnote}{2}
 
-En este contexto, es importante resaltar el papel que tienen las imágenes faciales en campos como la biometría para la verificación de identidad, así como en la seguridad nacional y las ciencias forenses, donde se pueden utilizar para la identificación facial \cite{80, 81, 82}. A fin de garantizar el correcto desempeño de estas aplicaciones, se debe tener en cuenta la calidad de las imágenes y todos los factores que afectan a la escena fotográfica \cite{86,87}. Aspectos como la resolución, el enfoque o la iluminación deben cumplir unos requisitos mínimos. Por ello, desde hace años existen numerosas herramientas y técnicas dirigidas a la extracción de metadatos, la detección facial \cite{83, 84} o la estimación de la pose~\cite{56, 85}, todas ellas fundamentales para asegurar la fiabilidad y precisión de los sistemas de identificación facial.
+En este contexto, es importante resaltar el papel que tienen las imágenes faciales en campos como la biometría para la verificación de identidad, así como en la seguridad nacional y las ciencias forenses, donde se pueden utilizar para la identificación facial \cite{80, 81, 82}. A fin de garantizar el correcto desempeño de estas aplicaciones, se debe tener en cuenta la calidad de las imágenes y todos los factores que afectan a la escena fotográfica \cite{86,87}. Aspectos como la resolución, el enfoque o la iluminación deben cumplir unos requisitos mínimos. Por ello, desde hace años existen numerosas herramientas y técnicas dirigidas a la extracción de metadatos, la detección facial \cite{83, 84} o la estimación de la pose \cite{56, 85}, todas ellas fundamentales para asegurar la fiabilidad y precisión de los sistemas de identificación facial.
 
 % En el ámbito forense, una de las técnicas más empleadas en la identificación facial es la \textbf{comparación facial forense} (CFF)~\cite{3}. Esta técnica, llevada a cabo por expertos manualmente o con la ayuda de sistemas automáticos \cite{79}, consiste en identificar similitudes y diferencias entre dos o más imágenes faciales con el objetivo de determinar si representan a la misma persona. 
 % Para que este análisis sea confiable y concluyente, las imágenes faciales deben estar en unas condiciones adecuadas. Aspectos como la calidad, la resolución, el enfoque o la iluminación deben cumplir unos requisitos mínimos. Además, es importante que las características de la escena, como el ángulo de la cámara, la posición de la cabeza y la expresión facial, no varíen significativamente, con el fin de asegurar la similitud entre las imágenes y permitir una comparación precisa entre pares~\cite{1,2}.
 
-Uno de los factores más importantes a tener en cuenta en las fotografías faciales es la distorsión de perspectiva, la cual puede provocar deformaciones en los rasgos faciales, como en las orejas, la nariz o la forma general del rostro, especialmente cuando la cámara está muy cerca del sujeto al momento de tomar la fotografía~\cite{12} (Figura \ref{fig2}). 
+Uno de los factores más importantes a tener en cuenta en las fotografías faciales es la distorsión de perspectiva, la cual puede provocar deformaciones en los rasgos faciales, como en las orejas, la nariz o la forma general del rostro, especialmente cuando la cámara está muy cerca del sujeto al momento de tomar la fotografía \cite{12} (Figura \ref{fig2}). 
 Esta alteración en la perspectiva repercute negativamente tanto en los sistemas de reconocimiento facial como en el análisis de imágenes, complicando la interpretación visual al alterar cómo se perciben ciertos rasgos.
 
 \begin{figure}[h]
@@ -35,13 +35,13 @@ Esta alteración en la perspectiva repercute negativamente tanto en los sistemas
 	\label{fig2}
 \end{figure}
 
-La distorsión de perspectiva está estrechamente relacionada con la \textbf{distancia cámara-sujeto} (\textit{subject-to-camera distance}, SCD en adelante), que se define como la separación física entre la posición de la cámara y el sujeto fotografiado. Esta relación entre la distorsión de perspectiva y la SCD sigue un patrón de decremento logarítmico, lo que significa que a distancias cortas se produce una mayor distorsión, la cual disminuye gradualmente a medida que la distancia entre la cámara y el sujeto aumenta~\cite{55}. Conocer la SCD en fotografías faciales permite cuantificar la cantidad de distorsión de perspectiva presente en una imagen, así como las diferencias en la distorsión entre dos pares de imágenes. Esta información puede ser determinante al evaluar la identidad de un individuo mediante técnicas forenses de identificación facial, además de facilitar el desarrollo de métodos precisos para corregir dichas distorsiones \cite{16}.
+La distorsión de perspectiva está estrechamente relacionada con la \textbf{distancia cámara-sujeto} (\textit{subject-to-camera distance}, SCD en adelante), que se define como la separación física entre la posición de la cámara y el sujeto fotografiado. Esta relación entre la distorsión de perspectiva y la SCD sigue un patrón de decremento logarítmico, de modo que a distancias cortas se produce una mayor distorsión, la cual disminuye gradualmente a medida que la distancia entre la cámara y el sujeto aumenta \cite{55}. Conocer la SCD en fotografías faciales permite cuantificar la cantidad de distorsión de perspectiva presente en una imagen, así como las diferencias en la distorsión entre dos pares de imágenes. Esta información puede ser determinante al evaluar la identidad de un individuo mediante técnicas forenses de identificación facial, además de facilitar el desarrollo de métodos precisos para corregir dichas distorsiones \cite{16}.
 
-La SCD, a diferencia de otros parámetros de la cámara \ref{param_camera} como la distancia focal o el tamaño del sensor, no se puede obtener directamente desde los metadatos de la fotografía~\cite{8}. Por tanto, es necesario un método preciso para su estimación.
+La SCD, a diferencia de otros parámetros de la cámara \ref{param_camera} como la distancia focal o el tamaño del sensor, no se puede obtener directamente desde los metadatos de la fotografía \cite{8}. Por tanto, es necesario un método preciso para su estimación.
 
-En los últimos años se han utilizado varios métodos que combinan técnicas manuales y automatizadas basadas en puntos de referencia o en características anatómicas de la cara\cite{28,30,20}. Sin embargo, no se han obtenido resultados favorables debido a la dificultad para obtener estimaciones precisas en largas distancias por la diversa fisionomía de la cara, y a los problemas relacionados con los parámetros de la cámara, como el recorte de imágenes o la combinación de diferentes distancias focales en el mismo conjunto de datos.
+En los últimos años se han utilizado varios métodos que combinan técnicas manuales y automatizadas basadas en puntos de referencia o en características anatómicas de la cara \cite{28,30,20}. Sin embargo, no se han obtenido resultados favorables debido a la dificultad para obtener estimaciones precisas en largas distancias por la diversa fisionomía de la cara, y a los problemas relacionados con los parámetros de la cámara, como el recorte de imágenes o la combinación de diferentes distancias focales en el mismo conjunto de datos.
 
-Recientemente, se han comenzado a aplicar técnicas de aprendizaje profundo para la estimación de la SCD, como el método FacialSCDnet~\cite{14}, que utiliza una arquitectura basada en aprendizaje profundo para procesar imágenes faciales y calcular su distancia correspondiente. Estas técnicas, aunque prometedoras, enfrentan limitaciones debido a la calidad y cantidad insuficiente de datos para el entrenamiento, lo que puede resultar en modelos sesgados y con capacidad limitada para generalizar. Además, la variabilidad en la calidad de las imágenes y las condiciones de captura presentan desafíos significativos. Estas cuestiones subrayan la necesidad de seguir desarrollando y refinando estas técnicas para mejorar su precisión y aplicabilidad en un amplio rango de contextos y poblaciones.
+Recientemente, se han comenzado a aplicar técnicas de aprendizaje profundo para la estimación de la SCD, como el método FacialSCDnet \cite{14}, que utiliza una arquitectura basada en aprendizaje profundo para procesar imágenes faciales y calcular su distancia correspondiente. Estas técnicas, aunque prometedoras, enfrentan limitaciones debido a la calidad y cantidad insuficiente de datos para el entrenamiento, lo que puede resultar en modelos sesgados y con capacidad limitada para generalizar. Además, la variabilidad en la calidad de las imágenes y las condiciones de captura presentan desafíos significativos. Estas cuestiones subrayan la necesidad de seguir desarrollando y refinando estas técnicas para mejorar su precisión y aplicabilidad en un amplio rango de contextos y poblaciones.
 
 Considerando todos estos aspectos, \textbf{el presente Trabajo de Fin de Grado (TFG) pretende mejorar el método actual del estado del arte en la estimación automática de la distancia cámara-sujeto en fotografías faciales}. Para ello, partimos de FacialSCDnet como una prueba de concepto sólida, reconociendo sus ventajas pero también identificando sus limitaciones inherentes. Nos centraremos en incorporar mejoras significativas que permitan solventar estas limitaciones con el objetivo de elevar el rendimiento y la precisión del sistema.
 
@@ -136,7 +136,7 @@ La planificación inicial se detalla en la Tabla \ref{planif-ini}, sin embargo, 
 
 Para estimar los costos, comenzamos considerando un salario de 30 euros por hora para un responsable I+D en una empresa tecnológica o para un investigador senior. Además de esto, se contemplan los gastos asociados a los materiales, como el costo del portátil utilizado en el desarrollo del TFG y el uso de un servidor GPU de alto rendimiento. Estos costes se desglosan detalladamente en la Tabla \ref{tab:coste-proyecto}. 
 
-En relación al servidor GPU, su valoración se estima en 16000 euros. Con una amortización proyectada a dos años, lo que equivale a un pago diario de 21.92 euros, su contribución al costo total del proyecto se estima en 3090.72 euros.
+En relación al servidor GPU, su valoración se estima en 16 000 euros. Con una amortización proyectada a dos años, lo que equivale a un pago diario de 21.92 euros, su contribución al costo total del proyecto se estima en 3090.72 euros.
 
 
 \begin{table}[H]
@@ -149,10 +149,10 @@ En relación al servidor GPU, su valoración se estima en 16000 euros. Con una a
 	 &  \\ \hline
 	\rowcolor[HTML]{FFCB2F} 
 	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Item} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFCB2F}Costo} \\ \hline
-	\multicolumn{1}{|l|}{Salario} & \multicolumn{1}{l|}{12120 euros} \\ \hline
+	\multicolumn{1}{|l|}{Salario} & \multicolumn{1}{l|}{12 120 euros} \\ \hline
 	\multicolumn{1}{|l|}{Portátil de Gama Alta} & \multicolumn{1}{l|}{2600 euros} \\ \hline
 	\multicolumn{1}{|l|}{Servidor GPU} & \multicolumn{1}{l|}{3090.72 euros} \\ \hline
-	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Total} & \multicolumn{1}{l|}{17810.72 euros} \\ \hline
+	\multicolumn{1}{|l|}{\cellcolor[HTML]{FFCB2F}Total} & \multicolumn{1}{l|}{17 810.72 euros} \\ \hline
 	\end{tabular}
 	\caption{Estimación del coste del proyecto.}
 	\label{tab:coste-proyecto}
