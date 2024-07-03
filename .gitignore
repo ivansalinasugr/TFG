@@ -35,3 +35,7 @@ Procesamiento de modelos/notebooks/train_loss_resnet
 Procesamiento de modelos/notebooks/train_loss_vgg
 Procesamiento de modelos/notebooks/val_loss_resnet
 Procesamiento de modelos/notebooks/val_loss_vgg
+/LaTex TFG
+/Presentación TFG
+real_test_labels.csv
+test_labels.csv
